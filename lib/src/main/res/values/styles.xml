@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="tabLayoutWork">
+        <item name="android:textSize">@dimen/text_size_title</item>
+    </style>
+
+</resources>

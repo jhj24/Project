@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@mipmap/ic_top_bar_background_mine"
+                    app:layout_constraintDimensionRatio="W,1.1:2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="25dp"
+                    android:src="@mipmap/ic_avatar"
+                    app:layout_constraintBottom_toBottomOf="@id/imageView"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/imageView"/>
+
+            <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="6dp"
+                    android:text="张三"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintLeft_toRightOf="@id/iv_avatar"
+                    app:layout_constraintTop_toTopOf="@id/iv_avatar"/>
+
+            <TextView
+                    android:id="@+id/tv_depart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="工程部"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
+                    app:layout_constraintLeft_toRightOf="@id/iv_avatar"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isShowLabelColon="false"
+                app:labelText="我的资料"
+                app:labelTextGravity="left"
+                app:style="big"/>
+
+        <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isShowLabelColon="false"
+                app:labelText="组织机构"
+                app:labelTextGravity="left"
+                app:style="big"/>
+
+        <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isShowBottomLine="false"
+                app:isShowLabelColon="false"
+                app:labelText="修改密码"
+                app:labelTextGravity="left"
+                app:style="big"/>
+
+        <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowLabelColon="false"
+                app:labelText="当前版本"
+                app:labelTextGravity="left"
+                app:style="big"
+                app:unitText="1.0.0"/>
+
+        <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isArrowShow="false"
+                app:isShowBottomLine="false"
+                app:isShowLabelColon="false"
+                app:labelText="退出登录"
+                app:labelTextColor="@color/red_main"
+                app:labelTextGravity="left"
+                app:style="big"/>
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

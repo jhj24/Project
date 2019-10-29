@@ -1,0 +1,68 @@
+<resources>
+    <dimen name="statusbar_view_height">0dp</dimen>
+    <dimen name="statusbar_titlebar_view_height">48dp</dimen>
+    <dimen name="title_bar_height">48dp</dimen>
+    <dimen name="message_margin_top">240dp</dimen>
+
+    <!--============分割线高度==============-->
+    <dimen name="line_width">1px</dimen>
+
+    <!--============字体大小===============-->
+    <dimen name="bill_text_label">14sp</dimen> <!--标签-->
+    <dimen name="bill_text_operate">14sp</dimen><!--操作-->
+    <dimen name="bill_text_hint">14sp</dimen> <!--hint-->
+    <dimen name="bill_text_title">16sp</dimen>
+    <dimen name="bill_text_min">12sp</dimen>
+
+    <!--============item默认高度==========-->
+    <dimen name="bill_height_item">50dp</dimen>
+
+    <!--=============多行输入=============-->
+    <dimen name="bill_height_multi">120dp</dimen> <!--多行输入高度-->
+    <dimen name="bill_padding_multi">5dp</dimen> <!--默认高度-->
+
+    <!--==============Camera============-->
+    <dimen name="bill_square_image">55dp</dimen> <!--默认高度-->
+
+
+    <!--=============Padding============-->
+    <dimen name="bill_padding">10dp</dimen> <!--默认高度-->
+    <dimen name="bill_padding_left">20dp</dimen> <!---->
+    <dimen name="bill_padding_right">20dp</dimen> <!--默认高度-->
+    <dimen name="bill_padding_top">10dp</dimen> <!--默认高度-->
+    <dimen name="bill_padding_bottom">10dp</dimen> <!--默认高度-->
+
+    <!--=============Margin=============-->
+    <dimen name="bill_margin">15dp</dimen> <!--默认高度-->
+    <dimen name="bill_margin_left">15dp</dimen> <!--默认高度-->
+    <dimen name="bill_margin_right">15dp</dimen> <!--默认高度-->
+    <dimen name="bill_margin_top">8dp</dimen> <!--默认高度-->
+    <dimen name="bill_margin_bottom">8dp</dimen> <!--默认高度-->
+
+    <!--=============按钮=============-->
+    <dimen name="button_frame">0.5dp</dimen>
+    <dimen name="button_radio">6dp</dimen>
+
+
+    <!--=============界面各个位置字体大小=============-->
+    <dimen name="text_size_topbar">22sp</dimen>
+    <dimen name="text_size_title">18sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_button">18sp</dimen>
+    <dimen name="text_size_system">14sp</dimen>
+
+    <!--=============界面各个位置字体大小=============-->
+    <dimen name="item_height_single">60dp</dimen>
+    <dimen name="item_padding_left">20dp</dimen>
+    <dimen name="item_padding_right">20dp</dimen>
+
+    <dimen name="default_corner_radius">6dp</dimen>
+    <dimen name="default_shadow_radius">6dp</dimen>
+    <dimen name="default_offset_x">6dp</dimen>
+    <dimen name="default_offset_y">6dp</dimen>
+
+    <dimen name="shadowLayout_horizontal_margin">15dp</dimen>
+
+
+</resources>

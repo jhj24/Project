@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_top_bar_main_fragmen" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.zgdj.project.weight.BannerLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="18dp"
+                app:indicatorPosition="rightBottom"
+                app:layout_constraintDimensionRatio="W,13:32"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:selectedIndicatorColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="6dp"
+                android:text="水位数据"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/text_size_title" />
+
+            <com.zgdj.lib.widget.ShadowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <com.zgdj.project.weight.WaterLevelView
+                    android:layout_width="match_parent"
+                    android:layout_height="166dp"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:paddingBottom="15dp" />
+            </com.zgdj.lib.widget.ShadowLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="6dp"
+                android:text="天气信息"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/text_size_title" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="6dp"
+                android:text="机组运行数据"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/text_size_title" />
+
+            <com.zgdj.lib.widget.ShadowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+
+                <com.zgdj.project.weight.UnitDataView
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:paddingBottom="15dp" />
+
+            </com.zgdj.lib.widget.ShadowLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

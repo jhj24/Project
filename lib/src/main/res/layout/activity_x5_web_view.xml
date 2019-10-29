@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.tencent.smtt.sdk.WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingLeft="@dimen/bill_padding_left"
+            android:paddingTop="@dimen/bill_margin_top"
+            android:paddingRight="@dimen/bill_padding_right"
+            android:paddingBottom="5dp"
+            android:text="使用说明"
+            android:textColor="@color/text_title"
+            android:textSize="@dimen/text_size_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/bill_padding_left"
+            android:paddingRight="@dimen/bill_padding_right"
+            android:text="\t\t\t\t请点击“合作方加载检测”查看X5内核加载是否成功，若未成功，请点击“安装线上内核”进行安装，安装成功后再次点击“合作方加载检测”进行重启即可。"
+            android:textColor="@color/text_message"
+            android:textSize="@dimen/text_size_normal" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

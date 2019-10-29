@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/statusbar_titlebar_view_height"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <View
+                android:id="@+id/status_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/statusbar_view_height"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <View
+                android:id="@+id/top_bar_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/statusbar_titlebar_view_height"
+                android:background="@mipmap/ic_top_bar_background_main"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/title_bar_height"
+                android:layout_below="@id/status_bar"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toBottomOf="@id/status_bar">
+
+            <ImageView
+                    android:id="@+id/iv_top_bar_back"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="3dp"
+                    android:padding="15dp"
+                    android:src="@mipmap/arrow_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    android:id="@+id/tv_top_bar_title"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:ellipsize="middle"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="标题"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_topbar"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+            <ImageView
+                    android:id="@+id/iv_top_bar_right"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:padding="15dp"
+                    android:src="@mipmap/ic_top_bar_add"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    android:id="@+id/tv_top_bar_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/item_padding_right"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+                android:id="@+id/top_bar_foreground"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/statusbar_titlebar_view_height"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

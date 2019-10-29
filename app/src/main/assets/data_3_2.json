@@ -1,0 +1,72 @@
+[
+  {
+    "type": "水泵机组设备",
+    "code": 1,
+    "name": "油润滑巴氏合金水导轴承",
+    "model": "3300ZGB2.23-34型竖井贯流水泵部件",
+    "unit": "套",
+    "all_sum": 1,
+    "exist_sum": 0,
+    "principal": "孙钰杰"
+  },
+  {
+    "type": "水泵机组设备",
+    "code": 2,
+    "name": "水导轴承密封件",
+    "model": "3300ZGB2.23-34型竖井贯流水泵部件，无锡日立水泵",
+    "unit": "套",
+    "all_sum": 1,
+    "exist_sum": 0,
+    "principal": "孙钰杰"
+  },
+  {
+    "type": "闸门及启闭设备",
+    "code": 1,
+    "name": "止水橡皮",
+    "model": "各种规格见闸门设计图纸。",
+    "unit": "kg",
+    "all_sum": 300,
+    "exist_sum": 155,
+    "principal": "孙钰杰"
+  },
+  {
+    "type": "闸门及启闭设备",
+    "code": 2,
+    "name": "止水橡皮",
+    "model": "各种规格见闸门设计图纸。",
+    "unit": "kg",
+    "all_sum": 100,
+    "exist_sum": 80,
+    "principal": "孙钰杰"
+  },
+  {
+    "type": "闸门及启闭设备",
+    "code": 3,
+    "name": "阀件",
+    "model": "各种规格见厂家启闭机说明书",
+    "unit": "套",
+    "all_sum": 1,
+    "exist_sum": 0,
+    "principal": "孙钰杰"
+  },
+  {
+    "type": "清污机",
+    "code": 1,
+    "name": "传动链条节距T31.75",
+    "model": "HQN4.3-9.425型回转式格栅清污机零部件，曲阜恒威水工机械有限公司",
+    "unit": "m",
+    "all_sum": 20,
+    "exist_sum": 11,
+    "principal": "孙钰杰"
+  },
+  {
+    "type": "清污机",
+    "code": 2,
+    "name": "安全销",
+    "model": "HQN4.3-9.425型回转式格栅清污机零部件，曲阜恒威水工机械有限公司",
+    "unit": "只",
+    "all_sum": 10,
+    "exist_sum": 0,
+    "principal": "孙钰杰"
+  }
+]

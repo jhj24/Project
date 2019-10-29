@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zgdj.lib.widget.ShadowLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/card_unCommit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_item_bg_corner"
+            android:gravity="center_vertical"
+            android:paddingLeft="13dp"
+            android:paddingTop="16dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="16dp">
+
+        <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="53dp"
+                android:layout_height="53dp"
+                android:src="@mipmap/ic_file_word"/>
+
+        <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1">
+
+
+            <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_normal"
+                    tools:text="岩石平洞开挖质量等级评定表"/>
+
+            <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_marginTop="8dp"
+                    android:text="来至："
+                    android:textColor="@color/text_light"
+                    android:textSize="@dimen/text_size_small"/>
+
+            <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/name"
+                    android:text="孙钰杰"
+                    android:textColor="@color/text_light"
+                    android:textSize="@dimen/text_size_small"/>
+
+            <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="8dp"
+                    android:text="2019-12-11 11:12"
+                    android:textColor="@color/text_light"
+                    android:textSize="@dimen/text_size_small"/>
+
+        </RelativeLayout>
+
+        <ImageView
+                android:id="@+id/iv_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_more_vert_black"
+                android:visibility="gone"/>
+
+    </LinearLayout>
+</com.zgdj.lib.widget.ShadowLayout>

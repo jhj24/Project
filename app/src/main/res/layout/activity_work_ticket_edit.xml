@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_top_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="检修单位" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="编号" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_principal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="负责人" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_people_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="工作人数" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_work_people"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="工作班人员" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="工作任务" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请选择"
+                app:labelText="计划开始时间" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请选择"
+                app:labelText="计划结束时间" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_secure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="false"
+                app:labelText="安全措施" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_signer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="签发人" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_signer_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:hintText="请选择"
+                app:isShowBottomLine="false"
+                app:labelText="时间" />
+
+
+            <LinearLayout
+                android:id="@+id/layout_licensor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.zgdj.lib.widget.LabelInputLayout
+                    android:id="@+id/label_licensor_secure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintText="请输入"
+                    app:isArrowShow="false"
+                    app:isCanInput="true"
+                    app:labelText="安全措施" />
+
+                <com.zgdj.lib.widget.LabelInputLayout
+                    android:id="@+id/label_licensor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintText="请输入"
+                    app:isArrowShow="false"
+                    app:isCanInput="true"
+                    app:labelText="签发人" />
+
+
+                <com.zgdj.lib.widget.LabelInputLayout
+                    android:id="@+id/label_licensor_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:hintText="请选择"
+                    app:isShowBottomLine="false"
+                    app:labelText="时间" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <com.zgdj.lib.widget.CommitButtonLayout
+        android:id="@+id/layout_operate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

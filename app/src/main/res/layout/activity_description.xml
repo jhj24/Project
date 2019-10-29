@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/coordinator"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+    <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:scaleType="centerCrop"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="222dp"
+                    android:background="@drawable/shape_white_top_corner_18"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                <TextView
+                        android:textColor="@color/text_title"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="工程布局"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:layout_marginTop="15dp"
+                        android:text="片区按照“高水高排、低水抽排”原则集中排滞：即在沙井河口集中建大泵站抽排，降低河道洪水位，创造低水位以便千易滞区自流排水，从而解决河道沿线低洼区受淹问题。根据工程地形及分区情况，为减小泵站规模采取工程措施分流高区洪水。即在沙井河上游新建潭头水闸分流潭头河洪水，不再进入沙井河，使其改道排入排滂河，实现高水自排、低水抽排—排捞河自流排洪、沙井河动力排滂。\n
+对沙井河与排滂河之间区域，现有共和渠独立汇入茅洲河，本工程迁址改建共和闸站。\n
+为使排水顺畅需对沙井河、松岗河清淤疏浚、局部扩宽并进行相应除险加固；对排滂河中下游进行以扩宽为主的防洪改造。"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/text_title"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="建设标准"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/tv_standard_one"
+                        android:text="排滂标准：主体排滂泵站及其集水河道按照20年一遇24小时设计暴雨不受淹的标准进行设计。"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/tv_standard_two"
+                        android:layout_marginTop="20dp"
+                        android:text="防洪标准：排滂河为排洪河道，其堤防按照满足50年一遇防洪标准建设，但其堤顶高程应不低千茅洲河干流堤防；沙井河口建闸站后，沙井河、松岗河成为内河，其设防标准取用为20年一遇。"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/text_title"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="建设规模"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/tv_scale_one"
+                        android:text="沙井泵站枢纽工程：设计抽排流量为5X34=170m3/s,装机5X1600=8000KW,属大(2)型，工程等别为II等沙井水闸设计泄洪流量为219.8m3/s，属中型水闸，考虑与大型泵站联合运行的重要性，且要防御茅洲河高标准洪水，水闸等别与茅洲河堤防相同，工程等别为I等。"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/tv_scale_two"
+
+                        android:layout_marginTop="20dp"
+                        android:text="共和泵站枢纽工程：设计流量为4.1X3=12.3m3/s,装机3X315=945KW,泵站规模属中型、等别为III等。泵站泄洪闸设计泄洪流量为12.3m3/s,为小(2)型水闸，属V等工程，考虑水闸要防御茅洲河高标准洪水，提高水闸等别，同泵站一致，取为III等。"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/tv_scale_three"
+
+                        android:layout_marginTop="20dp"
+                        android:text="潭头水闸：功能为发生超20年一遇洪水时闸门全关，分流沙井河上游洪水进入排浩河。该水闸等别与排滞河一致，取为II等。"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/tv_scale_four"
+
+                        android:layout_marginTop="20dp"
+                        android:text="河道工程：工程等别为II等。"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.constraint.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/layout_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/statusbar_titlebar_view_height"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                    android:id="@+id/status_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/statusbar_view_height"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <View
+                    android:id="@+id/top_bar_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/statusbar_titlebar_view_height"
+                    android:background="@mipmap/ic_top_bar_background_main"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/title_bar_height"
+                    android:layout_below="@id/status_bar"
+                    android:gravity="center_vertical"
+                    app:layout_constraintTop_toBottomOf="@id/status_bar">
+
+                <ImageView
+                        android:id="@+id/iv_top_bar_back"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="3dp"
+                        android:padding="15dp"
+                        android:src="@mipmap/arrow_back"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                        android:id="@+id/tv_top_bar_title"
+                        android:layout_width="260dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:ellipsize="middle"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="标题"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_topbar"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageView
+                        android:id="@+id/iv_top_bar_right"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:padding="15dp"
+                        android:src="@mipmap/ic_top_bar_add"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                        android:id="@+id/tv_top_bar_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/item_padding_right"
+                        android:text="确定"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+
+            <View
+                    android:id="@+id/top_bar_foreground"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/statusbar_titlebar_view_height"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

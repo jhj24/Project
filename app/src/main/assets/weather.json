@@ -1,0 +1,42 @@
+[
+  {
+    "time": "当前天气",
+    "weather": "晴",
+    "temperature": "19"
+  },
+  {
+    "time": "11：00",
+    "weather": "晴",
+    "temperature": "20"
+  },
+  {
+    "time": "12：00",
+    "weather": "晴",
+    "temperature": "21"
+  },
+  {
+    "time": "13：00",
+    "weather": "晴",
+    "temperature": "23"
+  },
+  {
+    "time": "14：00",
+    "weather": "晴",
+    "temperature": "23"
+  },
+  {
+    "time": "15：00",
+    "weather": "阴",
+    "temperature": "21"
+  },
+  {
+    "time": "16：00",
+    "weather": "雷阵雨",
+    "temperature": "19"
+  },
+  {
+    "time": "17：00",
+    "weather": "晴",
+    "temperature": "17"
+  }
+]

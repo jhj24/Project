@@ -1,0 +1,59 @@
+ext {
+    android = [
+            // 应用程序包名
+            // applicationId    : "com.dc.arcface",
+            // 用于编译的SDK版本
+            compileSdkVersion: 28,
+            // 用于Gradle编译项目的工具版本
+            buildToolsVersion: "28.0.0",
+            // 最低支持Android版本
+            minSdkVersion    : 16,
+            // 目标版本
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : "1.0",
+            // 设置是否使用混淆
+            minifyEnabled    : true,
+            minifyDisabled   : false
+    ]
+
+    dependencies = [
+            //kotlin
+            "kotlin-jdk"         : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "kotlin-anko"        : "org.jetbrains.anko:anko:$anko_version",
+            "kotlin-coroutines"  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0",
+
+            //阿里路由
+            "arouter-api"        : 'com.alibaba:arouter-api:1.5.0',
+            "arouter-compiler"   : 'com.alibaba:arouter-compiler:1.2.2',
+
+
+            //net
+            "okhttp"             : "com.squareup.okhttp3:okhttp:3.11.0",
+            "httpcall"           : "com.github.jhj24:HttpCall:v0.9.1",
+
+            //json
+            "json"               : "com.google.code.gson:gson:2.8.5",
+
+            //smartRefresh
+            "smart-refreshlayout": "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21",
+
+            //autosize
+            "auto-size"          : "me.jessyan:autosize:1.1.2",
+
+            //图片
+            "glide"              : "com.github.bumptech.glide:glide:4.9.0",
+
+            //adapter
+            "adapter"            : "com.github.jhj24:Adapter:v0.8.0",
+
+            //dialog
+            "prompt-dialog"      : "com.github.jhj24:PromptDialog:v1.1.4",
+
+            //amap
+            "amap-3d"            : "com.amap.api:3dmap:latest.integration",
+            "amap-location"      : "com.amap.api:location:latest.integration",
+            "amap-search"        : "com.amap.api:search:latest.integration",
+
+    ]
+}

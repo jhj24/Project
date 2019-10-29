@@ -1,0 +1,68 @@
+[
+  {
+    "time": "2018/06/11 14:58:29",
+    "name": "DI_ 1. DI48 ",
+    "status": "TUHIACK_ ALM",
+    "group": "LCU1",
+    "remark": "1#泵供水压力减低",
+    "value": "true",
+    "type": "DSC",
+    "alarm": "true",
+    "isDeal": false
+  },
+  {
+    "time": "2018/06/11 14:58:29",
+    "name": "DI_ 1. DI64 ",
+    "status": "UMACK. ALM",
+    "group": "LCU1",
+    "remark": "1#泵供水压力减低",
+    "value": "true",
+    "type": "DSC",
+    "alarm": "true",
+    "isDeal": true
+  },
+  {
+    "time": "2018/06/08 17;17:16",
+    "name": "AI_1,AI1",
+    "status": "UNACK _ALM",
+    "group": "LCU1",
+    "remark": "泵轴纵向摆度",
+    "value": "118.5",
+    "type": "Hi",
+    "alarm": "100.0",
+    "isDeal": true
+  },
+  {
+    "time": "2018/06/08 17:17:13",
+    "name": "AI_ 1. AI1",
+    "status": "URACK ALM",
+    "group": "LCU1",
+    "remark": "泵轴纵向摆度",
+    "value": "133.6",
+    "type": "HiHi",
+    "alarm": "120. 0",
+    "isDeal": false
+  },
+  {
+    "time": "2018/06/08 17:17:06",
+    "name": "BI_ 1.AI1",
+    "status": "UNLACK ALM",
+    "group": "LCUI",
+    "remark": "泵轴纵向摆度",
+    "value": "158.1",
+    "type": "HiHi",
+    "alarm": "120. 0",
+    "isDeal": true
+  },
+  {
+    "time": "2018/06/12 10: 12:53",
+    "name": "JKZM_ 3. 17",
+    "status": "UNACK_ ALM",
+    "group": "JinKou3",
+    "remark": "检修闸门有杆腔高压软管破裂",
+    "value": "true",
+    "type": "DSC",
+    "alarm": "true",
+    "isDeal": false
+  }
+]
