@@ -17,14 +17,12 @@ import com.zgdj.lib.net.callback.DataDialogHttpCallback
 import kotlinx.android.synthetic.main.activity_recyclerview.*
 import kotlinx.android.synthetic.main.layout_empty_view.*
 import kotlinx.android.synthetic.main.layout_search_bar.*
-import kotlinx.android.synthetic.main.layout_top_bar.*
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 import java.util.*
 
-abstract class BaseLoadingListActivity<T> : BaseActivity() {
+abstract class BaseLoadingListActivity<T> : DefaultTopBarActivity() {
 
-    abstract val title: String
     abstract val url: String
     abstract val itemLayoutRes: Int
 
@@ -36,8 +34,6 @@ abstract class BaseLoadingListActivity<T> : BaseActivity() {
     open val hasSplitLine = true
     //输入框变化就开始搜索
     open val filterFunc: (T, String) -> Boolean = { t, s -> true }
-    //
-    open val isDefaultStyle = true
 
     lateinit var adapterLocal: SlimAdapter
 
@@ -47,16 +43,7 @@ abstract class BaseLoadingListActivity<T> : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview)
         initialize()
-        initTopBar(title, View.VISIBLE)
-        adapterLocal = initAdapter()
-        if (isDefaultStyle) {
-            imageView.visibility = View.GONE
-            top_bar_background.visibility = View.VISIBLE
-        } else {
-            imageView.visibility = View.VISIBLE
-            top_bar_background.visibility = View.GONE
-        }
-
+        initAdapter()
         //分割线
         if (hasSplitLine) {
             recyclerView.addItemDecoration(LineItemDecoration())
@@ -79,7 +66,7 @@ abstract class BaseLoadingListActivity<T> : BaseActivity() {
     }
 
 
-    private fun initAdapter(): SlimAdapter {
+    private fun initAdapter() {
 
         recyclerView.setOnTouchListener { v, _ ->
             closeKeyboard(v)
@@ -89,12 +76,12 @@ abstract class BaseLoadingListActivity<T> : BaseActivity() {
             return@setOnTouchListener false
         }
 
-        return SlimAdapter.creator()
-            .setGenericActualType(getClazz())
-            .register<T>(itemLayoutRes) { injector, bean, position ->
-                itemViewConvert(this, injector, bean, position)
-            }
-            .attachTo(recyclerView)
+        adapterLocal = SlimAdapter.creator()
+                .setGenericActualType(getClazz())
+                .register<T>(itemLayoutRes) { injector, bean, position ->
+                    itemViewConvert(this, injector, bean, position)
+                }
+                .attachTo(recyclerView)
     }
 
     fun refresh() {
@@ -105,41 +92,41 @@ abstract class BaseLoadingListActivity<T> : BaseActivity() {
     private fun httpRequest() {
 
         httpPost(url)
-            .addParams(httpParams)
-            .enqueue(object : DataDialogHttpCallback<List<T>>(this) {
+                .addParams(httpParams)
+                .enqueue(object : DataDialogHttpCallback<List<T>>(this) {
 
-                var isSuccess = false
+                    var isSuccess = false
 
-                override val clazzType: Type
-                    get() = type(List::class.java, getClazz())
+                    override val clazzType: Type
+                        get() = type(List::class.java, getClazz())
 
-                override fun onSuccess(data: List<T>?, resultType: ResultType) {
-                    isSuccess = true
-                    dataList = data
-                    formatDataList(dataList)
-                    adapterLocal.setDataList(dataList.toArrayList())
-                }
+                    override fun onSuccess(data: List<T>?, resultType: ResultType) {
+                        isSuccess = true
+                        dataList = data
+                        formatDataList(dataList)
+                        adapterLocal.setDataList(dataList.toArrayList())
+                    }
 
-                override fun onFailure(msg: String) {
-                    super.onFailure(msg)
-                    isSuccess = false
-                }
+                    override fun onFailure(msg: String) {
+                        super.onFailure(msg)
+                        isSuccess = false
+                    }
 
-                override fun onFinish() {
-                    super.onFinish()
-                    if (isSuccess) {
-                        if (adapterLocal.isDataListNotEmpty()) {
-                            include_empty_view.visibility = View.GONE
+                    override fun onFinish() {
+                        super.onFinish()
+                        if (isSuccess) {
+                            if (adapterLocal.isDataListNotEmpty()) {
+                                include_empty_view.visibility = View.GONE
+                            } else {
+                                include_empty_view.visibility = View.VISIBLE
+                                tv_refresh_reason.text = "没有数据"
+                            }
                         } else {
                             include_empty_view.visibility = View.VISIBLE
-                            tv_refresh_reason.text = "没有数据"
+                            tv_refresh_reason.text = "查询失败"
                         }
-                    } else {
-                        include_empty_view.visibility = View.VISIBLE
-                        tv_refresh_reason.text = "查询失败"
                     }
-                }
-            })
+                })
     }
 
     /**

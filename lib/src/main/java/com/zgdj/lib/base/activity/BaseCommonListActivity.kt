@@ -26,9 +26,8 @@ import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 import java.util.*
 
-abstract class BaseCommonListActivity<T> : BaseActivity() {
+abstract class BaseCommonListActivity<T> : DefaultTopBarActivity() {
 
-    abstract val topbar: String
     abstract val itemLayoutRes: Int
 
     //输入搜索
@@ -45,12 +44,6 @@ abstract class BaseCommonListActivity<T> : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview)
         initialize()
-        tv_top_bar_title?.text = topbar
-        iv_top_bar_back?.visibility = View.VISIBLE
-        iv_top_bar_back?.onClick {
-            closeKeyboard(iv_top_bar_back)
-            onBackPressed()
-        }
         val dataList = getDataList()
         if (dataList.isNullOrEmpty()) {
             include_empty_view.visibility = View.VISIBLE
@@ -74,14 +67,14 @@ abstract class BaseCommonListActivity<T> : BaseActivity() {
             layout_search_bar.visibility = View.GONE
         }
 
-        adapterLocal = initAdapter(dataList)
+        initAdapter(dataList)
         if (hasSplitLine) {
             recyclerView.addItemDecoration(LineItemDecoration())
         }
         mRecyclerView = recyclerView
     }
 
-    private fun initAdapter(dataList: List<T>): SlimAdapter {
+    private fun initAdapter(dataList: List<T>) {
 
         recyclerView.setOnTouchListener { _, _ ->
             closeKeyboard(et_search_input)
@@ -91,7 +84,7 @@ abstract class BaseCommonListActivity<T> : BaseActivity() {
             return@setOnTouchListener false
         }
 
-        return SlimAdapter.creator()
+        adapterLocal = SlimAdapter.creator()
                 .setGenericActualType(getTClazz())
                 .register<T>(itemLayoutRes) { injector, bean, position ->
                     itemViewConvert(this, injector, bean, position)
@@ -160,6 +153,11 @@ abstract class BaseCommonListActivity<T> : BaseActivity() {
         } else {
             throw IllegalArgumentException()
         }
+    }
+
+    override fun onBackPressed() {
+        closeKeyboard(iv_top_bar_back)
+        super.onBackPressed()
     }
 
     open fun initialize() {}

@@ -20,6 +20,7 @@ import com.zgdj.lib.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_recyclerview_refresh.*
 import kotlinx.android.synthetic.main.layout_empty_view.*
 import kotlinx.android.synthetic.main.layout_search_bar.*
+import kotlinx.android.synthetic.main.layout_top_bar.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.lang.reflect.ParameterizedType
@@ -67,7 +68,11 @@ abstract class BaseRefreshActivity<T> : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_refresh)
         initialize()
-        initTopBar(title, View.VISIBLE)
+        tv_top_bar_title.text = title
+        iv_top_bar_back.visibility = View.VISIBLE
+        iv_top_bar_back.onClick {
+            finish()
+        }
         initDrawerLayout()
         adapterLocal = initAdapter()
 
@@ -191,11 +196,11 @@ abstract class BaseRefreshActivity<T> : BaseActivity() {
         }
 
         return SlimAdapter.creator()
-            .setGenericActualType(getClazz())
-            .register<T>(itemLayoutRes) { injector, bean, position ->
-                itemViewConvert(this, injector, bean, position)
-            }
-            .attachTo(recyclerView)
+                .setGenericActualType(getClazz())
+                .register<T>(itemLayoutRes) { injector, bean, position ->
+                    itemViewConvert(this, injector, bean, position)
+                }
+                .attachTo(recyclerView)
     }
 
     fun refresh() {
@@ -213,61 +218,61 @@ abstract class BaseRefreshActivity<T> : BaseActivity() {
         }
 
         httpPost(url)
-            .addParam(pageNumKey, pageNo.toString())
-            .addParam(pageSizeKey, pageSize.toString())
-            .addParams(selectorSearchParams)
-            .addParams(inputSearchParams)
-            .addParams(httpParams)
-            .enqueue(object : DataHttpCallback<List<T>>(this) {
+                .addParam(pageNumKey, pageNo.toString())
+                .addParam(pageSizeKey, pageSize.toString())
+                .addParams(selectorSearchParams)
+                .addParams(inputSearchParams)
+                .addParams(httpParams)
+                .enqueue(object : DataHttpCallback<List<T>>(this) {
 
-                var isSuccess = false
+                    var isSuccess = false
 
-                override val clazzType: Type
-                    get() = type(List::class.java, getClazz())
+                    override val clazzType: Type
+                        get() = type(List::class.java, getClazz())
 
-                override fun onSuccess(data: List<T>?, resultType: ResultType) {
-                    isSuccess = true
-                    if (isFirstLoading) {
-                        adapterLocal.setDataList(data.toArrayList())
-                        smartRefreshLayout.finishRefresh()
-                    } else {
-                        adapterLocal.addDataList(data.toArrayList())
-                        smartRefreshLayout.finishLoadMore()
+                    override fun onSuccess(data: List<T>?, resultType: ResultType) {
+                        isSuccess = true
+                        if (isFirstLoading) {
+                            adapterLocal.setDataList(data.toArrayList())
+                            smartRefreshLayout.finishRefresh()
+                        } else {
+                            adapterLocal.addDataList(data.toArrayList())
+                            smartRefreshLayout.finishLoadMore()
+                        }
+
+                        if (data != null && data.isNotEmpty()) {
+                            pageNo++
+                        } else {
+                            smartRefreshLayout.setNoMoreData(true)
+                        }
                     }
 
-                    if (data != null && data.isNotEmpty()) {
-                        pageNo++
-                    } else {
-                        smartRefreshLayout.setNoMoreData(true)
+
+                    override fun onFailure(msg: String) {
+                        super.onFailure(msg)
+                        isSuccess = false
+                        if (isFirstLoading) {
+                            smartRefreshLayout.finishRefresh(false)
+                        } else {
+                            smartRefreshLayout.finishLoadMore(false)
+                        }
                     }
-                }
 
-
-                override fun onFailure(msg: String) {
-                    super.onFailure(msg)
-                    isSuccess = false
-                    if (isFirstLoading) {
-                        smartRefreshLayout.finishRefresh(false)
-                    } else {
-                        smartRefreshLayout.finishLoadMore(false)
-                    }
-                }
-
-                override fun onFinish() {
-                    super.onFinish()
-                    if (isSuccess) {
-                        if (adapterLocal.isDataListNotEmpty()) {
-                            include_empty_view.visibility = View.GONE
+                    override fun onFinish() {
+                        super.onFinish()
+                        if (isSuccess) {
+                            if (adapterLocal.isDataListNotEmpty()) {
+                                include_empty_view.visibility = View.GONE
+                            } else {
+                                include_empty_view.visibility = View.VISIBLE
+                                tv_refresh_reason.text = "没有数据"
+                            }
                         } else {
                             include_empty_view.visibility = View.VISIBLE
-                            tv_refresh_reason.text = "没有数据"
+                            tv_refresh_reason.text = "查询失败"
                         }
-                    } else {
-                        include_empty_view.visibility = View.VISIBLE
-                        tv_refresh_reason.text = "查询失败"
                     }
-                }
-            })
+                })
     }
 
     /**

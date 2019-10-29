@@ -90,6 +90,6 @@ dependencies {
 
 
     //tbs
-    implementation files('libs/tbs_sdk.jar')
+    api files('libs/tbs_sdk.jar')
 
 }

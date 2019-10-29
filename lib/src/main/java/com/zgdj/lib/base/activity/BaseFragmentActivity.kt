@@ -9,9 +9,8 @@ import android.view.View
 import com.zgdj.lib.R
 import kotlinx.android.synthetic.main.activity_base_fragment.*
 
-abstract class BaseFragmentActivity : BaseActivity() {
+abstract class BaseFragmentActivity : DefaultTopBarActivity() {
 
-    abstract val title: String
     abstract val fragmentList: List<Pair<Fragment, String>>
     var currentIndex = 0
 
@@ -19,7 +18,6 @@ abstract class BaseFragmentActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_fragment)
-        initTopBar(title, View.VISIBLE)
 
         tab_layout.addOnTabSelectedListener(object : TabLayout.BaseOnTabSelectedListener<TabLayout.Tab> {
             override fun onTabReselected(p0: TabLayout.Tab?) {

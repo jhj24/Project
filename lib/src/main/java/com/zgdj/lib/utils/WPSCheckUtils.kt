@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.support.v4.content.FileProvider
 import com.jhj.httplibrary.callback.DownloadHttpCallback
+import com.jhj.httplibrary.utils.MimeTypeUtils
 import com.zgdj.lib.BuildConfig
 import com.zgdj.lib.extention.download
 import com.zgdj.lib.extention.isUrl
@@ -107,7 +108,7 @@ object WPSCheckUtils {
     private fun open(context: Context, filePath: String) {
         try {
             val file = File(filePath)
-            val mineType = FileUtils.getFileType(filePath)
+            val mineType = MimeTypeUtils.getFileType(filePath)
             val intent = Intent()
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addCategory("android.intent.category.DEFAULT")

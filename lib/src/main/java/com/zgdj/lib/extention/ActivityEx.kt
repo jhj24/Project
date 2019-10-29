@@ -94,14 +94,13 @@ fun <T> Context.assets(assetsFileName: String): T {
 }
 
 
-
 //===========================keyboard=============================
 fun Context.openKeyboard(view: View) {
     val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
     imm.showSoftInput(view, InputMethodManager.RESULT_SHOWN)
     imm.toggleSoftInput(
-        InputMethodManager.SHOW_FORCED,
-        InputMethodManager.HIDE_IMPLICIT_ONLY
+            InputMethodManager.SHOW_FORCED,
+            InputMethodManager.HIDE_IMPLICIT_ONLY
     );
 }
 
@@ -185,9 +184,9 @@ fun Activity.delete(url: String, msg: String, vararg pairs: Pair<String, String>
 //=============================dialog===============================
 
 fun Context.downloadDialog(
-    tag: Any,
-    text: String = "正在下载...",
-    body: (PercentFragment) -> Unit = {}
+        tag: Any,
+        text: String = "正在下载...",
+        body: (PercentFragment) -> Unit = {}
 ): PercentFragment.Builder {
     return DialogUtils.downloadDialog(this, tag, text, body)
 }
@@ -221,10 +220,10 @@ fun Context.bottomSingleDialog(title: String = "请选择", list: List<String>, 
 }
 
 fun Context.bottomMultiDialog(
-    title: String = "请选择",
-    list: List<String>,
-    selectedList: List<Int>,
-    body: (AlertFragment, List<Int>) -> Unit
+        title: String = "请选择",
+        list: List<String>,
+        selectedList: List<Int>,
+        body: (AlertFragment, List<Int>) -> Unit
 ) {
     return DialogUtils.bottomMultiDialog(this, title, list, selectedList, body)
 }
@@ -234,13 +233,13 @@ fun Context.timePick(date: Date?, type: BooleanArray = TimePickerUtils.type2, bo
 }
 
 fun Context.timePick(
-    startData: Date?,
-    endData: Date?,
-    isStartTime: Boolean,
-    type: BooleanArray = TimePickerUtils.type2,
-    msg: String = "开始时间小于结束事件，请重新选择",
-    body: (Date) -> Unit = {},
-    calculate: (startDate: Date, endDate: Date) -> Unit = { _, _ -> }
+        startData: Date?,
+        endData: Date?,
+        isStartTime: Boolean,
+        type: BooleanArray = TimePickerUtils.type2,
+        msg: String = "开始时间小于结束事件，请重新选择",
+        body: (Date) -> Unit = {},
+        calculate: (startDate: Date, endDate: Date) -> Unit = { _, _ -> }
 ) {
     TimePickerUtils.timePicker(this, startData, endData, isStartTime, type, msg, body, calculate)
 }
