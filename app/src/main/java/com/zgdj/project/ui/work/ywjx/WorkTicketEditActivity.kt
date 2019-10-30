@@ -2,7 +2,7 @@ package com.zgdj.project.ui.work.ywjx
 
 import android.os.Bundle
 import android.view.View
-import com.zgdj.lib.base.activity.BaseActivity
+import com.zgdj.lib.base.activity.DefaultTopBarActivity
 import com.zgdj.lib.config.Config
 import com.zgdj.lib.extention.formatBooleanArray
 import com.zgdj.lib.extention.parse
@@ -13,15 +13,17 @@ import com.zgdj.project.R
 import kotlinx.android.synthetic.main.activity_work_ticket_edit.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class WorkTicketEditActivity : BaseActivity() {
+class WorkTicketEditActivity : DefaultTopBarActivity() {
 
     var type: String = ""
     var status: String = ""
 
+    override val title: String
+        get() = "工作票"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work_ticket_edit)
-        initTopBar("工作票", View.VISIBLE)
         type = intent.getStringExtra(Config.TYPE)
         status = intent.getStringExtra(Config.STATUS)
         when (status) {
@@ -115,11 +117,11 @@ class WorkTicketEditActivity : BaseActivity() {
                 return@setOnCommitListener
             }
             ActivityResult.with(this)
-                .putString("unit", label_unit.getInputText())
-                .putString("code", label_code.getInputText())
-                .putString("time", label_signer_time.getInputText())
-                .putString("signer", label_signer.getInputText())
-                .finish()
+                    .putString("unit", label_unit.getInputText())
+                    .putString("code", label_code.getInputText())
+                    .putString("time", label_signer_time.getInputText())
+                    .putString("signer", label_signer.getInputText())
+                    .finish()
         }
     }
 
@@ -155,11 +157,11 @@ class WorkTicketEditActivity : BaseActivity() {
                 return@setOnCommitListener
             }
             ActivityResult.with(this)
-                .putString("unit", label_unit.getInputText())
-                .putString("code", label_code.getInputText())
-                .putString("time", label_signer_time.getInputText())
-                .putString("signer", label_signer.getInputText())
-                .finish()
+                    .putString("unit", label_unit.getInputText())
+                    .putString("code", label_code.getInputText())
+                    .putString("time", label_signer_time.getInputText())
+                    .putString("signer", label_signer.getInputText())
+                    .finish()
         }
     }
 

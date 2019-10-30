@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_top_bar" />
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -92,7 +90,7 @@
                 app:hintText="请输入"
                 app:isArrowShow="false"
                 app:isCanInput="false"
-                app:labelText="安全措施" />
+                app:labelText="必须采取的\n安全措施" />
 
             <com.zgdj.lib.widget.LabelInputLayout
                 android:id="@+id/label_signer"
@@ -120,13 +118,23 @@
                 android:orientation="vertical">
 
                 <com.zgdj.lib.widget.LabelInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isArrowShow="false"
+                    app:isShowLabelColon="false"
+                    app:labelText="签批"
+                    app:labelTextColor="@color/text_normal"
+                    app:labelTextGravity="left"
+                    app:labelTextSize="16" />
+
+                <com.zgdj.lib.widget.LabelInputLayout
                     android:id="@+id/label_licensor_secure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintText="请输入"
                     app:isArrowShow="false"
                     app:isCanInput="true"
-                    app:labelText="安全措施" />
+                    app:labelText="补充的\n安全措施" />
 
                 <com.zgdj.lib.widget.LabelInputLayout
                     android:id="@+id/label_licensor"
@@ -135,7 +143,7 @@
                     app:hintText="请输入"
                     app:isArrowShow="false"
                     app:isCanInput="true"
-                    app:labelText="签发人" />
+                    app:labelText="许可人" />
 
 
                 <com.zgdj.lib.widget.LabelInputLayout

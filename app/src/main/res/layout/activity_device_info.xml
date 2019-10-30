@@ -1,208 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-              android:orientation="vertical"
-              android:layout_height="match_parent">
-
-    <include layout="@layout/layout_top_bar"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="0dp">
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layout_operate">
+
 
         <LinearLayout
-                android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="220dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_device" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:labelTextSize="16"
-                    app:labelTextColor="@color/text_title"
-                    android:layout_marginTop="10dp"
-                    app:labelText="基本信息"
-                    app:isShowInputText="false"
-                    app:isShowLabelColon="false"
-                    app:labelTextGravity="left"
-                    app:isArrowShow="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="基本信息"
+                app:labelTextColor="@color/text_title"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_name"
-                    app:labelText="名称"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="名称" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_code"
-                    app:labelText="规格型号"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="规格型号" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_factory"
-                    app:labelText="供应商"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_factory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="供应商" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_position"
-                    app:labelText="存放地点"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="存放地点" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_depart"
-                    app:labelText="使用部门"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_depart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="使用部门" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_status"
-                    app:labelText="设备状态"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="设备状态" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_add"
-                    app:labelText="增加方式"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="增加方式" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    android:id="@+id/label_ABC"
-                    app:labelText="ABC分类"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_ABC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="ABC分类" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    android:id="@+id/label_assets"
-                    app:labelText="是否固定资产"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_assets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="是否固定资产" />
 
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    android:id="@+id/label_device"
-                    app:labelText="是否特种设备"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_device"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="是否特种设备" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    android:id="@+id/label_type"
-                    app:labelText="专项类型"
-                    app:isShowBottomLine="false"
-                    app:isArrowShow="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:isShowBottomLine="false"
+                app:labelText="专项类型" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:labelTextSize="16"
-                    app:labelTextColor="@color/text_title"
-                    android:layout_marginTop="10dp"
-                    app:labelText="技术参数"
-                    app:isShowInputText="false"
-                    app:isShowLabelColon="false"
-                    app:labelTextGravity="left"
-                    app:isArrowShow="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="技术参数"
+                app:labelTextColor="@color/text_title"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_pump_type"
-                    app:labelText="泵型"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_pump_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="泵型" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:isArrowShow="false"
-                    android:id="@+id/label_pump_flow"
-                    app:labelText="单机\n设计流量"
-                    app:unitText="m³/s"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_pump_flow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="单机\n设计流量"
+                app:unitText="m³/s" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:unitText="m"
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_pump_head"
-                    app:labelText="设计扬程"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            <com.zgdj.lib.widget.LabelInputLayout
-                    app:unitText="%"
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_pump_effective"
-                    app:labelText="设计工况\n点效率"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            <com.zgdj.lib.widget.LabelInputLayout
-                    app:unitText="kw"
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_pump_power"
-                    app:labelText="辅功率"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_pump_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="设计扬程"
+                app:unitText="m" />
 
             <com.zgdj.lib.widget.LabelInputLayout
-                    app:unitText="mm"
-                    app:isArrowShow="false"
-                    app:isCanInput="true"
-                    app:hintText="请输入"
-                    android:id="@+id/label_pump_diameter"
-                    app:labelText="叶轮直径"
-                    app:isShowBottomLine="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/label_pump_effective"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="设计工况\n点效率"
+                app:unitText="%" />
 
-            <com.zgdj.lib.widget.GridImageLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/white"
-                    android:id="@+id/grid_image"
-                    app:image_title="设备照片"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_pump_power"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="辅功率"
+                app:unitText="kw" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_pump_diameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:isShowBottomLine="false"
+                app:labelText="叶轮直径"
+                app:unitText="mm" />
+
 
         </LinearLayout>
 
 
     </android.support.v4.widget.NestedScrollView>
-    <com.zgdj.lib.widget.CommitButtonLayout
-            android:id="@+id/layout_operate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
-</LinearLayout>
+
+    <include layout="@layout/layout_top_bar" />
+
+    <com.zgdj.lib.widget.CommitButtonLayout
+        android:id="@+id/layout_operate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

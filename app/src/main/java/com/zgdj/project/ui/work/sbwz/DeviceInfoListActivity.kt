@@ -20,7 +20,7 @@ class DeviceInfoListActivity : BaseCommonListActivity<DeviceBean>() {
 
     private var dataList = arrayListOf<DeviceBean>()
 
-    override val topbar: String
+    override val title: String
         get() = "设备信息"
     override val itemLayoutRes: Int
         get() = R.layout.list_item_device_info
