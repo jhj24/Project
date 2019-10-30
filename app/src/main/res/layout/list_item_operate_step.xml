@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingLeft="15dp">
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="1px"
+        android:layout_height="0dp"
+        android:background="@color/line_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/image_view"
+        app:layout_constraintRight_toRightOf="@id/image_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg_single_selector"
+        app:layout_constraintBottom_toBottomOf="@id/text_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_view" />
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="15dp"
+        android:text="2、确认河面状况安全"
+        android:textColor="#333333"
+        app:layout_constraintLeft_toRightOf="@id/image_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.zgdj.lib.widget.ShadowLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+       app:layout_constraintLeft_toRightOf="@id/image_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view">
+
+        <EditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:hint="点击输入备注"
+            android:minHeight="50dp"
+            android:padding="10dp"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/text_size_system" />
+    </com.zgdj.lib.widget.ShadowLayout>
+
+
+</android.support.constraint.ConstraintLayout>

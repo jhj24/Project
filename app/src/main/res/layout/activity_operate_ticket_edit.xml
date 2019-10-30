@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="机电设备操作票"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_state_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isArrowShow="false"
+                app:labelText="站点名称" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isArrowShow="false"
+                app:labelText="编号" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_machine_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isArrowShow="false"
+                app:labelText="设备名称" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_operate_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isArrowShow="false"
+                app:labelText="操作任务" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_operate_people"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isArrowShow="false"
+                app:labelText="操作人" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_guardian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isArrowShow="false"
+                app:isShowBottomLine="false"
+                app:labelText="监护人" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="操作步骤"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <com.zgdj.lib.widget.CommitButtonLayout
+        android:id="@+id/layout_operate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:commitText="完成" />
+
+</LinearLayout>

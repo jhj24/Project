@@ -5,7 +5,54 @@
     "site_name": "河口水闸",
     "machine_name": "右边闸",
     "code": "YGLLS",
-    "time": "2019-10-11 14:42"
+    "time": "2019-10-11 14:42",
+    "data": [
+      {
+        "title": "1.确认已进行声光警示",
+        "remark": "",
+        "isSelector": false
+      },
+      {
+        "title": "2.确认河面状况安全",
+        "remark": "",
+        "isSelector": false
+      },
+      {
+        "title": "3.确认三相电压正常",
+        "remark": "",
+        "isSelector": false
+      },
+      {
+        "title": "4.确认闸门已具备开闸条件",
+        "remark": "",
+        "isSelector": false
+      },
+      {
+        "title": "5.按闸门控制开关“上升”按钮，闸门启动且上升",
+        "remark": "",
+        "isSelector": false
+      },
+      {
+        "title": "6.检查确认闸门工作电流正常，闸门上升正常",
+        "remark": "",
+        "isSelector": false
+      },
+      {
+        "title": "7.根据开度要求，按“停止”按钮或自动限位停止",
+        "remark": "",
+        "isSelector": false
+      },
+      {
+        "title": "8.确认闸门正常停止",
+        "remark": "",
+        "isSelector": false
+      },
+      {
+        "title": "9.确认声光警示装置关闭",
+        "remark": "",
+        "isSelector": false
+      }
+    ]
   },
   {
     "title": "关闸",
@@ -13,7 +60,54 @@
     "site_name": "河口水闸",
     "machine_name": "右边闸",
     "code": "YGTLS",
-    "time": "2019-10-10 21:11"
+    "time": "2019-10-10 21:11",
+    "data": [
+      {
+        "title": "1.确认已进行声光警示",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "2.确认河面状况安全",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "3.确认三相电压正常",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "4.确认闸门已具备开闸条件",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "5.按闸门控制开关“上升”按钮，闸门启动且上升",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "6.检查确认闸门工作电流正常，闸门上升正常",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "7.根据开度要求，按“停止”按钮或自动限位停止",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "8.确认闸门正常停止",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "9.确认声光警示装置关闭",
+        "remark": "这是备注",
+        "isSelector": true
+      }
+    ]
   },
   {
     "title": "启动",
@@ -21,7 +115,54 @@
     "site_name": "沙井泵站",
     "machine_name": "1#泵组",
     "code": "QRFJR",
-    "time": "2019-10-9 11:45"
+    "time": "2019-10-9 11:45",
+    "data": [
+      {
+        "title": "1.确认已进行声光警示",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "2.确认河面状况安全",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "3.确认三相电压正常",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "4.确认闸门已具备开闸条件",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "5.按闸门控制开关“上升”按钮，闸门启动且上升",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "6.检查确认闸门工作电流正常，闸门上升正常",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "7.根据开度要求，按“停止”按钮或自动限位停止",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "8.确认闸门正常停止",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "9.确认声光警示装置关闭",
+        "remark": "这是备注",
+        "isSelector": true
+      }
+    ]
   },
   {
     "title": "停机",
@@ -29,7 +170,54 @@
     "site_name": "沙井泵站",
     "machine_name": "1#泵组",
     "code": "EAMJN ",
-    "time": "2019-10-9 11:45"
+    "time": "2019-10-9 11:45",
+    "data": [
+      {
+        "title": "1.确认已进行声光警示",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "2.确认河面状况安全",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "3.确认三相电压正常",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "4.确认闸门已具备开闸条件",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "5.按闸门控制开关“上升”按钮，闸门启动且上升",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "6.检查确认闸门工作电流正常，闸门上升正常",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "7.根据开度要求，按“停止”按钮或自动限位停止",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "8.确认闸门正常停止",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "9.确认声光警示装置关闭",
+        "remark": "这是备注",
+        "isSelector": true
+      }
+    ]
   },
   {
     "title": "紧急停机",
@@ -37,6 +225,53 @@
     "site_name": "沙井泵站",
     "machine_name": "5#泵组",
     "code": "JEJXS",
-    "time": "2019-10-8 14:58"
+    "time": "2019-10-8 14:58",
+    "data": [
+      {
+        "title": "1.确认已进行声光警示",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "2.确认河面状况安全",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "3.确认三相电压正常",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "4.确认闸门已具备开闸条件",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "5.按闸门控制开关“上升”按钮，闸门启动且上升",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "6.检查确认闸门工作电流正常，闸门上升正常",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "7.根据开度要求，按“停止”按钮或自动限位停止",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "8.确认闸门正常停止",
+        "remark": "这是备注",
+        "isSelector": true
+      },
+      {
+        "title": "9.确认声光警示装置关闭",
+        "remark": "这是备注",
+        "isSelector": true
+      }
+    ]
   }
 ]

@@ -55,7 +55,7 @@
                     android:id="@+id/tv_code"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.1"
+                    android:layout_weight="1.2"
                     android:text="编号：111111" />
 
             </LinearLayout>
@@ -78,7 +78,7 @@
                     android:id="@+id/tv_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.1"
+                    android:layout_weight="1.2"
                     android:text="2019-12-12 12:12" />
 
             </LinearLayout>
