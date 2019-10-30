@@ -40,29 +40,24 @@ class DataDetectFragment : BaseCommonListFragment<DataDetectBean>() {
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: DataDetectBean, position: Int) {
         injector.text(R.id.tv_title, bean.title)
-            .with<RecyclerView>(R.id.recycler_view) {
-                it.addItemDecoration(LineItemDecoration())
-                SlimAdapter.creator()
-                    .register<DetectInfoBean>(R.layout.list_item_detect_info) { injector, bean, position ->
-                        val random = if (bean.value > 0) {
-                            val max = (if (bean.unit == "%" && bean.value * (1 + 0.1) > 100) {
-                                100f
-                            } else {
-                                bean.value * (1 + 0.1).toFloat()
-                            } * 100).toInt()
-                            val min = (bean.value * (1 - 0.1) * 100).toInt()
-                            (min..max).random()
-                        } else {
-                            val max = (bean.value * (1 - 0.1) * 100).toInt()
-                            val min = (bean.value * (1 + 0.1) * 100).toInt()
-                            (min..max).random()
-                        }
-                        injector.text(R.id.tv_key, bean.name)
-                            .text(R.id.tv_value, "${random.toFloat() / 100} ${bean.unit}")
-                    }
-                    .attachTo(it)
-                    .setDataList(bean.data)
-            }
+                .with<RecyclerView>(R.id.recycler_view) {
+                    SlimAdapter.creator()
+                            .register<DetectInfoBean>(R.layout.list_item_detect_info) { injector, bean, position ->
+                                val random = if (bean.value > 0) {
+                                    val max = ((if (bean.unit == "%" && bean.value * (1 + 0.1f) > 100) 100f else bean.value * (1 + 0.1f)) * 100).toInt()
+                                    val min = (bean.value * (1 - 0.1f) * 100).toInt()
+                                    (min..max).random()
+                                } else {
+                                    val max = (bean.value * (1 - 0.1) * 100).toInt()
+                                    val min = (bean.value * (1 + 0.1) * 100).toInt()
+                                    (min..max).random()
+                                }
+                                injector.text(R.id.tv_key, bean.name)
+                                        .text(R.id.tv_value, "${random.toFloat() / 100} ${bean.unit}")
+                            }
+                            .attachTo(it)
+                            .setDataList(bean.data)
+                }
     }
 
     override fun getDataList(): List<DataDetectBean> {
