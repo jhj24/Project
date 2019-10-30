@@ -19,7 +19,7 @@ class SchedulingDecisionActivity : BaseCommonListActivity<SchedulingDecisionBean
 
     lateinit var list: List<SchedulingDecisionBean>
 
-    override val topbar: String
+    override val title: String
         get() = "调度决策"
 
     override val itemLayoutRes: Int
@@ -30,19 +30,25 @@ class SchedulingDecisionActivity : BaseCommonListActivity<SchedulingDecisionBean
     }
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: SchedulingDecisionBean, position: Int) {
-        injector.text(R.id.tv_title, bean.message)
+        injector.text(R.id.tv_title, "调度建议：${bean.message}")
                 .text(R.id.tv_work, "工况：${bean.work}")
                 .with<RecyclerView>(R.id.recycler_view) {
                     SlimAdapter.creator()
                             .register<String>(R.layout.list_item_scheduling_decision_item) { injector, bean, position ->
-                                injector.text(R.id.text_view, bean)
+                                val index = when (position) {
+                                    0 -> "①."
+                                    1 -> "②."
+                                    2 -> "③."
+                                    3 -> "④."
+                                    else -> ""
+                                }
+                                injector.text(R.id.text_view, index + bean)
+
                             }
                             .attachTo(it)
                             .setDataList(bean.condition)
                 }
     }
-
-
 
 
     override fun initialize() {
@@ -65,8 +71,9 @@ class SchedulingDecisionActivity : BaseCommonListActivity<SchedulingDecisionBean
             } else if (index < list.size) {
                 isEnd = false
                 adapterLocal.addData(0, list[list.size - index - 1])
+                mRecyclerView?.scrollToPosition(0)
             }
-            delay(5000)
+            delay(3000)
             val current = index + 1
             if (!isEnd) {
                 refresh(current)
