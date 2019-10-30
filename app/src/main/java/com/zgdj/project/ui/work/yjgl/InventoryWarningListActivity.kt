@@ -11,7 +11,7 @@ import com.zgdj.project.R
 
 class InventoryWarningListActivity : BaseCommonListActivity<InvertoryWarningBean>() {
 
-    override val topbar: String
+    override val title: String
         get() = "库存报警"
     override val itemLayoutRes: Int
         get() = R.layout.list_item_inventory_warning

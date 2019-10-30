@@ -13,7 +13,7 @@ import com.zgdj.project.R
 class FaultWarningListActivity : BaseCommonListActivity<FaultWarningBean>() {
 
 
-    override val topbar: String
+    override val title: String
         get() = "故障报警"
     override val itemLayoutRes: Int
         get() = R.layout.list_item_fault_warning

@@ -1,63 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zgdj.lib.widget.ShadowLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"
-        android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:paddingBottom="12dp">
 
     <LinearLayout
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/bill_padding_left"
+            android:text="水泵机组设备"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/text_size_normal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line_color" />
+
 
         <TextView
-                android:id="@+id/tv_title"
-                android:text="水泵机组设备"
-                android:textSize="@dimen/text_size_normal"
-                android:textColor="@color/text_normal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="@dimen/bill_padding_left"
+            android:paddingRight="@dimen/bill_padding_right"
+            android:text="备品备件名称：油润滑巴氏合金水导轴承" />
 
         <TextView
-                android:id="@+id/tv_name"
-                android:layout_marginTop="8dp"
-                android:text="备品备件名称：油润滑巴氏合金水导轴承"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:id="@+id/tv_type"
-                android:layout_marginTop="8dp"
-                android:text="规格型号：3300ZGB2.23-34型竖井贯流水泵部件"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            android:id="@+id/tv_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="@dimen/bill_padding_left"
+            android:paddingRight="@dimen/bill_padding_right"
+            android:text="规格型号：3300ZGB2.23-34型竖井贯流水泵部件" />
 
         <LinearLayout
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/bill_padding_left"
+            android:paddingRight="@dimen/bill_padding_right">
 
             <TextView
-                    android:id="@+id/tv_sum"
-                    android:layout_weight="1"
-                    android:text="安全库存/现有库存：1/0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/tv_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="安全库存/现有库存：1/0" />
 
             <TextView
-                    android:id="@+id/tv_principal"
-                    android:text="负责人：孙钰杰"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                android:id="@+id/tv_principal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="负责人：孙钰杰" />
         </LinearLayout>
-
 
     </LinearLayout>
 
 
-</com.zgdj.lib.widget.ShadowLayout>
+</LinearLayout>
