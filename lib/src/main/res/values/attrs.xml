@@ -2,50 +2,50 @@
 <resources>
 
     <declare-styleable name="CommitButtonLayout">
-        <attr name="commitText" format="string"/>
-        <attr name="rejectText" format="string"/>
-        <attr name="isShowRejectButton" format="boolean"/>
+        <attr name="commitText" format="string" />
+        <attr name="rejectText" format="string" />
+        <attr name="isShowRejectButton" format="boolean" />
 
     </declare-styleable>
 
     <declare-styleable name="LabelInputLayout">
-        <attr name="isShowBottomLine"/>
-        <attr name="labelText" format="string"/>
-        <attr name="labelTextColor" format="color"/>
-        <attr name="labelTextSize" format="integer"/>
-        <attr name="isShowLabelColon" format="boolean"/>
+        <attr name="isShowBottomLine" />
+        <attr name="labelText" format="string" />
+        <attr name="labelTextColor" format="color" />
+        <attr name="labelTextSize" format="integer" />
+        <attr name="isShowLabelColon" format="boolean" />
         <attr name="labelTextGravity">
-            <enum name="right" value="0"/>
-            <enum name="left" value="1"/>
+            <enum name="right" value="0" />
+            <enum name="left" value="1" />
         </attr>
-        <attr name="inputText" format="string"/>
-        <attr name="inputTextColor" format="color"/>
-        <attr name="inputTextSize" format="dimension"/>
-        <attr name="hintText" format="string"/>
-        <attr name="unitText" format="string"/>
-        <attr name="unitTextColor" format="color"/>
-        <attr name="unitTextSize" format="dimension"/>
-        <attr name="isShowInputText" format="boolean"/>
-        <attr name="isCanInput" format="boolean"/>
-        <attr name="isArrowShow" format="boolean"/>
+        <attr name="inputText" format="string" />
+        <attr name="inputTextColor" format="color" />
+        <attr name="inputTextSize" format="dimension" />
+        <attr name="hintText" format="string" />
+        <attr name="unitText" format="string" />
+        <attr name="unitTextColor" format="color" />
+        <attr name="unitTextSize" format="dimension" />
+        <attr name="isShowInputText" format="boolean" />
+        <attr name="isCanInput" format="boolean" />
+        <attr name="isArrowShow" format="boolean" />
         <attr name="style">
-            <enum name="small" value="0"/>
-            <enum name="big" value="1"/>
+            <enum name="small" value="0" />
+            <enum name="big" value="1" />
         </attr>
-        <attr name="isMultiStyle" format="boolean"/>
+        <attr name="isMultiStyle" format="boolean" />
 
     </declare-styleable>
 
     <declare-styleable name="ShadowLayout">
-        <attr name="sl_cornerRadius" format="dimension"/>
-        <attr name="sl_shadowRadius" format="dimension"/>
-        <attr name="sl_shadowColor" format="color"/>
-        <attr name="sl_dx" format="dimension"/>
-        <attr name="sl_dy" format="dimension"/>
+        <attr name="sl_cornerRadius" format="dimension" />
+        <attr name="sl_shadowRadius" format="dimension" />
+        <attr name="sl_shadowColor" format="color" />
+        <attr name="sl_dx" format="dimension" />
+        <attr name="sl_dy" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="GridImageLayout">
-        <attr name="image_title" format="string"/>
+        <attr name="image_title" format="string" />
     </declare-styleable>
 
     <declare-styleable name="SwitchButton">
@@ -60,6 +60,7 @@
         <attr name="isShowText" format="boolean" />
         <attr name="openText" format="string" />
         <attr name="closeText" format="string" />
+        <attr name="textSize" format="dimension" />
     </declare-styleable>
 
 </resources>

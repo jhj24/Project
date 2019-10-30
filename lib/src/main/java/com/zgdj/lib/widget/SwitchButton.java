@@ -3,7 +3,14 @@ package com.zgdj.lib.widget;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RadialGradient;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,6 +19,7 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+
 import com.zgdj.lib.R;
 import com.zgdj.lib.extention.ViewExKt;
 
@@ -50,6 +58,7 @@ public class SwitchButton extends View {
     protected boolean isShowText;
     protected String openText;
     protected String closeText;
+    protected float textSize;
 
     private float sRight;
     private float sCenterX, sCenterY;
@@ -88,6 +97,7 @@ public class SwitchButton extends View {
         isShowText = a.getBoolean(R.styleable.SwitchButton_isShowText, false);
         openText = a.getString(R.styleable.SwitchButton_openText);
         closeText = a.getString(R.styleable.SwitchButton_closeText);
+        textSize = a.getDimension(R.styleable.SwitchButton_textSize, 14 * ViewExKt.getScaleDensity(this));
         state = isOpened ? STATE_SWITCH_ON : STATE_SWITCH_OFF;
         lastState = state;
         a.recycle();
@@ -390,21 +400,21 @@ public class SwitchButton extends View {
     }
 
     private void drawText(Canvas canvas) {
-        float scale = ViewExKt.getScaleDensity(this);
-        paint.setTextSize(scale * 14);
+        paint.setTextSize(textSize);
         paint.setColor(0xffffffff);
         paint.setStrokeWidth(3);
         paint.setAntiAlias(true);
         Rect rect = new Rect();
         if (isOpened()) {
+
             paint.getTextBounds(openText, 0, openText.length(), rect);
             int baseLine = getHeight() - (getHeight() - rect.height()) / 2 - 5;
-            float start = (getWidth() / 2f - rect.width()) / 2f + 5;
+            float start = bRadius * 0.85f;
             canvas.drawText(openText, start, baseLine, paint);
         } else {
             paint.getTextBounds(closeText, 0, closeText.length(), rect);
             int baseLine = getHeight() - (getHeight() - rect.height()) / 2 - 5;
-            float start = getWidth() - rect.width() - (getWidth() / 2f - rect.width()) / 2f - 5;
+            float start = getWidth() - (rect.width() + bRadius * 0.85f);
             canvas.drawText(closeText, start, baseLine, paint);
         }
 
