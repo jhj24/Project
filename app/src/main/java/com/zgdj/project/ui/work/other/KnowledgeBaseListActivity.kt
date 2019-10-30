@@ -12,7 +12,7 @@ import com.zgdj.project.R
 import org.jetbrains.anko.startActivity
 
 class KnowledgeBaseListActivity : BaseCommonListActivity<KnowledgeBaseBean>() {
-    override val topbar: String
+    override val title: String
         get() = "知识库"
     override val itemLayoutRes: Int
         get() = R.layout.list_item_knowledge_base
