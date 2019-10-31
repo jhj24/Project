@@ -20,6 +20,7 @@ object Config {
     const val END_TIME = "end_time"
     const val IS_EDITABLE = "is_editable"
     const val DABA_KEY = "daba_key"
+    const val NUM = "num"
 
 
     const val NET_ERROR = "获取信息失败"

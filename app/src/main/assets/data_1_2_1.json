@@ -4,41 +4,41 @@
     "code": "3300ZGB2.23-34 ",
     "unit": "套",
     "secure_sum": 1,
-    "exit_sun": 0
+    "exit_sum": 0
   },
   {
     "title": "水导轴承密封件",
     "code": "3300ZGB2.23-34型竖井贯流水泵部件",
     "unit": "套",
     "secure_sum": 1,
-    "exit_sun": 0
+    "exit_sum": 0
   },
   {
     "title": "泵轴密封件",
     "code": "3300ZGB2.23-34型竖井贯流水泵部件",
     "unit": "套",
     "secure_sum": 1,
-    "exit_sun": 3
+    "exit_sum": 3
   },
   {
     "title": "减速箱密封件",
     "code": "齿轮箱H2SH18部件，德国FLENDER",
     "unit": "套",
     "secure_sum": 1,
-    "exit_sun": 1
+    "exit_sum": 1
   },
   {
     "title": "减速箱输入轴滚动轴承",
     "code": "齿轮箱H2SH18部件，德国FLENDER",
     "unit": "套",
     "secure_sum": 1,
-    "exit_sun": 2
+    "exit_sum": 2
   },
   {
     "title": "减速箱输出轴滚动轴承",
     "code": "齿轮箱H2SH18部件，德国FLENDER",
     "unit": "套",
     "secure_sum": 1,
-    "exit_sun": 2
+    "exit_sum": 2
   }
 ]

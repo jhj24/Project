@@ -14,8 +14,8 @@ data class StockManagerInfoBean(
         val code: String,
         val unit: String,
         val secure_sum: Int,
-        val exit_sum: Int
-)
+        var exit_sum: Int
+) : Serializable
 
 data class InspectionBean(
         val title: String,

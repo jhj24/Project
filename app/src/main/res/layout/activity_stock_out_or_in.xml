@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.zgdj.lib.widget.LabelInputLayout
+        android:id="@+id/label_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintText="请输入"
+        app:isArrowShow="false"
+        app:isCanInput="true"
+        app:labelText="数量"
+        app:labelTextGravity="left" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="top">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="@dimen/bill_padding_left"
+            android:text="备注："
+
+            android:textColor="#a6000000" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/bill_padding_right"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_multi_input"
+            android:gravity="top"
+            android:hint="请输入"
+            android:minLines="5"
+            android:padding="10dp"
+            android:textColor="#a6000000"
+            android:textSize="@dimen/text_size_system" />
+    </LinearLayout>
+
+    <com.zgdj.lib.widget.CommitButtonLayout
+
+        android:id="@+id/layout_operate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp" />
+</LinearLayout>

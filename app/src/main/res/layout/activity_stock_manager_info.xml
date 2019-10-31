@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.zgdj.lib.widget.LabelInputLayout
+            android:id="@+id/label_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText="请输入"
+            app:isArrowShow="false"
+            app:isCanInput="true"
+            app:labelText="备品备件名称" />
+
+        <com.zgdj.lib.widget.LabelInputLayout
+            android:id="@+id/label_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText="请输入"
+            app:isArrowShow="false"
+            app:isCanInput="true"
+            app:labelText="规格型号" />
+
+        <com.zgdj.lib.widget.LabelInputLayout
+            android:id="@+id/label_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText="请输入"
+            app:isArrowShow="false"
+            app:isCanInput="true"
+            app:labelText="单位" />
+
+        <com.zgdj.lib.widget.LabelInputLayout
+            android:id="@+id/label_secure_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText="请输入"
+            app:isArrowShow="false"
+            app:isCanInput="true"
+            app:labelText="安全库存" />
+
+        <com.zgdj.lib.widget.LabelInputLayout
+            android:id="@+id/label_exit_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText="请输入"
+            app:isArrowShow="false"
+            app:isCanInput="true"
+            app:labelText="现有库存" />
+
+    </LinearLayout>
+
+    <com.zgdj.lib.widget.CommitButtonLayout
+        android:id="@+id/layout_operate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

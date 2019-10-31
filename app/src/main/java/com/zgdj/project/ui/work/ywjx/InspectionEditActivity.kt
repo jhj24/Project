@@ -75,7 +75,7 @@ class InspectionEditActivity : DefaultTopBarActivity() {
                         if (it != null) {
                             val data = it.getStringExtra(Config.DATA)
                             list.forEachIndexed { index, inspectionEditBean ->
-                                if (inspectionEditBean.title == data) {
+                                if (inspectionEditBean.title.replace("\n", "") == data) {
                                     adapter.getDataList<InspectionEditBean>()[index].isPunch = true
                                     adapter.notifyItemChanged(index)
                                 }

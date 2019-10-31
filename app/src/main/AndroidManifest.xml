@@ -26,6 +26,8 @@
         <activity android:name=".ui.work.sbwz.DeviceInfoEditActivity" />
         <activity android:name=".ui.work.sbwz.StockManagerListActivity" />
         <activity android:name=".ui.work.sbwz.StockManagerInfoActivity" />
+        <activity android:name=".ui.work.sbwz.StockManagerInfoEditActivity" />
+        <activity android:name=".ui.work.sbwz.StockOutOrInActivity" />
         <activity android:name=".ui.work.ywjx.InspectionListActivity" />
         <activity android:name=".ui.work.ywjx.InspectionEditActivity" />
         <activity android:name=".ui.work.ywjx.InspectionQRCodeActivity" />

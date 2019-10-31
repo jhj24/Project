@@ -33,9 +33,9 @@ class StockManagerListActivity : BaseCommonListActivity<String>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        topBarRightText("新增") {
+       /* topBarRightText("新增") {
             startActivity<DeviceInfoEditActivity>()
-        }
+        }*/
     }
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: String, position: Int) {
