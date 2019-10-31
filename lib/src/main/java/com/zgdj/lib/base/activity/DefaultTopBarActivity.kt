@@ -3,6 +3,7 @@ package com.zgdj.lib.base.activity
 import android.os.Bundle
 import android.view.View
 import com.zgdj.lib.R
+import com.zgdj.lib.extention.image
 import com.zgdj.lib.extention.inflater
 import kotlinx.android.synthetic.main.activity_default_top_bar.*
 import kotlinx.android.synthetic.main.layout_top_bar.*
@@ -29,6 +30,14 @@ abstract class DefaultTopBarActivity : BaseActivity() {
         tv_top_bar_right.visibility = View.VISIBLE
         tv_top_bar_right.text = text
         tv_top_bar_right.onClick {
+            body()
+        }
+    }
+
+    fun topBarRightImage(image: Int, body: () -> Unit) {
+        iv_top_bar_right.visibility = View.VISIBLE
+        image(image, iv_top_bar_right)
+        iv_top_bar_right.onClick {
             body()
         }
     }

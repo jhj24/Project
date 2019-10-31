@@ -23,6 +23,12 @@ data class InspectionBean(
         val status: String
 )
 
+data class InspectionEditBean(
+        val title: String,
+        val isNormal: Boolean,
+        var isPunch: Boolean
+)
+
 data class WorkTicketBean(
         val title: String,
         val time: String,

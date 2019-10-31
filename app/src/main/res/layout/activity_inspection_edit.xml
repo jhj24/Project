@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="基本信息"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:inputText="沙井泵站"
+                app:isArrowShow="false"
+                app:labelText="站点名称" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请选择"
+                app:labelText="日期" />
+
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="10kV I 段电压"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_10kv_1_ua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Ua"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_10kv_1_ub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Ub"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_10kv_1_uc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Uc"
+                app:unitText="kV" />
+
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="10kV II 段电压"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_10kv_2_ua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Ua"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_10kv_2_ub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Ub"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_10kv_2_uc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Uc"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="0.4kV I 段电压"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_04kv_1_ua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Ua"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_04kv_1_ub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Ub"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_04kv_1_uc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Uc"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="0.4kV II 段电压"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_04kv_2_ua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Ua"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_04kv_2_ub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Ub"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_04kv_2_uc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="Uc"
+                app:unitText="kV" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_voltage_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="蓄电池电压"
+                app:unitText="V" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_voltage_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="I 段控母电压"
+                app:unitText="V" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_voltage_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="II 段控母电压"
+                app:unitText="V" />
+
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="1#变压器温度"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_temperature_1_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="A"
+                app:unitText="°C" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_temperature_1_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="B"
+                app:unitText="°C" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_temperature_1_c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="C"
+                app:unitText="°C" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_temperature_1_d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="D"
+                app:unitText="°C" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:isArrowShow="false"
+                app:isShowInputText="false"
+                app:isShowLabelColon="false"
+                app:labelText="2#变压器温度"
+                app:labelTextColor="@color/text_normal"
+                app:labelTextGravity="left"
+                app:labelTextSize="16" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_temperature_2_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="A"
+                app:unitText="°C" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_temperature_2_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="B"
+                app:unitText="°C" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_temperature_2_c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="C"
+                app:unitText="°C" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_temperature_2_d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="D"
+                app:unitText="°C" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="备注" />
+
+            <com.zgdj.lib.widget.LabelInputLayout
+                android:id="@+id/label_patrol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:hintText="请输入"
+                app:isArrowShow="false"
+                app:isCanInput="true"
+                app:labelText="巡检人" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <com.zgdj.lib.widget.CommitButtonLayout
+        android:id="@+id/layout_operate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

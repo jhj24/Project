@@ -4,6 +4,7 @@ object Config {
 
     const val KEY = "key"
     const val DATA = "data"
+    const val DATE = "date"
     const val TITLE = "title"
     const val BUTTON = "button"
     const val TYPE = "type"

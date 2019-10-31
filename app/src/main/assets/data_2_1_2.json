@@ -1,0 +1,162 @@
+[
+  {
+    "title": "自动化系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "直流系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "机电保护系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "低压室设备",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "高压室设备",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "高压电容室设备",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "柴油发电机\n机室设备",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "电缆层及出口工作闸\n、事故闸油压室",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "1-5#水泵机组",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "进口工作闸门油压室",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "技术供水系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "轴封供水系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "检修排水系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "渗透排水系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "照明系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "通风系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "消防系统",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "进口清污机设备",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "进口工作闸门",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "管养调度中心",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "沙井河口水闸\n右侧闸门",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "沙井河口水闸\n右侧电梯",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "沙井河口水闸\n右侧中孔闸启闭室",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "河口水闸左侧中孔闸启闭室",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "河口水闸左侧电梯",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "河口水闸左侧供电设备室",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "河口水闸左侧闸门油压室",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "河口地下廊道设备",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "河口水闸左侧供电设备室",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "河口水闸右侧闸门油压室",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "泵站出口工作闸门",
+    "isNormal": false,
+    "isPunch": false
+  },
+  {
+    "title": "泵站出口事故检修闸门",
+    "isNormal": false,
+    "isPunch": false
+  }
+]
