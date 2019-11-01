@@ -22,7 +22,7 @@ class FileDisplayActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_file_display)
-        initTopBar("表单", View.VISIBLE)
+        //initTopBar("表单", View.VISIBLE)
         val fileUrl = intent.getStringExtra(Config.PATH) //文件路径
         val fileSize = intent.getLongExtra(Config.SIZE, 0L)
 

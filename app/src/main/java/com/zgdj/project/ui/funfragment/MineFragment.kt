@@ -5,10 +5,6 @@ import android.view.View
 import com.zgdj.lib.base.fragment.BaseFragment
 import com.zgdj.lib.utils.StatusBarUtil
 import com.zgdj.project.R
-import com.zgdj.project.ui.DescriptionActivity
-import kotlinx.android.synthetic.main.fragment_mine.view.*
-import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.support.v4.startActivity
 
 class MineFragment : BaseFragment() {
 
@@ -19,9 +15,6 @@ class MineFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         StatusBarUtil.setDarkMode(mActivity)
-        view.iv_avatar.onClick {
-            startActivity<DescriptionActivity>()
-        }
     }
 
     /**

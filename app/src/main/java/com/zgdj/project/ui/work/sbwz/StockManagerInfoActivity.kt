@@ -15,7 +15,7 @@ import org.jetbrains.anko.toast
 
 class StockManagerInfoActivity : BaseCommonListActivity<StockManagerInfoBean>() {
 
-    override val topbar: String
+    override val title: String
         get() = intent.getStringExtra(Config.TITLE)
 
     override val itemLayoutRes: Int

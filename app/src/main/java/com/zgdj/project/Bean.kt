@@ -2,6 +2,7 @@ package com.zgdj.project
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 
 data class DeviceBean(
         val title: String,
@@ -20,7 +21,7 @@ data class StockManagerInfoBean(
 data class InspectionBean(
         val title: String,
         val time: String,
-        val status: String
+        var status: String
 )
 
 data class InspectionEditBean(
@@ -37,14 +38,22 @@ data class WorkTicketBean(
         val principal: String
 )
 
+data class TicketBean(
+        val index: Int,
+        val title: String,
+        var isSelector: Boolean,
+        var remark: String
+) : Serializable
+
 data class OperateTicketBean(
         val title: String,
-        val status: String,
+        var status: String,
         val time: String,
         val site_name: String,
         val machine_name: String,
-        val code: String
-)
+        val code: String,
+        var data: List<TicketBean>
+) : Serializable
 
 
 data class DataDetectBean(
@@ -132,6 +141,7 @@ data class WeatherBean(
 )
 
 data class MessageBean(
+        val type: Int,
         val title: String,
         val time: String,
         val status: Int,

@@ -65,7 +65,15 @@ class InspectionListActivity : BaseCommonListActivity<InspectionBean>() {
                 .text(R.id.tv_inspection, "巡检人：孙钰杰")
                 .background(R.id.tv_status, status)
                 .clicked {
-                    startActivity<InspectionEditActivity>(Config.STATUS to bean.status)
+                    ActivityResult.with(this)
+                            .putString(Config.STATUS, bean.status)
+                            .targetActivity(InspectionEditActivity::class.java)
+                            .onResult {
+                                if (it != null) {
+                                    bean.status = "已完成"
+                                    adapter.notifyItemChanged(position)
+                                }
+                            }
                 }
     }
 }

@@ -1,15 +1,23 @@
 package com.zgdj.project.ui.funfragment
 
+import android.Manifest
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
 import android.view.View
 import com.zgdj.lib.base.fragment.BaseFragment
 import com.zgdj.lib.config.Config
+import com.zgdj.lib.extention.readAssets
 import com.zgdj.lib.utils.StatusBarUtil
 import com.zgdj.project.ChildMessageFragment
+import com.zgdj.project.ChildMessageFragment1
 import com.zgdj.project.R
+import com.zgdj.project.ui.MainActivity
+import com.zgdj.project.ui.QRCodeActivity
 import kotlinx.android.synthetic.main.fragment_message.view.*
 import kotlinx.android.synthetic.main.layout_top_bar_main_fragmen.view.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.withArguments
 
 class MessageFragment : BaseFragment() {
@@ -19,6 +27,11 @@ class MessageFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.iv_scan.onClick {
+            (mActivity as MainActivity).requestPermissions(Manifest.permission.CAMERA) {
+                startActivity<QRCodeActivity>()
+            }
+        }
         StatusBarUtil.setLightMode(mActivity)
         view.tv_top_bar_title.text = "消息"
 
@@ -45,9 +58,15 @@ class MessageFragment : BaseFragment() {
         view.tab_layout.setupWithViewPager(view.view_pager)
     }
 
-    private fun getFragment(type: Int): ChildMessageFragment {
-        val fragment = ChildMessageFragment()
-        fragment.withArguments(Config.TYPE to type)
+    private fun getFragment(type: Int): Fragment {
+        val str = if (type == 0) {
+            context?.readAssets("data_0.json")
+        } else {
+            null
+        }
+
+        val fragment = if (type == 0) ChildMessageFragment() else ChildMessageFragment1()
+        fragment.withArguments(Config.TYPE to type, Config.DATA to str)
         return fragment
     }
 }

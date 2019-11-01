@@ -13,7 +13,7 @@ import org.jetbrains.anko.startActivity
 
 class StockManagerListActivity : BaseCommonListActivity<String>() {
 
-    override val topbar: String
+    override val title: String
         get() = "库存管理"
     override val itemLayoutRes: Int
         get() = R.layout.list_item_stock_manager

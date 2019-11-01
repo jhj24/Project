@@ -11,7 +11,7 @@
     </fragment>
     <fragment
             android:id="@+id/workFragment"
-            android:name="com.zgdj.project.ui.funfragment.WorkFragment"
+            android:name="com.zgdj.project.ui.funfragment.WorkFragment1"
             android:label="WorkFragment"/>
     <fragment
             android:id="@+id/messageFragment"

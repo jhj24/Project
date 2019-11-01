@@ -4,9 +4,11 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jhj.slimadapter.SlimAdapter
 import com.jhj.slimadapter.holder.ViewInjector
+import com.zgdj.lib.BaseApplication
 import com.zgdj.lib.base.activity.BaseCommonListActivity
 import com.zgdj.lib.config.Config
 import com.zgdj.lib.extention.readAssets
+import com.zgdj.lib.ui.X5WebViewActivity
 import com.zgdj.project.KnowledgeBaseInfoBean
 import com.zgdj.project.R
 import org.jetbrains.anko.startActivity
@@ -30,7 +32,11 @@ class KnowledgeBaseInfoActivity : BaseCommonListActivity<KnowledgeBaseInfoBean>(
                 .text(R.id.tv_name, bean.create)
                 .text(R.id.tv_time, bean.time)
                 .clicked {
-                    startActivity<LocalFileDisplayActivity>()
+                    if (BaseApplication.isTBSLoadingSuccess) {
+                        startActivity<LocalFileDisplayActivity>()
+                    } else {
+                        startActivity<X5WebViewActivity>()
+                    }
                 }
     }
 }

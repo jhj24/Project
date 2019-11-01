@@ -27,8 +27,6 @@ class InspectionEditActivity : DefaultTopBarActivity() {
         val str: String
         val pattern = "yyyy-MM-dd HH:mm:ss"
         if (status == "未开始") {
-
-
             str = readAssets("data_2_1_2.json")
             label_time.onClick {
                 val date = pattern.parse(label_time.getInputText())
@@ -45,14 +43,24 @@ class InspectionEditActivity : DefaultTopBarActivity() {
                         .finish()
 
             }
+        } else if (status == "进行中") {
+            info()
+            str = readAssets("data_2_1_3.json")
+            layout_operate.setOnCommitListener {
+                if (label_time.isBlank()) {
+                    return@setOnCommitListener
+                }
+                ActivityResult.with(this)
+                        .finish()
+
+            }
         } else {
             layout_operate.visibility = View.GONE
             str = readAssets("data_2_1_1.json")
+            read()
             info()
         }
         val list = Gson().fromJson<List<InspectionEditBean>>(str, object : TypeToken<List<InspectionEditBean>>() {}.type)
-
-
         val adapter = SlimAdapter.creator()
                 .register<InspectionEditBean>(R.layout.list_item_inspection_edit) { injector, bean, position ->
                     injector.text(R.id.tv_title, bean.title)
@@ -68,58 +76,29 @@ class InspectionEditActivity : DefaultTopBarActivity() {
                 .attachTo(recycler_view)
                 .setDataList(list)
 
-        topBarRightImage(R.drawable.ic_scan) {
-            ActivityResult.with(this)
-                    .targetActivity(InspectionQRCodeActivity::class.java)
-                    .onResult {
-                        if (it != null) {
-                            val data = it.getStringExtra(Config.DATA)
-                            list.forEachIndexed { index, inspectionEditBean ->
-                                if (inspectionEditBean.title.replace("\n", "") == data) {
-                                    adapter.getDataList<InspectionEditBean>()[index].isPunch = true
-                                    adapter.notifyItemChanged(index)
+
+        if (status == "未开始" || status == "进行中") {
+
+            topBarRightImage(R.drawable.ic_scan, 0xffffffff.toInt()) {
+                ActivityResult.with(this)
+                        .targetActivity(InspectionQRCodeActivity::class.java)
+                        .onResult {
+                            if (it != null) {
+                                val data = it.getStringExtra(Config.DATA)
+                                list.forEachIndexed { index, inspectionEditBean ->
+                                    if (inspectionEditBean.title.replace("\n", "") == data) {
+                                        adapter.getDataList<InspectionEditBean>()[index].isPunch = true
+                                        adapter.notifyItemChanged(index)
+                                    }
                                 }
                             }
-
-
                         }
-                    }
+            }
         }
+
     }
 
     fun info() {
-
-        label_time.setShowArrow(false)
-        label_10kv_1_ua.setCanInput(false)
-        label_10kv_1_ub.setCanInput(false)
-        label_10kv_1_uc.setCanInput(false)
-        label_10kv_2_ua.setCanInput(false)
-        label_10kv_2_ub.setCanInput(false)
-        label_10kv_2_uc.setCanInput(false)
-        label_04kv_1_ua.setCanInput(false)
-        label_04kv_1_ub.setCanInput(false)
-        label_04kv_1_uc.setCanInput(false)
-        label_04kv_2_ua.setCanInput(false)
-        label_04kv_2_ub.setCanInput(false)
-        label_04kv_2_uc.setCanInput(false)
-
-        label_voltage_0.setCanInput(false)
-        label_voltage_1.setCanInput(false)
-        label_voltage_2.setCanInput(false)
-
-        label_temperature_1_a.setCanInput(false)
-        label_temperature_1_b.setCanInput(false)
-        label_temperature_1_c.setCanInput(false)
-        label_temperature_1_d.setCanInput(false)
-
-
-        label_temperature_2_a.setCanInput(false)
-        label_temperature_2_b.setCanInput(false)
-        label_temperature_2_c.setCanInput(false)
-        label_temperature_2_d.setCanInput(false)
-
-        label_remark.setCanInput(false)
-        label_patrol.setCanInput(false)
 
         label_time.setInputText("2019-7-30 7:30")
         label_10kv_1_ua.setInputText("6.09")
@@ -154,5 +133,39 @@ class InspectionEditActivity : DefaultTopBarActivity() {
         label_patrol.setInputText("黄廉文")
 
 
+    }
+
+    fun read() {
+        label_time.setShowArrow(false)
+        label_10kv_1_ua.setCanInput(false)
+        label_10kv_1_ub.setCanInput(false)
+        label_10kv_1_uc.setCanInput(false)
+        label_10kv_2_ua.setCanInput(false)
+        label_10kv_2_ub.setCanInput(false)
+        label_10kv_2_uc.setCanInput(false)
+        label_04kv_1_ua.setCanInput(false)
+        label_04kv_1_ub.setCanInput(false)
+        label_04kv_1_uc.setCanInput(false)
+        label_04kv_2_ua.setCanInput(false)
+        label_04kv_2_ub.setCanInput(false)
+        label_04kv_2_uc.setCanInput(false)
+
+        label_voltage_0.setCanInput(false)
+        label_voltage_1.setCanInput(false)
+        label_voltage_2.setCanInput(false)
+
+        label_temperature_1_a.setCanInput(false)
+        label_temperature_1_b.setCanInput(false)
+        label_temperature_1_c.setCanInput(false)
+        label_temperature_1_d.setCanInput(false)
+
+
+        label_temperature_2_a.setCanInput(false)
+        label_temperature_2_b.setCanInput(false)
+        label_temperature_2_c.setCanInput(false)
+        label_temperature_2_d.setCanInput(false)
+
+        label_remark.setCanInput(false)
+        label_patrol.setCanInput(false)
     }
 }
