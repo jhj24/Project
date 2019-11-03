@@ -65,7 +65,8 @@
                 android:id="@+id/tv_principal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="负责人：孙钰杰" />
+                android:text="负责人：孙钰杰"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

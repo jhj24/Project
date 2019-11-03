@@ -20,8 +20,9 @@
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/bill_padding_left"
             android:text="沙井闸闭闸"
-            android:textColor="@color/text_normal"
+            android:textColor="@color/status_yellow"
             android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:paddingLeft="@dimen/bill_padding_left"
-            android:paddingTop="@dimen/bill_margin_top"
+            android:paddingTop="8dp"
             android:paddingRight="@dimen/bill_padding_right"
             android:paddingBottom="5dp"
             android:text="使用说明"

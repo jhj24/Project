@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.annotation.DrawableRes
 import com.amap.api.maps.*
 import com.amap.api.maps.model.*
-import com.zgdj.lib.R
 import com.zgdj.lib.base.activity.BaseActivity
 import com.zgdj.lib.config.UrlConfig
 import com.zgdj.lib.utils.FileUtils

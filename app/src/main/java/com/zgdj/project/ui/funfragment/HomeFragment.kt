@@ -45,7 +45,9 @@ class HomeFragment : BaseFragment() {
         val imageList = listOf(
                 R.mipmap.banner_01,
                 R.mipmap.banner_02,
-                R.mipmap.banner_03)
+                R.mipmap.banner_03,
+                R.mipmap.banner_04
+        )
         view.banner.setViewUrls(imageList)
         view.banner.setOnBannerItemClickListener {
             startActivity<DescriptionActivity>()

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:paddingLeft="15dp">
+    android:paddingLeft="15dp">F
 
     <View
         android:id="@+id/line"

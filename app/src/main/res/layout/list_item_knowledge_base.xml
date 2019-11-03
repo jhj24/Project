@@ -2,10 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/item_height_single"
-    android:background="@drawable/selector_item_bg"
-    android:paddingLeft="@dimen/item_padding_left"
-    android:paddingRight="@dimen/item_padding_right">
+    android:layout_height="60dp"
+    android:background="@drawable/bg_item_press"
+    android:paddingLeft="@dimen/bill_padding_left"
+    android:paddingRight="@dimen/bill_padding_right">
 
     <ImageView
         android:id="@+id/iv_folder"
@@ -21,10 +21,10 @@
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginRight="@dimen/item_padding_right"
+        android:layout_marginRight="@dimen/bill_padding_right"
         android:ellipsize="end"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/item_padding_left"
+        android:paddingLeft="@dimen/bill_padding_left"
         android:singleLine="true"
         android:text="item"
         android:textColor="@color/text_title"

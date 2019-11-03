@@ -14,6 +14,7 @@ import com.zgdj.project.InspectionEditBean
 import com.zgdj.project.R
 import kotlinx.android.synthetic.main.activity_inspection_edit.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.toast
 
 class InspectionEditActivity : DefaultTopBarActivity() {
 
@@ -87,6 +88,7 @@ class InspectionEditActivity : DefaultTopBarActivity() {
                                 val data = it.getStringExtra(Config.DATA)
                                 list.forEachIndexed { index, inspectionEditBean ->
                                     if (inspectionEditBean.title.replace("\n", "") == data) {
+                                        toast("${data}已定位检测")
                                         adapter.getDataList<InspectionEditBean>()[index].isPunch = true
                                         adapter.notifyItemChanged(index)
                                     }

@@ -6,7 +6,7 @@
     <!--background-->
     <color name="bg_main">#f2f2f2</color> <!--主题背景色-->
     <color name="bg_item_normal">#ffffff</color><!--item 正常色-->
-    <color name="bg_item_pressed">#dfdfdf</color><!--item 点击色-->
+    <color name="bg_item_pressed">#f2f2f2</color><!--item 点击色-->
     <color name="line_color">#dfdfdf</color><!--分割线颜色-->
 
     <!--textColor-->

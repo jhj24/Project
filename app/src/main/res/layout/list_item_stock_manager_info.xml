@@ -9,7 +9,7 @@
 
     <LinearLayout
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@drawable/bg_item_press_corner"
             android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

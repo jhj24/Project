@@ -37,8 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="6dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
                 android:text="水位数据"
                 android:textColor="@color/text_title"
                 android:textSize="@dimen/text_size_title" />
@@ -51,10 +51,13 @@
 
                 <com.zgdj.project.weight.WaterLevelView
                     android:layout_width="match_parent"
-                    android:layout_height="166dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
+                    android:layout_height="156dp"
+                    android:background="@drawable/bg_item_press_corner"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
                     android:paddingBottom="15dp" />
+
             </com.zgdj.lib.widget.ShadowLayout>
 
 
@@ -63,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
                 android:paddingTop="12dp"
-                android:paddingBottom="6dp"
+                android:paddingBottom="5dp"
                 android:text="天气信息"
                 android:textColor="@color/text_title"
                 android:textSize="@dimen/text_size_title" />
@@ -95,8 +98,10 @@
                 <com.zgdj.project.weight.UnitDataView
                     android:layout_width="match_parent"
                     android:layout_height="280dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
+                    android:background="@drawable/bg_item_press_corner"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
                     android:paddingBottom="15dp" />
 
             </com.zgdj.lib.widget.ShadowLayout>

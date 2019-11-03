@@ -105,7 +105,7 @@ class WaterLevelView : View {
             // 样本
             val textWidth = xTextPaint.measureText(bean.xBid)
             val start = center - textWidth / 2
-            canvas?.drawText(bean.xBid, start, height - paddingBottom.toFloat() - dip(1), xTextPaint)
+            canvas?.drawText(bean.xBid, start, height - paddingBottom.toFloat(), xTextPaint)
 
             // value
             val valueTextWidth = lightPaint.measureText(bean.value.toString())

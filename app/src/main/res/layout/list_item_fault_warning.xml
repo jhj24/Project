@@ -101,6 +101,7 @@
             android:layout_marginTop="6dp"
             android:paddingLeft="@dimen/bill_padding_left"
             android:text="值：true "
+            android:textColor="@color/red_main"
             app:layout_constraintHorizontal_weight="2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/tv_value_warning"
@@ -112,6 +113,7 @@
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/bill_padding_right"
             android:text="报警限：true"
+            android:textColor="@color/status_yellow"
             app:layout_constraintBottom_toBottomOf="@id/tv_value"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@id/tv_value"
@@ -135,6 +137,7 @@
             android:background="@null"
             android:textColor="@color/text_message"
             android:textSize="@dimen/text_size_system"
+            android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@id/remark"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_value" />

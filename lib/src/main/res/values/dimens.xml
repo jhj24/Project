@@ -21,28 +21,12 @@
     <dimen name="bill_height_multi">120dp</dimen> <!--多行输入高度-->
     <dimen name="bill_padding_multi">5dp</dimen> <!--默认高度-->
 
-    <!--==============Camera============-->
-    <dimen name="bill_square_image">55dp</dimen> <!--默认高度-->
-
-
     <!--=============Padding============-->
     <dimen name="bill_padding">10dp</dimen> <!--默认高度-->
     <dimen name="bill_padding_left">20dp</dimen> <!---->
     <dimen name="bill_padding_right">20dp</dimen> <!--默认高度-->
     <dimen name="bill_padding_top">10dp</dimen> <!--默认高度-->
     <dimen name="bill_padding_bottom">10dp</dimen> <!--默认高度-->
-
-    <!--=============Margin=============-->
-    <dimen name="bill_margin">15dp</dimen> <!--默认高度-->
-    <dimen name="bill_margin_left">15dp</dimen> <!--默认高度-->
-    <dimen name="bill_margin_right">15dp</dimen> <!--默认高度-->
-    <dimen name="bill_margin_top">8dp</dimen> <!--默认高度-->
-    <dimen name="bill_margin_bottom">8dp</dimen> <!--默认高度-->
-
-    <!--=============按钮=============-->
-    <dimen name="button_frame">0.5dp</dimen>
-    <dimen name="button_radio">6dp</dimen>
-
 
     <!--=============界面各个位置字体大小=============-->
     <dimen name="text_size_topbar">22sp</dimen>
@@ -52,10 +36,6 @@
     <dimen name="text_size_button">18sp</dimen>
     <dimen name="text_size_system">14sp</dimen>
 
-    <!--=============界面各个位置字体大小=============-->
-    <dimen name="item_height_single">60dp</dimen>
-    <dimen name="item_padding_left">20dp</dimen>
-    <dimen name="item_padding_right">20dp</dimen>
 
     <dimen name="default_corner_radius">6dp</dimen>
     <dimen name="default_shadow_radius">6dp</dimen>

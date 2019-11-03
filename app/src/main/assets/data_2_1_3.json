@@ -30,7 +30,7 @@
     "isPunch": true
   },
   {
-    "title": "柴油发电机\n机室设备",
+    "title": "柴油发电机机室设备",
     "isNormal": true,
     "isPunch": true
   },
@@ -100,12 +100,12 @@
     "isPunch": true
   },
   {
-    "title": "沙井河口水闸\n右侧闸门",
+    "title": "沙井河口水闸右侧闸门",
     "isNormal": false,
     "isPunch": false
   },
   {
-    "title": "沙井河口水闸\n右侧电梯",
+    "title": "沙井河口水闸右侧电梯",
     "isNormal": true,
     "isPunch": true
   },

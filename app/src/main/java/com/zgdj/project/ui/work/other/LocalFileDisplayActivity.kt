@@ -17,8 +17,10 @@ class LocalFileDisplayActivity : BaseActivity() {
         StatusBarUtil.setLightMode(this)
 
         requestPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE) {
-            val inputStream = resources.assets.open("word.doc")
-            file_view.displayFile(FileUtils.streamToFile(inputStream, FileUtils.getSDPath("file") + "11.doc"))
+
+            val file = "android.resource://com.zgdj.project/" + R.raw.video
+            val inputStream = resources.assets.open("file.pdf")
+            file_view.displayFile(FileUtils.streamToFile(inputStream, FileUtils.getSDPath("file") + "file.pdf"))
 
             file_view.show()
         }

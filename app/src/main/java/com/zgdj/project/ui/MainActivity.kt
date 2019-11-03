@@ -37,7 +37,11 @@ class MainActivity : BaseActivity() {
                 TextColorUtils.selected(getResColor(R.color.menu_selector), getResColor(R.color.menu_normal))
         val navHostFragment = fragment as NavHostFragment
         NavigationUI.setupWithNavController(navigation_view, navHostFragment.navController)
-
+        navHostFragment.navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if (destination.label.toString() == "MessageFragment"){
+                redDot(5)
+            }
+        }
         redDot(5)
 
         LiveDataBus.get()
