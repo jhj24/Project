@@ -26,7 +26,6 @@ class WaterLevelView : View {
     val lightPaint: Paint
         get() {
             paint.reset()
-            paint.style = Paint.Style.STROKE
             paint.isAntiAlias = true
             paint.color = 0x26000000.toInt()
             paint.textSize = 12 * scaleDensity

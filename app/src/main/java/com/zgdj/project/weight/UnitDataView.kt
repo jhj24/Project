@@ -39,7 +39,6 @@ class UnitDataView : View {
     val lightPaint: Paint
         get() {
             paint.reset()
-            paint.style = Paint.Style.STROKE
             paint.isAntiAlias = true
             paint.color = 0x36000000.toInt()
             paint.textSize = 12 * scaleDensity
