@@ -18,6 +18,10 @@ ext {
     ]
 
     dependencies = [
+            //navigation
+            "navigation-fragment": "android.arch.navigation:navigation-fragment-ktx:1.0.0",
+            "navigation-ui"      : "android.arch.navigation:navigation-ui-ktx:1.0.0",
+
             //kotlin
             "kotlin-jdk"         : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             "kotlin-anko"        : "org.jetbrains.anko:anko:$anko_version",
@@ -27,7 +31,6 @@ ext {
             "arouter-api"        : 'com.alibaba:arouter-api:1.5.0',
             "arouter-compiler"   : 'com.alibaba:arouter-compiler:1.2.2',
 
-
             //net
             "okhttp"             : "com.squareup.okhttp3:okhttp:3.11.0",
             "httpcall"           : "com.github.jhj24:HttpCall:v0.9.1",
@@ -35,8 +38,10 @@ ext {
             //json
             "json"               : "com.google.code.gson:gson:2.8.5",
 
-            //smartRefresh
-            "smart-refreshlayout": "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21",
+            //recyclerView
+            "smart-refreshlayout": "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21", //smartRefresh
+            "adapter"            : "com.github.jhj24:Adapter:v0.8.0",//adapter
+
 
             //autosize
             "auto-size"          : "me.jessyan:autosize:1.1.2",
@@ -44,8 +49,6 @@ ext {
             //图片
             "glide"              : "com.github.bumptech.glide:glide:4.9.0",
 
-            //adapter
-            "adapter"            : "com.github.jhj24:Adapter:v0.8.0",
 
             //dialog
             "prompt-dialog"      : "com.github.jhj24:PromptDialog:v1.1.4",

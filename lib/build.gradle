@@ -52,42 +52,38 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //navigation
-    api "android.arch.navigation:navigation-fragment-ktx:1.0.0"
-    api "android.arch.navigation:navigation-ui-ktx:1.0.0"
+    api library["navigation-fragment"]
+    api library["navigation-ui"]
 
     //阿里路由
-    api 'com.alibaba:arouter-api:1.5.0'
-    kapt 'com.alibaba:arouter-compiler:1.2.2'
-
+    api library["arouter-api"]
+    kapt library["arouter-compiler"]
 
     //kotlin
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "org.jetbrains.anko:anko:$anko_version"
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+    api library["kotlin-jdk"]
+    api library["kotlin-anko"]
+    api library["kotlin-coroutines"]
 
     //net
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    api library["okhttp"]
+    api library["httpcall"]
 
     //json
-    api 'com.google.code.gson:gson:2.8.5'
+    api library["json"]
 
-    //smartRefresh
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
+    //recyclerView
+    implementation library["smart-refreshlayout"]
+    api library["adapter"]
 
     //autosize
-    implementation 'me.jessyan:autosize:1.1.2'
+    implementation library["auto-size"]
 
     //图片
-    api 'com.github.bumptech.glide:glide:4.5.0'
+    api library["glide"]
     api 'com.github.jhj24:ImageSelector:v0.1.2'
 
-    //
-    api 'com.github.jhj24:HttpCall:v0.9.1'
-    api 'com.github.jhj24:Adapter:v0.8.0'
-    implementation 'com.github.jhj24:PromptDialog:v1.1.4'
-
-
-
+    //dialog
+    implementation library["prompt-dialog"]
 
     //tbs
     api files('libs/tbs_sdk.jar')

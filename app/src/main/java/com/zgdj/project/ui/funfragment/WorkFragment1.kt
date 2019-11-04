@@ -19,7 +19,6 @@ import com.zgdj.project.ui.work.ywjx.InspectionListActivity
 import com.zgdj.project.ui.work.ywjx.OperateTicketListActivity
 import com.zgdj.project.ui.work.ywjx.WorkTicketListActivity
 import kotlinx.android.synthetic.main.fragment_wrok_fragment.view.*
-import kotlinx.android.synthetic.main.layout_top_bar_main_fragmen.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.startActivity
 
@@ -29,7 +28,8 @@ class WorkFragment1 : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.iv_scan.onClick {
+        view.tv_main_title.text = "工作"
+        view.iv_main_scan.onClick {
             (mActivity as MainActivity).requestPermissions(Manifest.permission.CAMERA) {
                 startActivity<QRCodeActivity>()
             }

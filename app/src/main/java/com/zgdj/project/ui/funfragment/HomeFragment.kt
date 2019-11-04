@@ -20,7 +20,6 @@ import com.zgdj.project.ui.DescriptionActivity
 import com.zgdj.project.ui.MainActivity
 import com.zgdj.project.ui.QRCodeActivity
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.layout_top_bar_main_fragmen.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.startActivity
 
@@ -34,8 +33,8 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         StatusBarUtil.setLightMode(mActivity)
-        view.tv_top_bar_title.text = "首页"
-        view.iv_scan.onClick {
+        view.tv_main_title.text = "首页"
+        view.iv_main_scan.onClick {
             (mActivity as MainActivity).requestPermissions(Manifest.permission.CAMERA) {
                 startActivity<QRCodeActivity>()
             }

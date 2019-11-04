@@ -11,13 +11,7 @@ import org.jetbrains.anko.toast
 /**
  * 处理同步网络请求结果
  */
-suspend fun <T> DataResult<T>?.applyMain(
-    activity: Activity,
-    isOnSuccessToast: Boolean = false,
-    isOnFailureToast: Boolean = true,
-    isOnFailureFinish: Boolean = false,
-    block: (T?) -> Unit
-) {
+suspend fun <T> DataResult<T>?.applyMain(activity: Activity, isOnSuccessToast: Boolean = false, isOnFailureToast: Boolean = true, isOnFailureFinish: Boolean = false, block: (T?) -> Unit) {
     if (this == null) return
     withContext(Dispatchers.Main) {
         if (code == 1) {

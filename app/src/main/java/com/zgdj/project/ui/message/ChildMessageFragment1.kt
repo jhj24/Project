@@ -1,17 +1,17 @@
-package com.zgdj.project
+package com.zgdj.project.ui.message
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.jhj.slimadapter.SlimAdapter
 import com.jhj.slimadapter.holder.ViewInjector
 import com.zgdj.lib.base.fragment.BaseCommonListFragment
 import com.zgdj.lib.config.Config
 import com.zgdj.lib.extention.glide
 import com.zgdj.lib.utils.bus.LiveDataBus
+import com.zgdj.project.MessageBean
+import com.zgdj.project.R
 import com.zgdj.project.ui.work.other.SchedulingDecisionActivity
 import com.zgdj.project.ui.work.yjgl.FaultWarningListActivity
 import com.zgdj.project.ui.work.yjgl.InventoryWarningListActivity
@@ -19,7 +19,7 @@ import com.zgdj.project.ui.work.ywjx.InspectionListActivity
 import com.zgdj.project.ui.work.ywjx.WorkTicketListActivity
 import org.jetbrains.anko.support.v4.startActivity
 
-class ChildMessageFragment : BaseCommonListFragment<MessageBean>() {
+class ChildMessageFragment1 : BaseCommonListFragment<MessageBean>() {
 
     override val hasSplitLine: Boolean
         get() = false
@@ -27,12 +27,10 @@ class ChildMessageFragment : BaseCommonListFragment<MessageBean>() {
     override val itemLayoutRes: Int
         get() = R.layout.list_item_message
 
-    var list = arrayListOf<MessageBean>()
+    var list = arrayListOf<MessageBean>(MessageBean(4, "调度事件", "2019年3月22日", 1, "孙钰杰"))
 
 
     override fun getDataList(): List<MessageBean> {
-        val str = arguments?.getString(Config.DATA)
-        list = if (str.isNullOrBlank()) arrayListOf<MessageBean>() else Gson().fromJson(str, object : TypeToken<List<MessageBean>>() {}.type)
         return list
     }
 
@@ -43,9 +41,7 @@ class ChildMessageFragment : BaseCommonListFragment<MessageBean>() {
                 .with("message", MessageBean::class.java)
                 .observe(this, Observer {
                     if (it != null) {
-                        val index = adapterLocal.getDataList().indexOf(it)
-                        adapterLocal.remove(index)
-                        LiveDataBus.get().with("number").value = adapterLocal.getDataList().size
+                        adapterLocal.addData(0, it)
                     }
                 })
     }
@@ -66,26 +62,11 @@ class ChildMessageFragment : BaseCommonListFragment<MessageBean>() {
                 }
                 .clicked {
                     when (bean.type) {
-                        0 -> {
-                            startActivity<InspectionListActivity>()
-                            LiveDataBus.get().with("message").value = bean
-                        }
-                        1 -> {
-                            startActivity<WorkTicketListActivity>()
-                            LiveDataBus.get().with("message").value = bean
-                        }
-                        2 -> {
-                            startActivity<FaultWarningListActivity>()
-                            LiveDataBus.get().with("message").value = bean
-                        }
-                        3 -> {
-                            startActivity<InventoryWarningListActivity>()
-                            LiveDataBus.get().with("message").value = bean
-                        }
-                        4 -> {
-                            startActivity<SchedulingDecisionActivity>()
-                            LiveDataBus.get().with("message").value = bean
-                        }
+                        0 -> startActivity<InspectionListActivity>()
+                        1 -> startActivity<WorkTicketListActivity>()
+                        2 -> startActivity<FaultWarningListActivity>()
+                        3 -> startActivity<InventoryWarningListActivity>()
+                        4 -> startActivity<SchedulingDecisionActivity>()
                     }
                 }
     }

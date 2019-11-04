@@ -6,7 +6,46 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_top_bar_main_fragmen" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_titlebar_view_height">
+
+        <View
+            android:id="@+id/status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/statusbar_view_height"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/status_bar">
+
+            <TextView
+                android:id="@+id/tv_top_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/title_bar_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="工作"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/text_size_topbar"
+                app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="6dp"
+                android:src="@mipmap/ic_arrow_down"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
