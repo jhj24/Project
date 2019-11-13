@@ -118,7 +118,7 @@ class GridImageLayout : LinearLayout {
                     }
                     .with<ImageView>(R.id.iv_image_selector_state) {
                         if (isDelete) {
-                            context.image(R.mipmap.ic_work_delete, it)
+                            it.glide(R.mipmap.ic_work_delete)
                             it.visibility = View.VISIBLE
                             //authorityDelete?.let { authority -> it.authorityOnTouch(authority) }
                             it.onClick {
@@ -179,7 +179,7 @@ class GridImageLayout : LinearLayout {
                     }
                     .with<ImageView>(R.id.iv_image_selector_state) {
                         if (isDelete) {
-                            context.image(R.mipmap.ic_work_delete, it)
+                            it.glide(R.mipmap.ic_work_delete)
                             it.visibility = View.VISIBLE
                             //authorityDelete?.let { authority -> it.authorityOnTouch(authority) }
                             it.onClick {

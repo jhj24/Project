@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory
 import android.os.Environment
 import android.widget.ImageView
 import com.zgdj.lib.R
-import com.zgdj.lib.extention.image
+import com.zgdj.lib.extention.glide
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsyncResult
@@ -71,15 +71,15 @@ object FileUtils {
             /* 获取文件的后缀名*/
             val end = filePath.substring(dotIndex).toLowerCase()
             if (end == ".doc" || end == ".docx") {
-                context.image(R.mipmap.ic_file_word, imageView)
+                imageView.glide(R.mipmap.ic_file_word)
             } else if (end == ".xls" || end == ".xlsx") {
-                context.image(R.mipmap.ic_file_excel, imageView)
+                imageView.glide(R.mipmap.ic_file_excel)
             } else if (end == ".ppt" || end == ".pptx") {
-                context.image(R.mipmap.ic_file_ppt, imageView)
+                imageView.glide(R.mipmap.ic_file_ppt)
             } else if (end == ".pdf") {
-                context.image(R.mipmap.ic_file_pdf, imageView)
+                imageView.glide(R.mipmap.ic_file_pdf)
             } else {
-                context.image(R.mipmap.ic_file_unknow, imageView)
+                imageView.glide(R.mipmap.ic_file_unknow)
             }
         }
     }

@@ -4,7 +4,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import com.zgdj.lib.R
-import com.zgdj.lib.extention.image
+import com.zgdj.lib.extention.glide
 import com.zgdj.lib.extention.inflater
 import kotlinx.android.synthetic.main.activity_default_top_bar.*
 import kotlinx.android.synthetic.main.layout_top_bar.*
@@ -38,7 +38,7 @@ abstract class DefaultTopBarActivity : BaseActivity() {
     fun topBarRightImage(image: Int, color: Int? = null, body: () -> Unit) {
         if (color != null) iv_top_bar_right.setColorFilter(color, PorterDuff.Mode.SRC_IN)
         iv_top_bar_right.visibility = View.VISIBLE
-        image(image, iv_top_bar_right)
+        iv_top_bar_right.glide(image)
         iv_top_bar_right.onClick {
             body()
         }

@@ -22,7 +22,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
+
 import com.zgdj.lib.extention.ActivityExKt;
+import com.zgdj.lib.extention.ViewExKt;
 import com.zgdj.project.R;
 
 import java.io.Serializable;
@@ -222,7 +224,7 @@ public class BannerLayout extends RelativeLayout {
         });
         // imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        ActivityExKt.roundImage(getContext(), url, imageView);
+        ViewExKt.glide(imageView, url);
         // imageLoader.displayImage(getContext(), url, imageView);
         return imageView;
     }

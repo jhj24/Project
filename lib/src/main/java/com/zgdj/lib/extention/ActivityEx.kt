@@ -58,8 +58,6 @@ val Context.screenWidth: Int
 val Context.inflater: LayoutInflater
     get() = LayoutInflater.from(this)
 
-val Context.itemClickBackground: StateListDrawable
-    get() = BackGroundUtils.pressed(getResColor(R.color.bg_item_pressed), getResColor(R.color.bg_item_normal))
 
 val Context.buttonTextColor: Int
     get() = getResColor(R.color.bg_bottom_color)
@@ -109,124 +107,6 @@ fun Context.closeKeyboard(view: View) {
     imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-
-//============================image==============================
-fun Context.avatar(imagePath: Any, imageView: ImageView) {
-    ImageUtil.show(this, imagePath, imageView, ImageUtil.avatarOptions)
-}
-
-fun Context.image(imagePath: Any, imageView: ImageView) {
-    ImageUtil.show(this, imagePath, imageView, ImageUtil.options)
-}
-
-fun Context.roundImage(imagePath: Any, imageView: ImageView) {
-    ImageUtil.show(this, imagePath, imageView, ImageUtil.roundOptions)
-}
-
-fun Context.circleImage(imagePath: Any, imageView: ImageView) {
-    ImageUtil.show(this, imagePath, imageView, ImageUtil.circleOptions)
-}
-
-fun Context.imageNoCache(imagePath: Any, imageView: ImageView) {
-    ImageUtil.show(this, imagePath, imageView, ImageUtil.noCacheOptions)
-}
-
-
-//=============================net===============================
-fun Context.isNetworkConnected(): Boolean {
-    val manager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val networkInfo = manager.activeNetworkInfo
-    if (networkInfo != null) {
-        return networkInfo.isConnected
-    }
-    return false
-}
-
-val Context.loginUserInfo: UserBean?
-    get() {
-        val user: UserBean? = SystemEnv.getLogin(this)
-        if (user == null) {
-            loginExpired()
-            return null
-        }
-        return user
-    }
-
-
-fun Context.download(url: String): DownloadRequest {
-    return HttpCall.download(url)
-}
-
-fun Context.httpPost(url: String): PostRequest {
-    val login = loginUserInfo ?: return HttpCall.post(UrlConfig.BASE_URL)
-    val header = HttpHeaders()
-    header.put("key", login.key.toString())
-    header.put("token", login.token)
-    return HttpCall.post(CommonNetUtils.baseUrl + url).addHeaders(header)
-}
-
-fun Context.pyHttpPost(url: String): PostRequest {
-    val login = loginUserInfo ?: return HttpCall.post(UrlConfig.BASE_URL)
-    val header = HttpHeaders()
-    header.put("key", login.key.toString())
-    header.put("token", login.token)
-    return HttpCall.post(UrlConfig.PYTHON_URL + url).addHeaders(header)
-}
-
-fun Context.uploadMedia(module: String, use: String, vararg path: String, body: (Boolean, List<FileBean>) -> Unit) {
-    CommonNetUtils.uploadMedia(this, module, use, *path, body = body)
-}
-
-fun Activity.delete(url: String, msg: String, vararg pairs: Pair<String, String>, body: () -> Unit = {}) {
-    CommonNetUtils.delete(this, url, msg, *pairs, body = body)
-}
-
-//=============================dialog===============================
-
-fun Context.downloadDialog(
-        tag: Any,
-        text: String = "正在下载...",
-        body: (PercentFragment) -> Unit = {}
-): PercentFragment.Builder {
-    return DialogUtils.downloadDialog(this, tag, text, body)
-}
-
-fun Context.loadingDialog(text: String = "正在加载...", body: (LoadingFragment) -> Unit = {}): LoadingFragment.Builder {
-    return DialogUtils.loadingDialog(this, text, body)
-}
-
-fun Context.uploadDialog(msg: String = "正在上传...", body: (LoadingFragment) -> Unit): LoadingFragment.Builder {
-    return DialogUtils.uploadDialog(this, msg, body)
-}
-
-fun Context.percentUploadDialog(msg: String = "正在上传...", body: (PercentFragment) -> Unit): PercentFragment.Builder {
-    return DialogUtils.uploadDialog(this, msg, body)
-}
-
-fun Context.messageDialog(title: String = "提示", msg: String, body: (AlertFragment, View?) -> Unit = { _, _ -> }) {
-    return DialogUtils.messageDialog(this, title, msg, body)
-}
-
-fun Context.customDialog(layoutRes: Int, body: (View, AlertFragment) -> Unit) {
-    return DialogUtils.customDialog(this, layoutRes, body)
-}
-
-fun Context.bottomDialog(layoutRes: Int, body: (View, AlertFragment) -> Unit): AlertFragment.Builder {
-    return DialogUtils.bottomCustomDialog(this, layoutRes, body)
-}
-
-fun Context.bottomSingleDialog(title: String = "请选择", list: List<String>, body: (AlertFragment, String) -> Unit) {
-    return DialogUtils.bottomSingleDialog(this, title, list, body)
-}
-
-fun Context.bottomMultiDialog(
-        title: String = "请选择",
-        list: List<String>,
-        selectedList: List<Int>,
-        body: (AlertFragment, List<Int>) -> Unit
-) {
-    return DialogUtils.bottomMultiDialog(this, title, list, selectedList, body)
-}
 
 fun Context.timePick(date: Date?, type: BooleanArray = TimePickerUtils.type2, body: (Date) -> Unit) {
     TimePickerUtils.timePicker(this, date, type, body)
@@ -285,16 +165,3 @@ fun Activity.fileDisplay(path: String) {
     }
 }
 
-fun Context.loginExpired(msg: String? = Config.LOGIN_EXPIRED): Boolean {
-    if (msg == Config.LOGIN_EXPIRED && ActivityManager.activityCount != 0) {
-        if (Looper.myLooper() == Looper.getMainLooper()) toast(Config.LOGIN_EXPIRED)
-        ActivityManager.finishAllActivity()
-        //startActivity<LoginActivity>()
-        SystemEnv.deleteLogin(this)
-        //SystemEnv.deleteAuthority(this)
-        val user = SystemEnv.getLogin(this) ?: return true
-        //JPushInterface.deleteAlias(this, user.key)
-        return true
-    }
-    return false
-}

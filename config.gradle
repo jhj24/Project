@@ -39,15 +39,15 @@ ext {
             "json"               : "com.google.code.gson:gson:2.8.5",
 
             //recyclerView
-            "smart-refreshlayout": "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21", //smartRefresh
-            "adapter"            : "com.github.jhj24:Adapter:v0.8.0",//adapter
+            "smart-refreshlayout": "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0", //smartRefresh
+            "adapter"            : "com.github.jhj24:Adapter:v0.8.1",//adapter
 
 
             //autosize
             "auto-size"          : "me.jessyan:autosize:1.1.2",
 
             //图片
-            "glide"              : "com.github.bumptech.glide:glide:4.9.0",
+            "glide"              : "com.github.bumptech.glide:glide:4.5.0",
 
 
             //dialog

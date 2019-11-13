@@ -7,8 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jhj.slimadapter.SlimAdapter
 import com.jhj.slimadapter.holder.ViewInjector
-import com.jhj.slimadapter.itemdecoration.LineItemDecoration
-import com.zgdj.lib.base.fragment.BaseCommonListFragment
+import com.zgdj.lib.base.fragment.CommonListFragment
 import com.zgdj.lib.extention.readAssets
 import com.zgdj.project.DataDetectBean
 import com.zgdj.project.DetectInfoBean
@@ -17,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class DataDetectFragment : BaseCommonListFragment<DataDetectBean>() {
+class DataDetectFragment : CommonListFragment<DataDetectBean>() {
 
     override val hasSplitLine: Boolean
         get() = false
@@ -27,14 +26,16 @@ class DataDetectFragment : BaseCommonListFragment<DataDetectBean>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        refresh()
+        val str = mActivity.readAssets("data_4_2.json")
+        dataList = Gson().fromJson(str, object : TypeToken<List<DataDetectBean>>() {}.type)
+        change()
     }
 
-    private fun refresh() {
+    private fun change() {
         GlobalScope.launch(Dispatchers.Main) {
             kotlinx.coroutines.delay(3000)
             adapterLocal.notifyDataSetChanged()
-            refresh()
+            change()
         }
     }
 
@@ -58,10 +59,5 @@ class DataDetectFragment : BaseCommonListFragment<DataDetectBean>() {
                             .attachTo(it)
                             .setDataList(bean.data)
                 }
-    }
-
-    override fun getDataList(): List<DataDetectBean> {
-        val str = mActivity.readAssets("data_4_2.json")
-        return Gson().fromJson(str, object : TypeToken<List<DataDetectBean>>() {}.type)
     }
 }

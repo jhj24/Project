@@ -1,7 +1,11 @@
 package com.zgdj.lib
 
 import android.support.multidex.MultiDexApplication
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.tencent.smtt.sdk.QbSdk
+import com.zgdj.lib.extention.getResColor
 import com.zgdj.lib.utils.Logger
 
 open class BaseApplication : MultiDexApplication() {
@@ -16,7 +20,7 @@ open class BaseApplication : MultiDexApplication() {
         instance = this
 
 
-
+        //x5内核
         QbSdk.setDownloadWithoutWifi(true)
         QbSdk.initX5Environment(this, object : QbSdk.PreInitCallback {
             override fun onCoreInitFinished() {
@@ -30,5 +34,15 @@ open class BaseApplication : MultiDexApplication() {
 
             }
         })
+
+        //===============下拉刷新=================
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
+            layout.setPrimaryColors(0xfff1f1f1.toInt(), getResColor(R.color.black))
+            return@setDefaultRefreshHeaderCreator ClassicsHeader(context)
+        }
+        SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
+            layout.setPrimaryColors(0xfff1f1f1.toInt(), getResColor(R.color.black))
+            return@setDefaultRefreshFooterCreator ClassicsFooter(context)
+        }
     }
 }

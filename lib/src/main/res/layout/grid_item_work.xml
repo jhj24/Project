@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:src="@mipmap/ic_placeholder"
+        android:src="@mipmap/ic_image_selector_placeholder"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

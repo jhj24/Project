@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import com.jhj.slimadapter.SlimAdapter
 import com.jhj.slimadapter.holder.ViewInjector
-import com.zgdj.lib.base.fragment.BaseCommonListFragment
+import com.zgdj.lib.base.fragment.CommonListFragment
 import com.zgdj.lib.config.Config
 import com.zgdj.lib.extention.glide
 import com.zgdj.lib.utils.bus.LiveDataBus
@@ -19,7 +19,7 @@ import com.zgdj.project.ui.work.ywjx.InspectionListActivity
 import com.zgdj.project.ui.work.ywjx.WorkTicketListActivity
 import org.jetbrains.anko.support.v4.startActivity
 
-class ChildMessageFragment1 : BaseCommonListFragment<MessageBean>() {
+class ChildMessageFragment1 : CommonListFragment<MessageBean>() {
 
     override val hasSplitLine: Boolean
         get() = false
@@ -27,15 +27,10 @@ class ChildMessageFragment1 : BaseCommonListFragment<MessageBean>() {
     override val itemLayoutRes: Int
         get() = R.layout.list_item_message
 
-    var list = arrayListOf<MessageBean>(MessageBean(4, "调度事件", "2019年3月22日", 1, "孙钰杰"))
-
-
-    override fun getDataList(): List<MessageBean> {
-        return list
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dataList = arrayListOf<MessageBean>(MessageBean(4, "调度事件", "2019年3月22日", 1, "孙钰杰"))
         val type = arguments?.getInt(Config.TYPE)
         LiveDataBus.get()
                 .with("message", MessageBean::class.java)

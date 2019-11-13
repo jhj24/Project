@@ -1,6 +1,6 @@
 package com.zgdj.lib.extention
 
-import com.zgdj.lib.utils.CommonNetUtils
+import com.zgdj.lib.BaseApplication
 import com.zgdj.lib.utils.TimePickerUtils
 import java.text.SimpleDateFormat
 import java.util.*
@@ -16,18 +16,17 @@ val String.fileName: String
         return this
     }
 
-fun String?.toFilePath(): String {
-    return if (this != null) {
-        if (isUrl()) {
-            replace("\\", "/")
-        } else {
-            CommonNetUtils.baseUrl + replace("\\", "/")
+val String?.filePath: String
+    get() {
+        if (this != null) {
+            return if (isUrl()) {
+                this.replace("\\", "/")
+            } else {
+                BaseApplication.instance.loginUserInfo?.ip + this.replace("\\", "/")
+            }
         }
-    } else {
-        this ?: ""
+        return ""
     }
-}
-
 
 
 // ========日期=======

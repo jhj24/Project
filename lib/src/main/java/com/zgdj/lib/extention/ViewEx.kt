@@ -1,6 +1,5 @@
 package com.zgdj.lib.extention
 
-import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorRes
@@ -10,14 +9,19 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.zgdj.lib.R
 import com.zgdj.lib.utils.BackGroundUtils
-import com.zgdj.lib.utils.SystemEnv
+import org.jetbrains.anko.dip
 import org.jetbrains.anko.toast
+
 
 val View.density: Float
     get() = context.density
@@ -27,9 +31,41 @@ val View.scaleDensity: Float
 
 fun View.color(@ColorRes color: Int) = context.getResColor(color)
 
-fun View.circleBackground(color: Int) {
+fun View.colorRound(color: Int) {
     this.background = BackGroundUtils.roundBackground(color)
 }
+
+fun View.drawable(@DrawableRes drawableRes: Int): Drawable =
+        ContextCompat.getDrawable(context, drawableRes) ?: resources.getDrawable(drawableRes)
+
+fun ImageView.colorFilter(color: Int) =
+        this.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+
+//===========ImageView===========
+fun ImageView.glide(imgPath: Any, options: RequestOptions) {
+    Glide.with(context).asBitmap().load(imgPath).apply(options).into(this)
+}
+
+fun ImageView.glide(path: Any) {
+    glide(path, RequestOptions().placeholder(R.mipmap.ic_image_selector_placeholder))
+}
+
+fun ImageView.glideRound(path: Any, radius: Int = dip(6)) {
+    glide(path, RequestOptions().placeholder(R.mipmap.ic_image_selector_placeholder).transform(RoundedCorners(radius)))
+}
+
+fun ImageView.glideCircle(path: Any) {
+    glide(path, RequestOptions().placeholder(R.mipmap.ic_image_selector_placeholder).transform(CircleCrop()))
+}
+
+fun ImageView.glideAvatar(path: Any) {
+    glide(path, RequestOptions().placeholder(R.mipmap.ic_avatar).transform(CircleCrop()))
+}
+
+fun ImageView.glideNoCache(path: Any) {
+    glide(path, RequestOptions().placeholder(R.mipmap.ic_image_selector_placeholder).diskCacheStrategy(DiskCacheStrategy.NONE))
+}
+
 
 fun View.singleSelected(vararg views: View) {
     this.isSelected = true
@@ -46,14 +82,6 @@ fun View.clicked(isClicked: Boolean) {
     }
 }
 
-
-fun View.drawable(@DrawableRes drawableRes: Int): Drawable =
-    ContextCompat.getDrawable(context, drawableRes) ?: resources.getDrawable(drawableRes)
-
-
-fun ImageView.glide(any: Any) = Glide.with(context).asBitmap().load(any).into(this)
-
-fun ImageView.blankColorFilter(color: Int = 0xff333333.toInt()) = this.setColorFilter(color, PorterDuff.Mode.SRC_IN)
 
 fun EditText.inputLimit(maxSize: Int = 200, msg: String) {
     addTextChangedListener(object : TextWatcher {
@@ -109,13 +137,6 @@ fun EditText.inputLimit(maxSize: Int = 200, msg: String) {
     }
 }*/
 
-
-fun ImageView.roundImage(context: Context, imgPath: Any) {
-    Glide.with(context)
-        .asBitmap()
-        .load(imgPath)
-        .into(this)
-}
 
 /**
  * 解决RecyclerView嵌套RecyclerView滑动卡顿的问题
