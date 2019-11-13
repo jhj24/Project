@@ -1,0 +1,11 @@
+<manifest
+        xmlns:android="http://schemas.android.com/apk/res/android" package="com.zgdj.zhiliang">
+    <application>
+
+        <activity android:name="com.zgdj.zhiliang.TestActivity"/>
+
+
+    </application>
+
+</manifest>
+
