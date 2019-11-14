@@ -5,11 +5,19 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.view.Gravity
 import android.view.View
+import android.widget.TextView
 import com.jhj.httplibrary.HttpCall
 import com.jhj.prompt.fragment.AlertFragment
 import com.jhj.prompt.fragment.LoadingFragment
 import com.jhj.prompt.fragment.PercentFragment
 import com.jhj.prompt.fragment.base.OnDialogShowOnBackListener
+import com.zgdj.lib.R
+import kotlinx.android.synthetic.main.dialog_edit_and_detele.view.*
+import org.jetbrains.anko.alarmManager
+import org.jetbrains.anko.find
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onTouch
+import org.w3c.dom.Text
 
 
 fun Fragment.customDialog(layoutRes: Int, body: (View, AlertFragment) -> Unit) {
@@ -71,6 +79,14 @@ fun Context.bottomCustomDialog(layoutRes: Int, body: (View, AlertFragment) -> Un
             .show()
 }
 
+fun Context.bottomEditDialog(title: String = "提示", edit: AlertFragment.(TextView) -> Unit, delete: AlertFragment.(TextView) -> Unit) {
+    bottomCustomDialog(R.layout.dialog_edit_and_detele) { view, alertFragment ->
+        view.tv_dialog_name.text = title
+        alertFragment.edit(view.tv_dialog_edit)
+        alertFragment.delete(view.tv_dialog_delete)
+    }
+}
+
 fun Context.bottomSingleDialog(title: String = "请选择", list: List<String>, body: (AlertFragment, String) -> Unit) {
     AlertFragment.Builder(this)
             .setDataList(list.toArrayList())
@@ -129,7 +145,7 @@ fun Context.uploadDialog(msg: String = "正在上传...", body: (LoadingFragment
             .show()
 }
 
-fun Context.downloadDialog(tag: Any, text: String = "正在下载...", body: (PercentFragment) -> Unit={}): PercentFragment.Builder {
+fun Context.downloadDialog(tag: Any, text: String = "正在下载...", body: (PercentFragment) -> Unit = {}): PercentFragment.Builder {
     return PercentFragment.Builder(this)
             .setDialogShowOnBackListener(object : OnDialogShowOnBackListener<PercentFragment> {
                 override fun cancel(fragment: PercentFragment) {
