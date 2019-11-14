@@ -16,7 +16,7 @@ abstract class LoadingListFragment<T> : BaseListFragment<T>() {
 
     abstract val url: String
     //请求参数
-    open val httpParams = listOf<Pair<String, String>>()
+    open val httpParams = arrayListOf<Pair<String, String>>()
     //输入框变化就开始搜索
     open val inputSearchFunc: (T, String) -> Boolean = { _, _ -> true }
 
@@ -43,9 +43,6 @@ abstract class LoadingListFragment<T> : BaseListFragment<T>() {
             params.put(it.first, it.second)
         }
         HttpCall.post(url)
-                .addHeader("key", "6")
-                .addHeader("token", "05e6e1f19e14901e7f91912e4c1a7113")
-                //httpPost(url)
                 .addParams(params)
                 .enqueue(object : DataDialogHttpCallback<List<T>>(mActivity) {
 

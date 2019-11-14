@@ -8,10 +8,10 @@ import android.content.pm.PackageInfo
 import android.net.Uri
 import android.os.Build
 import android.support.v4.content.FileProvider
+import com.jhj.httplibrary.HttpCall
 import com.jhj.httplibrary.callback.DownloadHttpCallback
 import com.jhj.httplibrary.utils.MimeTypeUtils
 import com.zgdj.lib.BuildConfig
-import com.zgdj.lib.extention.download
 import com.zgdj.lib.extention.isUrl
 import com.zgdj.lib.extention.loadingDialog
 import com.zgdj.lib.extention.messageDialog
@@ -60,7 +60,8 @@ object WPSCheckUtils {
         val name = url.substring(index, url.length)
         val file = File(FileUtils.getSDPath("file" + File.separator) + name)
         val dialog = activity.loadingDialog()
-        activity.download(url)
+        HttpCall.download(url)
+            .setUseBaseUrl(false)
             .enqueue(object : DownloadHttpCallback(activity, file) {
                 override fun onSuccess(file: File) {
                     checkWps(activity, url)

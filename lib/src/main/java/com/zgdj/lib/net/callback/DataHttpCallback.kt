@@ -6,13 +6,7 @@ import com.zgdj.lib.net.DataResult
 import org.jetbrains.anko.toast
 import java.lang.reflect.Type
 
-abstract class DataHttpCallback<T>(activity: Activity) : JsonHttpCallback<DataResult<T>>(activity) {
-
-
-    open val mIsOnFailureFinish = false
-    open val mIsOnFailureToast = true
-    open val mIsOnSuccessToast = false
-
+abstract class DataHttpCallback<T>(activity: Activity) : BaseHttpCallback<DataResult<T>>(activity) {
 
     override val clazzType: Type
         get() = type(DataResult::class.java, getTClazz())

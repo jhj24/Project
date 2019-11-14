@@ -123,8 +123,6 @@ abstract class RefreshListFragment<T> : BaseListFragment<T>() {
             params.put(it.first, it.second)
         }
         HttpCall.post(url)
-                .addHeader("key", "6")
-                .addHeader("token", "05e6e1f19e14901e7f91912e4c1a7113")
                 .addParam(pageNumKey, pageNo.toString())
                 .addParam(pageSizeKey, pageSize.toString())
                 .addParams(inputSearchParams)

@@ -103,7 +103,7 @@ abstract class BaseListActivity<T> : BaseActivity() {
     fun topBarRightImage(image: Int, color: Int? = null, body: () -> Unit) {
         if (color != null) iv_top_bar_right.setColorFilter(color, PorterDuff.Mode.SRC_IN)
         iv_top_bar_right.visibility = View.VISIBLE
-        iv_top_bar_back.glide(image)
+        iv_top_bar_right.glide(image)
         iv_top_bar_right.onClick {
             body()
         }

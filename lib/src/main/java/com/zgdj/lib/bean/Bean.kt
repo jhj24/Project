@@ -1,6 +1,5 @@
 package com.zgdj.lib.bean
 
-import com.zgdj.lib.extention.toFilePath
 import java.io.Serializable
 
 data class U1serBean(

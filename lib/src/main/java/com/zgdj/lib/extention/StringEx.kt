@@ -1,6 +1,6 @@
 package com.zgdj.lib.extention
 
-import com.zgdj.lib.BaseApplication
+import com.jhj.httplibrary.HttpCall
 import com.zgdj.lib.utils.TimePickerUtils
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,7 +22,7 @@ val String?.filePath: String
             return if (isUrl()) {
                 this.replace("\\", "/")
             } else {
-                BaseApplication.instance.loginUserInfo?.ip + this.replace("\\", "/")
+                HttpCall.baseUrl + this.replace("\\", "/")
             }
         }
         return ""

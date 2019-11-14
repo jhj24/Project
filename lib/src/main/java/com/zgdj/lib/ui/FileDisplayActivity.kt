@@ -3,11 +3,10 @@ package com.zgdj.lib.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
+import com.jhj.httplibrary.HttpCall
 import com.zgdj.lib.R
 import com.zgdj.lib.base.activity.BaseActivity
 import com.zgdj.lib.config.Config
-import com.zgdj.lib.extention.download
 import com.zgdj.lib.extention.isNetworkConnected
 import com.zgdj.lib.extention.isUrl
 import com.zgdj.lib.net.callback.DownloadDialogHttpCallback
@@ -70,7 +69,8 @@ class FileDisplayActivity : BaseActivity() {
 
 
     private fun downLoadFromNet(url: String, file: File) {
-        download(url)
+        HttpCall.download(url)
+            .setUseBaseUrl(false)
             //.tag(this) todo 加上 TAG 后，不在该界面取消下载
             .enqueue(object : DownloadDialogHttpCallback(this, downloadFile = file) {
 

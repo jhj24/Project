@@ -11,23 +11,21 @@ object UrlConfig {
     const val BILL_URL = "http://192.168.1.91:8003" //bill表单
 
 
+    //======文件图片======
+    const val MEDIA_DELETE = "/project/Cellannex/fileDelete"
+    const val MEDIA_UPLOAD = "/admin/Util/upload"
+
+    //======google图层======
+    const val GOOGLE_TILES = "/uploads/Tiles/%d/%d/%d.png"
+
+
     const val LOGIN = "/admin/Util/appLogin"
     //const val LOGIN = "/admin/Util/login"
     const val LOGOUT = "/admin/Util/logout"
     const val USER_DETAIL = "/admin/User/currentUserDetail"
     const val USER_MODIFY = "/admin/User/personal" //个人信息修改
     const val USER_AUTHORITY = "/admin/Message/appAuthorityIndex"
-
     const val BIM_INFO = "/modelmanage/Qualitymass/statisticsSection" //质量BIM
-
-
-    const val FORM_REPORT = "/quality/Element/getCellFormApi"
-    const val FORM_STATE = "/quality/Element/checkBox"
-    const val FORM_APPROVAL_HISTORY = "/quality/Formone/approveHistory"
-    const val FORM_APPROVAL = "/quality/Formoneapi/saveData"
-    const val FORM_SCAN = "/quality/Qattachment/getFileList" //模式三扫描件
-    const val FORM_INVALID = "/quality/Formtwo/cancel"
-    const val FORM_INFO = "/quality/Formoneapi/fillForm"
 
     //大坝管理
     const val DAM_MANAGER_LIST = "/project/Daba/dabaList"//大坝列表
@@ -36,7 +34,6 @@ object UrlConfig {
     const val DAM_MANAGER_JUDGE_NAME = "/project/Daba/judgeTitle"//判断大坝名称是否重复
     const val DAM_MANAGER_JUDGE_CODE = "/project/Daba/judgeNumber"//判断大坝编号是否重复
     const val DAM_MANAGER_LIST_COMMON = "/admin/Util/getDabaList"//其他位置大坝列表
-
 
     //单元工程
     const val DIVIDE = "/project/Division/nodeTree"  //6,筛选的到单元工程，5,到分部工程， 3，到单位工程
@@ -49,13 +46,15 @@ object UrlConfig {
     const val EXPERIMENT_DETECT = "/quality/Exam/getExamTree"
     const val EXPERIMENT_FILE = "/quality/Exam/reportList"
     const val SAVE_REPORT = "/project/Cellannex/saveReport" //关联检测报告
-
-
-    //文件图片
-    const val MEDIA_UPLOAD = "/project/Cellannex/fileUpload"
-    const val MEDIA_DELETE = "/project/Cellannex/fileDelete"
-    const val MEDIA_LIST = "/project/Cellannex/getFileList"
-    const val UPLOAD = "/admin/Util/upload"
+    const val CELL_MEDIA_UPLOAD = "/project/Cellannex/fileUpload"
+    const val CELL_MEDIA_LIST = "/project/Cellannex/getFileList"
+    const val FORM_REPORT = "/quality/Element/getCellFormApi"
+    const val FORM_STATE = "/quality/Element/checkBox"
+    const val FORM_APPROVAL_HISTORY = "/quality/Formone/approveHistory"
+    const val FORM_APPROVAL = "/quality/Formoneapi/saveData"
+    const val FORM_SCAN = "/quality/Qattachment/getFileList" //模式三扫描件
+    const val FORM_INVALID = "/quality/Formtwo/cancel"
+    const val FORM_INFO = "/quality/Formoneapi/fillForm"
 
     //单位工程
     const val UNIT_EVALUATE = "/quality/Unit/unitEvaluate"
@@ -141,6 +140,5 @@ object UrlConfig {
     const val SECTION_LIST = "/project/Section/listSection" //巡检部位列表
     const val LIB_LIST = "/patrol/lib/listLib"
 
-    const val GOOGLE_TILES = "/uploads/Tiles/%d/%d/%d.png"
 
 }

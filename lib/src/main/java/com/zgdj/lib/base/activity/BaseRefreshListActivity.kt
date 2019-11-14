@@ -27,7 +27,7 @@ abstract class BaseRefreshListActivity<T> : BaseListActivity<T>() {
     abstract val url: String
 
     //默认请求参数
-    open val httpParams = listOf<Pair<String, String>>()
+    open val httpParams = mutableListOf<Pair<String, String>>()
     //默认起始页
     open val startPageNum = 1
     //默认分页大小
@@ -126,8 +126,6 @@ abstract class BaseRefreshListActivity<T> : BaseListActivity<T>() {
             params.put(it.first, it.second)
         }
         HttpCall.post(url)
-                .addHeader("key", "6")
-                .addHeader("token", "05e6e1f19e14901e7f91912e4c1a7113")
                 .addParam(pageNumKey, pageNo.toString())
                 .addParam(pageSizeKey, pageSize.toString())
                 .addParams(filterParams)

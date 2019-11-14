@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -17,8 +18,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.jhj.slimadapter.holder.ViewInjector
 import com.zgdj.lib.R
 import com.zgdj.lib.utils.BackGroundUtils
+import com.zgdj.lib.utils.SystemEnv
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.toast
 
@@ -103,7 +106,7 @@ fun EditText.inputLimit(maxSize: Int = 200, msg: String) {
 }
 
 
-/*fun View.authorityOnLongClick(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
+fun View.authorityOnLongClick(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
     setOnLongClickListener {
         val authorityList = SystemEnv.getUserAuthority(context)
         val authority = authorityList?.find { it.path == string }
@@ -116,10 +119,10 @@ fun EditText.inputLimit(maxSize: Int = 200, msg: String) {
             return@setOnLongClickListener false
         }
     }
-}*/
+}
 
 
-/*fun View.authorityOnTouch(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
+fun View.authorityOnTouch(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
     setOnTouchListener { v, event ->
         if (event.action == MotionEvent.ACTION_DOWN) {
             val authorityList = SystemEnv.getUserAuthority(context)
@@ -135,7 +138,7 @@ fun EditText.inputLimit(maxSize: Int = 200, msg: String) {
         }
         return@setOnTouchListener false
     }
-}*/
+}
 
 
 /**
@@ -151,6 +154,12 @@ fun RecyclerView.preventStuck() {
     setHasFixedSize(true)
     //解决数据加载完成后, 没有停留在顶部的问题
     isFocusable = false
+}
+
+fun ViewInjector.image(id: Int, path: Any): ViewInjector {
+    val imageView = getView<ImageView>(id)
+    imageView.glide(path)
+    return this
 }
 
 

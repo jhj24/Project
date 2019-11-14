@@ -1,7 +1,9 @@
 package com.zgdj.lib.utils
 
 import android.content.Context
+import com.zgdj.lib.bean.AuthorityBean
 import com.zgdj.lib.bean.UserBean
+import java.io.Serializable
 
 object SystemEnv {
 
@@ -36,5 +38,22 @@ object SystemEnv {
         PreferenceUtil.deleteAll(context, UserBean::class.java)
     }
 
+    //权限
+    private const val USER_AUTHORITY = "user_authority"
+
+    fun saveUserAuthority(context: Context, list: List<AuthorityBean>) {
+        PreferenceUtil.save(context, AuthorityHolder(list), USER_AUTHORITY)
+    }
+
+    fun getUserAuthority(context: Context): List<AuthorityBean>? {
+        val holder = PreferenceUtil.find(context, USER_AUTHORITY, AuthorityHolder::class.java)
+        return holder?.list
+    }
+
+    fun deleteAuthority(context: Context) {
+        PreferenceUtil.deleteAll(context, AuthorityHolder::class.java)
+    }
+
+    data class AuthorityHolder(val list: List<AuthorityBean>) : Serializable
 
 }

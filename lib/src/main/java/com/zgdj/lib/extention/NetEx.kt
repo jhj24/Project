@@ -51,7 +51,7 @@ fun Context.uploadMedia(module: String, use: String, vararg pathList: String, bo
         val list = arrayListOf<FileBean>()
         withContext(Dispatchers.IO) {
             for (path in pathList) {
-                val result = HttpCall.post(UrlConfig.UPLOAD)
+                val result = HttpCall.post(UrlConfig.MEDIA_UPLOAD)
                     .addHeader("module", module)
                     .addHeader("use", use)
                     .addFile("file", File(path))

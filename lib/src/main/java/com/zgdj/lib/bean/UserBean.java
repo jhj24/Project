@@ -69,7 +69,7 @@ public class UserBean implements Serializable {
     }
 
     public String getFilepath() {
-        return StringExKt.toFilePath(filepath);
+        return StringExKt.getFilePath(filepath);
     }
 
     public void setFilepath(String filepath) {
@@ -157,7 +157,7 @@ public class UserBean implements Serializable {
     }
 
     public String getSignature_path() {
-        return StringExKt.toFilePath(signature_path);
+        return StringExKt.getFilePath(signature_path);
     }
 
     public void setSignature_path(String signature_path) {
