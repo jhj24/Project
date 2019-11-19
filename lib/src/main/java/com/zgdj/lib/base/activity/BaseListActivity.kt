@@ -54,6 +54,7 @@ abstract class BaseListActivity<T> : BaseActivity() {
 
     var dataList: List<T> = listOf()
         set(value) {
+            formatList(value)
             field = value
             dataListEmpty(value)
         }
@@ -179,7 +180,7 @@ abstract class BaseListActivity<T> : BaseActivity() {
 
         //
         layout_operate.setOnRejectListener {
-            resetFilter()
+            resetFilter(view)
         }
         layout_operate.setOnCommitListener {
             filter()
@@ -198,7 +199,7 @@ abstract class BaseListActivity<T> : BaseActivity() {
     /**
      * 重置
      */
-    open fun resetFilter() {
+    open fun resetFilter(view: View) {
         filterParams.clear()
         drawer_layout.closeDrawer(Gravity.END)
         refresh()
@@ -262,4 +263,5 @@ abstract class BaseListActivity<T> : BaseActivity() {
     abstract fun inputSearch(search: String?)
     abstract fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: T, position: Int)
     open fun initialize() {}
+    open fun formatList(dataList: List<T>) {}
 }

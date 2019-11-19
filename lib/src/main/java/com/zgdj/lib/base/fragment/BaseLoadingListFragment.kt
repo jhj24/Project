@@ -12,11 +12,11 @@ import kotlinx.android.synthetic.main.layout_empty_view.view.*
 import kotlinx.android.synthetic.main.layout_search_bar.view.*
 import java.lang.reflect.Type
 
-abstract class LoadingListFragment<T> : BaseListFragment<T>() {
+abstract class BaseLoadingListFragment<T> : BaseListFragment<T>() {
 
     abstract val url: String
     //请求参数
-    open val httpParams = arrayListOf<Pair<String, String>>()
+    open val httpParams = mutableListOf<Pair<String, String>>()
     //输入框变化就开始搜索
     open val inputSearchFunc: (T, String) -> Boolean = { _, _ -> true }
 

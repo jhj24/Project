@@ -11,32 +11,35 @@ import kotlinx.android.synthetic.main.activity_base_fragment.*
 
 abstract class BaseFragmentActivity : DefaultTopBarActivity() {
 
-    abstract val fragmentList: List<Pair<Fragment, String>>
     var currentIndex = 0
+
+    var fragmentList: List<Pair<Fragment, String>> = listOf()
+        set(value) {
+            field = value
+            tab_layout.addOnTabSelectedListener(object : TabLayout.BaseOnTabSelectedListener<TabLayout.Tab> {
+                override fun onTabReselected(p0: TabLayout.Tab?) {
+                    onTabSelected(p0)
+                }
+
+                override fun onTabUnselected(p0: TabLayout.Tab?) {
+
+                }
+
+                override fun onTabSelected(p0: TabLayout.Tab?) {
+                    currentIndex = p0?.position ?: currentIndex
+                }
+            })
+
+
+            view_pager.adapter = TabPageAdapter(supportFragmentManager)
+            view_pager.offscreenPageLimit = value.size
+            tab_layout.setupWithViewPager(view_pager)
+        }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_fragment)
-
-        tab_layout.addOnTabSelectedListener(object : TabLayout.BaseOnTabSelectedListener<TabLayout.Tab> {
-            override fun onTabReselected(p0: TabLayout.Tab?) {
-                onTabSelected(p0)
-            }
-
-            override fun onTabUnselected(p0: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabSelected(p0: TabLayout.Tab?) {
-                currentIndex = p0?.position ?: currentIndex
-            }
-        })
-
-
-        view_pager.adapter = TabPageAdapter(supportFragmentManager)
-        view_pager.offscreenPageLimit = fragmentList.size
-        tab_layout.setupWithViewPager(view_pager)
     }
 
 

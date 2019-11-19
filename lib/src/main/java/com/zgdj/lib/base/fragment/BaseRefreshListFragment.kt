@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.layout_search_bar.view.*
 import org.jetbrains.anko.toast
 import java.lang.reflect.Type
 
-abstract class RefreshListFragment<T> : BaseListFragment<T>() {
+abstract class BaseRefreshListFragment<T> : BaseListFragment<T>() {
 
     abstract val url: String
 

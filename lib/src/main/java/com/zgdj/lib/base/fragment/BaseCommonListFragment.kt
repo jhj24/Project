@@ -11,7 +11,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-abstract class CommonListFragment<T> : BaseListFragment<T>() {
+abstract class BaseCommonListFragment<T> : BaseListFragment<T>() {
 
     //输入框变化就开始搜索
     open val inputSearchFunc: (T, String) -> Boolean = { _, _ -> true }
