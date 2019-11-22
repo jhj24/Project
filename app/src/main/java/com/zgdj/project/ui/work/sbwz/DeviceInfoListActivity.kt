@@ -18,8 +18,6 @@ import org.jetbrains.anko.startActivity
 
 class DeviceInfoListActivity : BaseCommonListActivity<DeviceBean>() {
 
-    private var dataList = arrayListOf<DeviceBean>()
-
     override val title: String
         get() = "设备信息"
     override val itemLayoutRes: Int
@@ -30,19 +28,16 @@ class DeviceInfoListActivity : BaseCommonListActivity<DeviceBean>() {
 
     override val inputSearch: Boolean
         get() = true
-    override val filterFunc: (DeviceBean, String) -> Boolean = { bean, str ->
+    override val inputSearchFunc: (DeviceBean, String) -> Boolean = { bean, str ->
         bean.title.contains(str) or bean.code.contains(str)
-    }
-
-
-    override fun getDataList(): List<DeviceBean> {
-        val str = readAssets("data_1_1.json")
-        dataList = Gson().fromJson<List<DeviceBean>>(str, object : TypeToken<List<DeviceBean>>() {}.type).toArrayList()
-        return dataList
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val str = readAssets("data_1_1.json")
+        val list = Gson().fromJson<List<DeviceBean>>(str, object : TypeToken<List<DeviceBean>>() {}.type).toArrayList()
+        dataList = list
+
         topBarRightText("新增") {
             ActivityResult.with(this)
                 .putString(Config.TYPE, "add")
@@ -52,8 +47,8 @@ class DeviceInfoListActivity : BaseCommonListActivity<DeviceBean>() {
                         val name = it.getStringExtra("name")
                         val code = it.getStringExtra("code")
                         val factory = it.getStringExtra("factory")
-                        dataList.add(0, DeviceBean(name, code, factory))
-                        adapterLocal.setDataList(dataList)
+                        list.add(0, DeviceBean(name, code, factory))
+                        adapterLocal.setDataList(list)
                     }
 
                 }

@@ -7,7 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jhj.slimadapter.SlimAdapter
 import com.jhj.slimadapter.holder.ViewInjector
-import com.zgdj.lib.base.fragment.CommonListFragment
+import com.zgdj.lib.base.fragment.BaseCommonListFragment
 import com.zgdj.lib.extention.readAssets
 import com.zgdj.project.DataDetectBean
 import com.zgdj.project.DetectInfoBean
@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class DataDetectFragment : CommonListFragment<DataDetectBean>() {
+class DataDetectFragment : BaseCommonListFragment<DataDetectBean>() {
 
     override val hasSplitLine: Boolean
         get() = false

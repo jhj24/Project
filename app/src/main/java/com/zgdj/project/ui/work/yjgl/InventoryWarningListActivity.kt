@@ -1,5 +1,6 @@
 package com.zgdj.project.ui.work.yjgl
 
+import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
@@ -23,10 +24,10 @@ class InventoryWarningListActivity : BaseCommonListActivity<InvertoryWarningBean
     override val hasSplitLine: Boolean
         get() = false
 
-
-    override fun getDataList(): List<InvertoryWarningBean> {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val str = readAssets("data_3_2.json")
-        return Gson().fromJson(str, object : TypeToken<List<InvertoryWarningBean>>() {}.type)
+        dataList = Gson().fromJson(str, object : TypeToken<List<InvertoryWarningBean>>() {}.type)
     }
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: InvertoryWarningBean, position: Int) {

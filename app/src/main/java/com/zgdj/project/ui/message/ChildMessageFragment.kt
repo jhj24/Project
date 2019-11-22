@@ -8,7 +8,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jhj.slimadapter.SlimAdapter
 import com.jhj.slimadapter.holder.ViewInjector
-import com.zgdj.lib.base.fragment.CommonListFragment
+import com.zgdj.lib.base.fragment.BaseCommonListFragment
 import com.zgdj.lib.config.Config
 import com.zgdj.lib.extention.glide
 import com.zgdj.lib.utils.bus.LiveDataBus
@@ -21,7 +21,7 @@ import com.zgdj.project.ui.work.ywjx.InspectionListActivity
 import com.zgdj.project.ui.work.ywjx.WorkTicketListActivity
 import org.jetbrains.anko.support.v4.startActivity
 
-class ChildMessageFragment : CommonListFragment<MessageBean>() {
+class ChildMessageFragment : BaseCommonListFragment<MessageBean>() {
 
     override val hasSplitLine: Boolean
         get() = false

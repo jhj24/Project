@@ -12,7 +12,6 @@ import com.zgdj.lib.extention.readAssets
 import com.zgdj.lib.utils.activityresult.ActivityResult
 import com.zgdj.project.InspectionBean
 import com.zgdj.project.R
-import org.jetbrains.anko.startActivity
 
 class InspectionListActivity : BaseCommonListActivity<InspectionBean>() {
 
@@ -26,17 +25,14 @@ class InspectionListActivity : BaseCommonListActivity<InspectionBean>() {
         get() = false
     override val inputSearch: Boolean
         get() = true
-    override val filterFunc: (InspectionBean, String) -> Boolean = { bean, str ->
+    override val inputSearchFunc: (InspectionBean, String) -> Boolean = { bean, str ->
         bean.title.contains(str)
-    }
-
-    override fun getDataList(): List<InspectionBean> {
-        val str = readAssets("data_2_1.json")
-        return Gson().fromJson(str, object : TypeToken<List<InspectionBean>>() {}.type)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val str = readAssets("data_2_1.json")
+        dataList = Gson().fromJson(str, object : TypeToken<List<InspectionBean>>() {}.type)
         topBarRightText("新增") {
             ActivityResult.with(this)
                     .putString(Config.STATUS, "未开始")

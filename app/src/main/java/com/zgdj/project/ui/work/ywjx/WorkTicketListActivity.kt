@@ -20,7 +20,6 @@ import org.jetbrains.anko.toast
 
 class WorkTicketListActivity : BaseCommonListActivity<WorkTicketBean>() {
 
-    var dataList = arrayListOf<WorkTicketBean>()
     override val title: String
         get() = "工作票"
     override val itemLayoutRes: Int
@@ -30,18 +29,14 @@ class WorkTicketListActivity : BaseCommonListActivity<WorkTicketBean>() {
         get() = false
     override val inputSearch: Boolean
         get() = true
-    override val filterFunc: (WorkTicketBean, String) -> Boolean = { bean, str ->
+    override val inputSearchFunc: (WorkTicketBean, String) -> Boolean = { bean, str ->
         bean.title.contains(str)
-    }
-
-    override fun getDataList(): List<WorkTicketBean> {
-        val str = readAssets("data_2_2.json")
-        dataList = Gson().fromJson(str, object : TypeToken<List<WorkTicketBean>>() {}.type)
-        return dataList
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val str = readAssets("data_2_2.json")
+        dataList = Gson().fromJson(str, object : TypeToken<List<WorkTicketBean>>() {}.type)
         topBarRightText("新增") {
             ActivityResult.with(this)
                     .targetActivity(WorkTicketEditActivity::class.java)
@@ -55,7 +50,6 @@ class WorkTicketListActivity : BaseCommonListActivity<WorkTicketBean>() {
                             val time = it.getStringExtra("time")
                             val signer = it.getStringExtra("signer")
                             val bean = WorkTicketBean(unit, time, "未开始", code, signer)
-                            dataList.add(0, bean)
                             adapterLocal.setDataList(dataList)
                         }
                     }
@@ -124,7 +118,6 @@ class WorkTicketListActivity : BaseCommonListActivity<WorkTicketBean>() {
                 "删除" -> {
                     messageDialog(msg = "是否删除${bean.title}?") { alertFragment, view ->
                         adapterLocal.remove(index)
-                        dataList.removeAt(index)
                         adapterLocal.notifyItemChanged(index)
                         toast("删除成功")
                     }

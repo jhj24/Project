@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import com.jhj.slimadapter.SlimAdapter
 import com.jhj.slimadapter.holder.ViewInjector
-import com.zgdj.lib.base.fragment.CommonListFragment
+import com.zgdj.lib.base.fragment.BaseCommonListFragment
 import com.zgdj.lib.config.Config
 import com.zgdj.lib.extention.glide
 import com.zgdj.lib.utils.bus.LiveDataBus
@@ -19,7 +19,7 @@ import com.zgdj.project.ui.work.ywjx.InspectionListActivity
 import com.zgdj.project.ui.work.ywjx.WorkTicketListActivity
 import org.jetbrains.anko.support.v4.startActivity
 
-class ChildMessageFragment1 : CommonListFragment<MessageBean>() {
+class ChildMessageFragment1 : BaseCommonListFragment<MessageBean>() {
 
     override val hasSplitLine: Boolean
         get() = false

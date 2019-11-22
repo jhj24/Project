@@ -1,5 +1,6 @@
 package com.zgdj.project.ui.work.yjgl
 
+import android.os.Bundle
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jhj.slimadapter.SlimAdapter
@@ -21,10 +22,10 @@ class FaultWarningListActivity : BaseCommonListActivity<FaultWarningBean>() {
     override val hasSplitLine: Boolean
         get() = false
 
-
-    override fun getDataList(): List<FaultWarningBean> {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val str = readAssets("data_3_1.json")
-        return Gson().fromJson(str, object : TypeToken<List<FaultWarningBean>>() {}.type)
+        dataList =  Gson().fromJson(str, object : TypeToken<List<FaultWarningBean>>() {}.type)
     }
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: FaultWarningBean, position: Int) {

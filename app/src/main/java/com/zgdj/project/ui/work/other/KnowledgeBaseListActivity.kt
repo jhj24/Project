@@ -1,5 +1,6 @@
 package com.zgdj.project.ui.work.other
 
+import android.os.Bundle
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jhj.slimadapter.SlimAdapter
@@ -20,32 +21,32 @@ class KnowledgeBaseListActivity : BaseCommonListActivity<KnowledgeBaseBean>() {
     override val inputSearch: Boolean
         get() = true
 
-    override val filterFunc: (KnowledgeBaseBean, String) -> Boolean = { bean, str ->
+    override val inputSearchFunc: (KnowledgeBaseBean, String) -> Boolean = { bean, str ->
         bean.name.contains(str)
     }
 
-    override fun getDataList(): List<KnowledgeBaseBean> {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val list = listOf("沙井泵站", "潭头水闸")
         val data = intent.getParcelableArrayListExtra<KnowledgeBaseBean>(Config.DATA)
-        if (data.isNullOrEmpty()) {
+        dataList = if (data.isNullOrEmpty()) {
             val str = readAssets("data_5_2.json")
-            return Gson().fromJson(str, object : TypeToken<List<KnowledgeBaseBean>>() {}.type)
+            Gson().fromJson(str, object : TypeToken<List<KnowledgeBaseBean>>() {}.type)
         } else {
-            return data
+            data
         }
-
 
     }
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: KnowledgeBaseBean, position: Int) {
         injector.text(R.id.tv_title, bean.name)
-            .image(R.id.iv_folder, if (bean.level == 1) R.mipmap.ic_work_file else R.mipmap.ic_work_folder)
-            .clicked {
-                if (bean.level == 1) {
-                    startActivity<KnowledgeBaseInfoActivity>(Config.TITLE to bean.name)
-                } else {
-                    startActivity<KnowledgeBaseListActivity>(Config.DATA to bean.children)
+                .image(R.id.iv_folder, if (bean.level == 1) R.mipmap.ic_work_file else R.mipmap.ic_work_folder)
+                .clicked {
+                    if (bean.level == 1) {
+                        startActivity<KnowledgeBaseInfoActivity>(Config.TITLE to bean.name)
+                    } else {
+                        startActivity<KnowledgeBaseListActivity>(Config.DATA to bean.children)
+                    }
                 }
-            }
     }
 }

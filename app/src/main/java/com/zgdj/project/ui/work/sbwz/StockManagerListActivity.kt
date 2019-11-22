@@ -21,21 +21,17 @@ class StockManagerListActivity : BaseCommonListActivity<String>() {
 
     override val inputSearch: Boolean
         get() = true
-    override val filterFunc: (String, String) -> Boolean = { bean, str ->
+    override val inputSearchFunc: (String, String) -> Boolean = { bean, str ->
         bean.contains(str)
-    }
-
-
-    override fun getDataList(): List<String> {
-        val str = readAssets("data_1_2.json")
-        return Gson().fromJson(str, object : TypeToken<List<String>>() {}.type)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       /* topBarRightText("新增") {
-            startActivity<DeviceInfoEditActivity>()
-        }*/
+        val str = readAssets("data_1_2.json")
+        dataList = Gson().fromJson(str, object : TypeToken<List<String>>() {}.type)
+        /* topBarRightText("新增") {
+             startActivity<DeviceInfoEditActivity>()
+         }*/
     }
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: String, position: Int) {

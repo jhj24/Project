@@ -25,9 +25,9 @@ class SchedulingDecisionActivity : BaseCommonListActivity<SchedulingDecisionBean
     override val itemLayoutRes: Int
         get() = R.layout.list_item_scheduling_decision
 
-    override fun getDataList(): List<SchedulingDecisionBean> {
-        return listOf(list.first())
-    }
+
+
+
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: SchedulingDecisionBean, position: Int) {
         injector.text(R.id.tv_title, "调度建议：${bean.message}")
@@ -59,6 +59,7 @@ class SchedulingDecisionActivity : BaseCommonListActivity<SchedulingDecisionBean
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        dataList = listOf(list.first())
         refresh(0)
     }
 

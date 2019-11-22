@@ -20,8 +20,6 @@ import org.jetbrains.anko.toast
 
 class OperateTicketListActivity : BaseCommonListActivity<OperateTicketBean>() {
 
-
-    private var dataList = arrayListOf<OperateTicketBean>()
     override val title: String
         get() = "操作票"
     override val itemLayoutRes: Int
@@ -31,22 +29,15 @@ class OperateTicketListActivity : BaseCommonListActivity<OperateTicketBean>() {
         get() = false
     override val inputSearch: Boolean
         get() = true
-    override val filterFunc: (OperateTicketBean, String) -> Boolean = { bean, str ->
+    override val inputSearchFunc: (OperateTicketBean, String) -> Boolean = { bean, str ->
         bean.title.contains(str)
     }
 
 
-    override fun getDataList(): List<OperateTicketBean> {
-        val str = readAssets("data_2_3.json")
-        dataList = Gson().fromJson(str, object : TypeToken<List<OperateTicketBean>>() {}.type)
-        return dataList
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /* topBarRightText("新增") {
-
-         }*/
+        val str = readAssets("data_2_3.json")
+        dataList = Gson().fromJson(str, object : TypeToken<List<OperateTicketBean>>() {}.type)
     }
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: OperateTicketBean, position: Int) {
@@ -97,7 +88,6 @@ class OperateTicketListActivity : BaseCommonListActivity<OperateTicketBean>() {
                 "删除" -> {
                     messageDialog(msg = "是否删除${bean.title}?") { alertFragment, view ->
                         adapterLocal.remove(index)
-                        dataList.removeAt(index)
                         adapterLocal.notifyItemChanged(index)
                         toast("删除成功")
                     }

@@ -1,5 +1,6 @@
 package com.zgdj.project.ui.work.other
 
+import android.os.Bundle
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jhj.slimadapter.SlimAdapter
@@ -22,9 +23,10 @@ class KnowledgeBaseInfoActivity : BaseCommonListActivity<KnowledgeBaseInfoBean>(
     override val hasSplitLine: Boolean
         get() = false
 
-    override fun getDataList(): List<KnowledgeBaseInfoBean> {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val str = readAssets("data_5_2_2.json")
-        return Gson().fromJson(str, object : TypeToken<List<KnowledgeBaseInfoBean>>() {}.type)
+        dataList =  Gson().fromJson(str, object : TypeToken<List<KnowledgeBaseInfoBean>>() {}.type)
     }
 
     override fun itemViewConvert(adapter: SlimAdapter, injector: ViewInjector, bean: KnowledgeBaseInfoBean, position: Int) {
