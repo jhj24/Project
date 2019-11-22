@@ -1,7 +1,6 @@
 package com.zgdj.lib.net.callback
 
 import android.app.Activity
-import com.jhj.httplibrary.callback.JsonHttpCallback
 import com.zgdj.lib.net.DataResult
 import org.jetbrains.anko.toast
 import java.lang.reflect.Type

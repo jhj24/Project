@@ -185,11 +185,11 @@ class LabelInputLayout : LinearLayout {
         if (mIsCanInput) {
             view.tv_item_input.visibility = View.GONE
             view.et_item_input.visibility = View.VISIBLE
-            view.et_item_input.setText(text ?: "无")
+            view.et_item_input.setText(text)
         } else {
             view.et_item_input.visibility = View.GONE
             view.tv_item_input.visibility = View.VISIBLE
-            view.tv_item_input.text = text ?: "无"
+            view.tv_item_input.text = text
         }
     }
 

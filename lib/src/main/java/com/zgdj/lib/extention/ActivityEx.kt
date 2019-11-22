@@ -112,15 +112,8 @@ fun Context.timePick(date: Date?, type: BooleanArray = TimePickerUtils.type2, bo
     TimePickerUtils.timePicker(this, date, type, body)
 }
 
-fun Context.timePick(
-        startData: Date?,
-        endData: Date?,
-        isStartTime: Boolean,
-        type: BooleanArray = TimePickerUtils.type2,
-        msg: String = "开始时间小于结束事件，请重新选择",
-        body: (Date) -> Unit = {},
-        calculate: (startDate: Date, endDate: Date) -> Unit = { _, _ -> }
-) {
+fun Context.timePick(startData: Date?, endData: Date?, isStartTime: Boolean, type: BooleanArray = TimePickerUtils.type2,
+        msg: String = "开始时间小于结束事件，请重新选择", body: (Date) -> Unit = {}, calculate: (startDate: Date, endDate: Date) -> Unit = { _, _ -> }) {
     TimePickerUtils.timePicker(this, startData, endData, isStartTime, type, msg, body, calculate)
 }
 
@@ -163,5 +156,14 @@ fun Activity.fileDisplay(path: String) {
     } else {
         startActivity<X5WebViewActivity>()
     }
+}
+
+/**
+ * 权限是否禁止,true-禁止
+ */
+fun Context.isAuthorityForbid(str: String?): Boolean {
+    val authorityList = SystemEnv.getUserAuthority(this)
+    val authority = authorityList?.find { it.path == str }
+    return authority?.authority == 0
 }
 

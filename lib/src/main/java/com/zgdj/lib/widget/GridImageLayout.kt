@@ -102,28 +102,28 @@ class GridImageLayout : LinearLayout {
         mList.addAll(dataList)
         SlimAdapter.creator()
             .register<FileBean>(R.layout.layout_image_selector_grid) { injector, bean, position ->
-                injector.getView<ImageView>(R.id.iv_image_selector_picture).glide(bean.src)
+                injector.getView<ImageView>(R.id.iv_image_selector_picture).glide(bean.formatPath)
                 injector
                     .clicked(R.id.iv_image_selector_picture) {
-                        val list = getDataList().filterIsInstance<FileBean>()
-                        val pos = list.map { it.src }.indexOf(bean.src)
+                        val list = getDataList<FileBean>()
+                        val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
 
                         if (pos != -1) {
                             if (displayBody == null) {
-                                (context as Activity).imageDisplay(list.map { it.src }, pos)
+                                (context as Activity).imageDisplay(list.map { it.formatPath }, pos)
                             } else {
-                                displayBody(list.map { it.src }, pos)
+                                displayBody(list.map { it.formatPath }, pos)
                             }
                         }
                     }
-                    .with<ImageView>(R.id.iv_image_selector_state) {
+                    .with<ImageView>(R.id.iv_image_selector_state) { imageView ->
                         if (isDelete) {
-                            it.glide(R.mipmap.ic_work_delete)
-                            it.visibility = View.VISIBLE
+                            imageView.glide(R.mipmap.ic_work_delete)
+                            imageView.visibility = View.VISIBLE
                             //authorityDelete?.let { authority -> it.authorityOnTouch(authority) }
-                            it.onClick {
-                                val list = getDataList().filterIsInstance<FileBean>()
-                                val pos = list.map { l -> l.src }.indexOf(bean.src)
+                            imageView.onClick { _ ->
+                                val list = getDataList<FileBean>()
+                                val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
                                 (context as Activity).messageDialog(msg = "是否删除改照片") { alertFragment, view ->
                                     remove(pos + 1)
                                     recyclerView.removeViewAt(pos + 1)
@@ -136,7 +136,12 @@ class GridImageLayout : LinearLayout {
                 injector.with {
                     it.onClick {
                         ImageSelector.multiSelected(context as Activity) { imageList ->
-                            this@register.addDataList(imageList.map { FileBean(it.path.fileName, it.path) })
+                            this@register.addDataList(imageList.map {
+                                FileBean(
+                                    filename = it.path.fileName,
+                                    src = it.path
+                                )
+                            })
                         }
                     }
                 }
@@ -163,17 +168,17 @@ class GridImageLayout : LinearLayout {
         mList.addAll(dataList)
         SlimAdapter.creator()
             .register<FileBean>(R.layout.layout_image_selector_grid) { injector, bean, position ->
-                injector.getView<ImageView>(R.id.iv_image_selector_picture).glide(bean.src)
+                injector.getView<ImageView>(R.id.iv_image_selector_picture).glide(bean.formatPath)
                 injector
                     .clicked(R.id.iv_image_selector_picture) {
-                        val list = getDataList().filterIsInstance<FileBean>()
-                        val pos = list.map { it.src }.indexOf(bean.src)
+                        val list = getDataList<FileBean>()
+                        val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
 
                         if (pos != -1) {
                             if (displayBody == null) {
-                                (context as Activity).imageDisplay(list.map { it.src }, pos)
+                                (context as Activity).imageDisplay(list.map { it.formatPath }, pos)
                             } else {
-                                displayBody(list.map { it.src }, pos)
+                                displayBody(list.map { it.formatPath }, pos)
                             }
                         }
                     }
@@ -183,8 +188,8 @@ class GridImageLayout : LinearLayout {
                             it.visibility = View.VISIBLE
                             //authorityDelete?.let { authority -> it.authorityOnTouch(authority) }
                             it.onClick {
-                                val list = getDataList().filterIsInstance<FileBean>()
-                                val pos = list.map { l -> l.src }.indexOf(bean.src)
+                                val list = getDataList<FileBean>()
+                                val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
                                 (context as Activity).delete(
                                     UrlConfig.MEDIA_DELETE,
                                     "是否删除该图片？",

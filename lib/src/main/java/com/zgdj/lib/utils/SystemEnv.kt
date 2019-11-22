@@ -2,6 +2,7 @@ package com.zgdj.lib.utils
 
 import android.content.Context
 import com.zgdj.lib.bean.AuthorityBean
+import com.zgdj.lib.bean.DabaBean
 import com.zgdj.lib.bean.UserBean
 import java.io.Serializable
 
@@ -55,5 +56,24 @@ object SystemEnv {
     }
 
     data class AuthorityHolder(val list: List<AuthorityBean>) : Serializable
+
+    //大坝
+    //======================大坝=====================
+    private const val DABA = "daba"
+
+    fun saveMultiDaba(context: Context, list: List<DabaBean>) {
+        PreferenceUtil.save(context, DABAHolder(list), DABA)
+    }
+
+    fun getDabaList(context: Context): List<DabaBean>? {
+        val holder = PreferenceUtil.find(context, DABA, DABAHolder::class.java)
+        return holder?.list
+    }
+
+    fun deleteData(context: Context) {
+        PreferenceUtil.deleteAll(context, DABAHolder::class.java)
+    }
+
+    data class DABAHolder(val list: List<DabaBean>) : Serializable
 
 }

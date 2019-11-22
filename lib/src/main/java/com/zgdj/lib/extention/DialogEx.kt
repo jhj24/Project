@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.view.Gravity
+import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
 import com.jhj.httplibrary.HttpCall
@@ -11,13 +12,10 @@ import com.jhj.prompt.fragment.AlertFragment
 import com.jhj.prompt.fragment.LoadingFragment
 import com.jhj.prompt.fragment.PercentFragment
 import com.jhj.prompt.fragment.base.OnDialogShowOnBackListener
+import com.jhj.slimadapter.SlimAdapter
 import com.zgdj.lib.R
-import kotlinx.android.synthetic.main.dialog_edit_and_detele.view.*
-import org.jetbrains.anko.alarmManager
+import com.zgdj.lib.bean.BottomDialogBean
 import org.jetbrains.anko.find
-import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.sdk27.coroutines.onTouch
-import org.w3c.dom.Text
 
 
 fun Fragment.customDialog(layoutRes: Int, body: (View, AlertFragment) -> Unit) {
@@ -30,6 +28,10 @@ fun Fragment.bottomCustomDialog(layoutRes: Int, body: (View, AlertFragment) -> U
 
 fun Fragment.bottomSingleDialog(title: String = "请选择", list: List<String>, body: (AlertFragment, String) -> Unit) {
     context?.bottomSingleDialog(title, list, body)
+}
+
+fun Fragment.singleDialog(title: String, vararg bean: BottomDialogBean, clicked: (String, Int) -> Unit){
+    context?.singleDialog(title, *bean,clicked = clicked)
 }
 
 fun Fragment.bottomMultiDialog(title: String = "请选择", list: List<String>, selectedList: List<Int>, body: (AlertFragment, List<Int>) -> Unit) {
@@ -48,7 +50,7 @@ fun Fragment.downloadDialog(tag: Any, text: String = "正在下载...", body: (P
     return context?.downloadDialog(tag, text, body)
 }
 
-fun Fragment.loadingDialog(text: String = "正在下载...", body: (LoadingFragment) -> Unit = {}): LoadingFragment.Builder? {
+fun Fragment.loadingDialog(text: String = "正在加载...", body: (LoadingFragment) -> Unit = {}): LoadingFragment.Builder? {
     return context?.loadingDialog(text, body)
 }
 
@@ -79,11 +81,30 @@ fun Context.bottomCustomDialog(layoutRes: Int, body: (View, AlertFragment) -> Un
             .show()
 }
 
-fun Context.bottomEditDialog(title: String = "提示", edit: AlertFragment.(TextView) -> Unit, delete: AlertFragment.(TextView) -> Unit) {
-    bottomCustomDialog(R.layout.dialog_edit_and_detele) { view, alertFragment ->
-        view.tv_dialog_name.text = title
-        alertFragment.edit(view.tv_dialog_edit)
-        alertFragment.delete(view.tv_dialog_delete)
+fun Context.singleDialog(title: String, vararg array: BottomDialogBean, clicked: (String, Int) -> Unit) {
+    bottomCustomDialog(R.layout.dialog_bottom_selector) { view, alertFragment ->
+        view.find<TextView>(R.id.tv_dialog_title).text = title
+        SlimAdapter.creator()
+                .register<BottomDialogBean>(R.layout.list_item_bottom_selector) { injector, bean, position ->
+                    injector.text(R.id.text_view, bean.title)
+                            .image(R.id.image_view, bean.path)
+                            .clicked {
+                                alertFragment.dismiss()
+                                clicked(bean.title, position)
+                            }
+                            .with {
+                                it.setOnTouchListener { v, event ->
+                                    if (event.action == MotionEvent.ACTION_DOWN) {
+                                        if (isAuthorityForbid(bean.authority)) {
+                                            return@setOnTouchListener true
+                                        }
+                                    }
+                                    return@setOnTouchListener false
+                                }
+                            }
+                }
+                .attachTo(view.find(R.id.recycler_view))
+                .setDataList(array.asList())
     }
 }
 
@@ -161,7 +182,7 @@ fun Context.downloadDialog(tag: Any, text: String = "正在下载...", body: (Pe
             .show()
 }
 
-fun Context.loadingDialog(text: String = "正在下载...", body: (LoadingFragment) -> Unit = {}): LoadingFragment.Builder {
+fun Context.loadingDialog(text: String = "正在加载...", body: (LoadingFragment) -> Unit = {}): LoadingFragment.Builder {
     return LoadingFragment.Builder(this)
             .setText(text)
             .setCancelOnTouchOut(false)

@@ -8,6 +8,38 @@
 
     </declare-styleable>
 
+    <declare-styleable name="InputLayout">
+        <attr name="il_style">
+            <enum name="il_selector" value="0" />
+            <enum name="il_input" value="1" />
+            <enum name="il_multiLeftRight" value="2" />
+            <enum name="il_switch" value="3" />
+            <enum name="il_display" value="4" />
+            <enum name="il_title" value="5" />
+            <enum name="il_multiUpDown" value="6" /><!---->
+        </attr>
+        <attr name="il_labelText" format="string" />
+        <attr name="il_labelTextColor" format="color" />
+        <attr name="il_labelTextSize" format="float" />
+        <attr name="il_labelTextGravity">
+            <enum name="right" value="0" />
+            <enum name="left" value="1" />
+        </attr>
+        <attr name="il_isColonVisibility" format="boolean" />
+        <attr name="il_contentText" format="string" />
+        <attr name="il_contentTextColor" format="color" />
+        <attr name="il_contentTextSize" format="float" />
+        <attr name="il_contentTextGravity">
+            <enum name="right" value="0" />
+            <enum name="left" value="1" />
+        </attr>
+        <attr name="il_hint" format="string" />
+        <attr name="il_isOpen" format="boolean" />
+        <attr name="il_isShowSwitchText" format="boolean" />
+        <attr name="il_openText" format="string" />
+        <attr name="il_closeText" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="LabelInputLayout">
         <attr name="isShowBottomLine" />
         <attr name="labelText" format="string" />

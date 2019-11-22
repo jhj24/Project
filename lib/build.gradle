@@ -80,7 +80,7 @@ dependencies {
 
     //图片
     api library["glide"]
-    api 'com.github.jhj24:ImageSelector:v0.1.3'
+    api library["image-selector"]
 
     //dialog
     api library["prompt-dialog"]

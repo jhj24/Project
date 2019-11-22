@@ -108,9 +108,7 @@ fun EditText.inputLimit(maxSize: Int = 200, msg: String) {
 
 fun View.authorityOnLongClick(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
     setOnLongClickListener {
-        val authorityList = SystemEnv.getUserAuthority(context)
-        val authority = authorityList?.find { it.path == string }
-        if (authority?.authority == 0) {
+        if (context.isAuthorityForbid(string)) {
             forbiddenBody()
             context.toast("没有权限")
             return@setOnLongClickListener true
@@ -125,9 +123,7 @@ fun View.authorityOnLongClick(string: String, allowedBody: () -> Unit = {}, forb
 fun View.authorityOnTouch(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
     setOnTouchListener { v, event ->
         if (event.action == MotionEvent.ACTION_DOWN) {
-            val authorityList = SystemEnv.getUserAuthority(context)
-            val authority = authorityList?.find { it.path == string }
-            if (authority?.authority == 0) {
+            if (context.isAuthorityForbid(string)) {
                 forbiddenBody()
                 context.toast("没有权限")
                 return@setOnTouchListener true
@@ -156,9 +152,15 @@ fun RecyclerView.preventStuck() {
     isFocusable = false
 }
 
-fun ViewInjector.image(id: Int, path: Any): ViewInjector {
+fun ViewInjector.glide(id: Int, path: Any): ViewInjector {
     val imageView = getView<ImageView>(id)
     imageView.glide(path)
+    return this
+}
+
+fun ViewInjector.imageAvatar(id: Int, path: Any): ViewInjector {
+    val imageView = getView<ImageView>(id)
+    imageView.glideAvatar(path)
     return this
 }
 

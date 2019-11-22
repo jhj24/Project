@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--选择-->
+        <LinearLayout
+            android:id="@+id/layout_selector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_press"
+            android:paddingRight="@dimen/bill_padding_right"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_selector_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:minHeight="@dimen/bill_height_item"
+                android:text="单元工程"
+                android:textColor="@color/text_normal" />
+
+            <TextView
+                android:id="@+id/tv_selector_colon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="：" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2">
+
+                <TextView
+                    android:id="@+id/tv_selector_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:gravity="center_vertical"
+                    android:hint="请选择"
+                    android:minHeight="@dimen/bill_height_item"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_system" />
+
+                <TextView
+                    android:id="@+id/tv_selector_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_system" />
+
+                <ImageView
+                    android:id="@+id/iv_selector_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_arrow_right_black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--单行输入-->
+        <LinearLayout
+            android:id="@+id/layout_input_single"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_press"
+            android:paddingRight="@dimen/bill_padding_right"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_input_single_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:minHeight="@dimen/bill_height_item"
+                android:text="单元工程"
+                android:textColor="@color/text_normal" />
+
+            <TextView
+                android:id="@+id/tv_input_single_colon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="：" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2">
+
+
+                <EditText
+                    android:id="@+id/et_input_single_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入"
+                    android:minHeight="@dimen/bill_height_item"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_system" />
+
+
+                <TextView
+                    android:id="@+id/tv_input_single_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/text_size_system" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!--多行输入-->
+        <LinearLayout
+            android:id="@+id/layout_input_multi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_press"
+            android:gravity="top"
+            android:paddingTop="10dp"
+            android:paddingRight="@dimen/bill_padding_right"
+            android:paddingBottom="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_input_multi_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="top|right"
+                android:paddingTop="10dp"
+                android:text="单元工程"
+                android:textColor="@color/text_normal" />
+
+            <TextView
+                android:id="@+id/tv_input_multi_colon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:paddingTop="10dp"
+                android:text="：" />
+
+            <EditText
+                android:id="@+id/et_input_multi_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:background="@drawable/shape_multi_input"
+                android:gravity="top"
+                android:hint="请输入"
+                android:minHeight="@dimen/bill_height_item"
+                android:minLines="5"
+                android:padding="10dp"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/text_size_system" />
+
+        </LinearLayout>
+
+        <!--switch-->
+
+        <LinearLayout
+            android:id="@+id/layout_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_press"
+            android:paddingRight="@dimen/bill_padding_right"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_switch_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:minHeight="@dimen/bill_height_item"
+                android:text="单元工程"
+                android:textColor="@color/text_normal" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.zgdj.lib.widget.SwitchButton
+                    android:id="@+id/switch_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_item_press"
+            android:gravity="center_vertical|left"
+            android:minHeight="@dimen/bill_height_item"
+            android:paddingLeft="@dimen/bill_padding_left"
+            android:text="单元工程"
+            android:textColor="#333333"
+            android:textSize="@dimen/text_size_normal"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/layout_multi_up_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_press"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_multi_up_down_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:minHeight="@dimen/bill_height_item"
+                android:paddingLeft="@dimen/bill_padding_left"
+                android:text="单元工程"
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_normal" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/line_color" />
+
+            <EditText
+                android:id="@+id/et_multi_up_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="top"
+                android:minLines="5"
+                android:paddingLeft="@dimen/bill_padding_left"
+                android:paddingTop="10dp"
+                android:paddingRight="@dimen/bill_padding_right"
+                android:paddingBottom="10dp"
+                android:text="111"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/text_size_system" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_color" />
+</LinearLayout>

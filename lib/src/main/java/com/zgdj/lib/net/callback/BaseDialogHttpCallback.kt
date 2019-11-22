@@ -2,7 +2,6 @@ package com.zgdj.lib.net.callback
 
 import android.app.Activity
 import com.jhj.httplibrary.HttpCall
-import com.jhj.httplibrary.callback.JsonHttpCallback
 import com.zgdj.lib.extention.loadingDialog
 import org.jetbrains.anko.toast
 

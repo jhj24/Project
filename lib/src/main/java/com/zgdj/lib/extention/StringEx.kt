@@ -36,7 +36,7 @@ val String.sdf: SimpleDateFormat
 val String.formatBooleanArray: BooleanArray
     get() = TimePickerUtils.formatType(this)
 
-fun String.sdf(date: Date): String? {
+fun String.sdf(date: Date?): String? {
     try {
         val sdf = SimpleDateFormat(this, Locale.getDefault())
         return sdf.format(date)

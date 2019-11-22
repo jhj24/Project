@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Looper
+import android.support.v4.app.Fragment
 import com.jhj.httplibrary.HttpCall
 import com.jhj.httplibrary.adapt.CallAdapt
 import com.jhj.httplibrary.model.HttpParams
@@ -52,10 +53,10 @@ fun Context.uploadMedia(module: String, use: String, vararg pathList: String, bo
         withContext(Dispatchers.IO) {
             for (path in pathList) {
                 val result = HttpCall.post(UrlConfig.MEDIA_UPLOAD)
-                    .addHeader("module", module)
-                    .addHeader("use", use)
-                    .addFile("file", File(path))
-                    .adaptSync(object : CallAdapt<DataResult<FileBean>>() {})
+                        .addHeader("module", module)
+                        .addHeader("use", use)
+                        .addFile("file", File(path))
+                        .adaptSync(object : CallAdapt<DataResult<FileBean>>() {})
                 if (result?.code != 1) {
                     isSuccess = false
                 }
@@ -69,21 +70,25 @@ fun Context.uploadMedia(module: String, use: String, vararg pathList: String, bo
     }
 }
 
+fun Fragment.delete(url: String, msg: String, vararg pairs: Pair<String, String>, body: () -> Unit = {}) {
+    activity?.delete(url, msg, *pairs, body = body)
+}
+
 fun Activity.delete(url: String, msg: String, vararg pairs: Pair<String, String>, body: () -> Unit = {}) {
     val httpParams = HttpParams()
     pairs.forEach { httpParams.put(it.first, it.second) }
     messageDialog(msg = msg) { alert, view ->
         HttpCall.post(url)
-            .addParams(httpParams)
-            .enqueue(object : DataDialogHttpCallback<Any>(this, "正在删除...") {
+                .addParams(httpParams)
+                .enqueue(object : DataDialogHttpCallback<Any>(this, "正在删除...") {
 
-                override val mIsOnSuccessToast: Boolean
-                    get() = true
+                    override val mIsOnSuccessToast: Boolean
+                        get() = true
 
-                override fun onSuccess(data: Any?, resultType: ResultType) {
-                    body()
-                }
-            })
+                    override fun onSuccess(data: Any?, resultType: ResultType) {
+                        body()
+                    }
+                })
     }
 }
 
@@ -106,11 +111,11 @@ fun Context.loginExpired(msg: String? = Config.LOGIN_EXPIRED): Boolean {
  * 处理同步网络请求结果
  */
 suspend fun <T> DataResult<T>?.applyMain(
-    activity: Activity,
-    isOnSuccessToast: Boolean = false,
-    isOnFailureToast: Boolean = true,
-    isOnFailureFinish: Boolean = false,
-    block: (T?) -> Unit
+        activity: Activity,
+        isOnSuccessToast: Boolean = false,
+        isOnFailureToast: Boolean = true,
+        isOnFailureFinish: Boolean = false,
+        block: (T?) -> Unit
 ) {
     if (this == null) return
     withContext(Dispatchers.Main) {

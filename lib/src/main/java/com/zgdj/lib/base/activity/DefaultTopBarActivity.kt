@@ -35,7 +35,7 @@ abstract class DefaultTopBarActivity : BaseActivity() {
         }
     }
 
-    fun topBarRightImage(image: Int, color: Int? = null, body: () -> Unit) {
+    fun topBarRightImage(image: Int = R.mipmap.ic_top_bar_add, color: Int? = null, body: () -> Unit) {
         if (color != null) iv_top_bar_right.setColorFilter(color, PorterDuff.Mode.SRC_IN)
         iv_top_bar_right.visibility = View.VISIBLE
         iv_top_bar_right.glide(image)
