@@ -14,4 +14,6 @@ object LiveDataConfig {
 
     const val APPROVAL_REFRESH = "approval_refresh" //审批流程结束，刷新数据
 
+    const val PATROL_PROBLEM_REFRESH = "patrol_problem_refresh"
+
 }

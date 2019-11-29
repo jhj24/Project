@@ -15,6 +15,7 @@ object Config {
     const val PATH = "path"
     const val SIZE = "size"
     const val STATUS = "status"
+    const val STAGE = "stage"
     const val IS_LAST_STEP = "is_last_step"
     const val START_TIME = "start_time"
     const val END_TIME = "end_time"

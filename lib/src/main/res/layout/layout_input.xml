@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -23,8 +24,8 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical|right"
                 android:minHeight="@dimen/bill_height_item"
-                android:text="单元工程"
-                android:textColor="@color/text_normal" />
+                android:textColor="@color/text_normal"
+                tools:text="单元工程" />
 
             <TextView
                 android:id="@+id/tv_selector_colon"
@@ -84,8 +85,8 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical|right"
                 android:minHeight="@dimen/bill_height_item"
-                android:text="单元工程"
-                android:textColor="@color/text_normal" />
+                android:textColor="@color/text_normal"
+                tools:text="单元工程" />
 
             <TextView
                 android:id="@+id/tv_input_single_colon"
@@ -145,8 +146,8 @@
                 android:layout_weight="1"
                 android:gravity="top|right"
                 android:paddingTop="10dp"
-                android:text="单元工程"
-                android:textColor="@color/text_normal" />
+                android:textColor="@color/text_normal"
+                tools:text="单元工程" />
 
             <TextView
                 android:id="@+id/tv_input_multi_colon"
@@ -189,8 +190,8 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical|right"
                 android:minHeight="@dimen/bill_height_item"
-                android:text="单元工程"
-                android:textColor="@color/text_normal" />
+                android:textColor="@color/text_normal"
+                tools:text="单元工程" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -220,10 +221,10 @@
             android:gravity="center_vertical|left"
             android:minHeight="@dimen/bill_height_item"
             android:paddingLeft="@dimen/bill_padding_left"
-            android:text="单元工程"
             android:textColor="#333333"
             android:textSize="@dimen/text_size_normal"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:text="单元工程" />
 
         <LinearLayout
             android:id="@+id/layout_multi_up_down"
@@ -239,9 +240,9 @@
                 android:gravity="center_vertical|left"
                 android:minHeight="@dimen/bill_height_item"
                 android:paddingLeft="@dimen/bill_padding_left"
-                android:text="单元工程"
                 android:textColor="#333333"
-                android:textSize="@dimen/text_size_normal" />
+                android:textSize="@dimen/text_size_normal"
+                tools:text="单元工程" />
 
             <View
                 android:layout_width="match_parent"

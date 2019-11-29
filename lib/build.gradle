@@ -81,6 +81,7 @@ dependencies {
     //图片
     api library["glide"]
     api library["image-selector"]
+    api library["photo-view"]
 
     //dialog
     api library["prompt-dialog"]

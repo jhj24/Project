@@ -39,8 +39,9 @@ class InputLayout : LinearLayout {
     var style = STYLE_SELECTOR
 
     //label
+
     private var labelTextColor: Int = color(R.color.text_normal)
-        get() = if (style == STYLE_TITLE || style == STYLE_MULTI_UP_DOWN) 0xff333333.toInt() else color(R.color.text_normal)
+        get() = if (style == STYLE_TITLE) 0xff333333.toInt() else color(R.color.text_normal)
     private var labelTextSize: Float = 14f
     private var labelTextGravity: Int = RIGHT
 
@@ -60,16 +61,19 @@ class InputLayout : LinearLayout {
     private var openText: String? = null
     private var closeText: String? = null
 
+
     var labelText: String?
-        get() = labelView?.text?.toString()
         set(value) {
             labelView?.text = value
+            field = value
         }
 
     var contentText: String?
         get() = contentView?.text?.toString()
         set(value) {
-            contentView?.text = value
+            val text = if (value.isNullOrBlank() && style == STYLE_DISPLAY) "/" else value
+            contentView?.text = text
+            field = text
         }
 
     constructor(context: Context?) : this(context, null)
@@ -102,6 +106,7 @@ class InputLayout : LinearLayout {
         contentTextGravity = typedArray?.getInt(R.styleable.InputLayout_il_contentTextGravity, contentTextGravity)
                 ?: contentTextGravity
         contentTextHint = typedArray?.getString(R.styleable.InputLayout_il_hint)
+                ?: (if (style == STYLE_SELECTOR) "请选择" else "请输入")
 
         //switch
         isOpen = typedArray?.getBoolean(R.styleable.InputLayout_il_isOpen, isOpen) ?: isOpen
@@ -110,13 +115,17 @@ class InputLayout : LinearLayout {
         openText = typedArray?.getString(R.styleable.InputLayout_il_openText)
         closeText = typedArray?.getString(R.styleable.InputLayout_il_closeText)
 
+
+        val isShowBottomLine = typedArray?.getBoolean(R.styleable.InputLayout_il_isShowBottomLine, true)
+                ?: true
+
         initContent()
         typedArray?.recycle()
-        mView.line.visibility = View.VISIBLE
+        mView.line.visibility = if (isShowBottomLine) View.VISIBLE else View.GONE
         addView(mView)
     }
 
-    fun setStyle1(style: Int) {
+    fun setLayoutStyle(style: Int) {
         this.style = style
         format(mView)
         initContent()
@@ -156,14 +165,14 @@ class InputLayout : LinearLayout {
             it.text = labelText
             it.textColor = labelTextColor
             it.textSize = labelTextSize
-            if (style == STYLE_TITLE){
-                it.gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
-            }else if (labelTextGravity == RIGHT) {
-                it.gravity = Gravity.RIGHT or Gravity.CENTER_VERTICAL
+            if (style == STYLE_TITLE) {
+                it.gravity = Gravity.LEFT or labelGravity
+            } else if (labelTextGravity == RIGHT) {
+                it.gravity = Gravity.RIGHT or labelGravity
             } else if (labelTextGravity == LEFT && style != STYLE_MULTI_UP_DOWN) {
                 val layoutParams = LayoutParams(wrapContent, wrapContent)
                 layoutParams.weight = 0f
-                it.gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
+                it.gravity = Gravity.LEFT or labelGravity
                 it.leftPadding = dip(20)
                 it.layoutParams = layoutParams
             }

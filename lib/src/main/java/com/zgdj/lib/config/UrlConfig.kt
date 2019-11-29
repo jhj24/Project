@@ -124,9 +124,9 @@ object UrlConfig {
     const val PATROL_SAVE = "/patrol/patrol/savePatrol"
     const val PATROL_DELETE = "/patrol/patrol/delPatrol"
     const val PATROL_ADD_EMPTY = "/patrol/patrol/addEmptyPatrol"
-    const val PATROL_INFO = "/patrol/patrol/detailPatrol"
-    const val PATROL_HISTORY = "/patrol/patrol/listHistory"
-    const val PATROL_RECEIVER = "/patrol/patrol/getPatrolDealInfo"
+    const val PATROL_INFO = "/patrol/patrol/detailPatrol" //巡检记录详情/问题整改详情-基本信息和流程信息
+    const val PATROL_HISTORY = "/patrol/patrol/listHistory" //巡检记录和问题整改的处理历史
+    const val PATROL_RECEIVER = "/patrol/patrol/getPatrolDealInfo" //处理信息处理人和下一步接收人信息
 
     const val PROBLEM_SAVE = "/patrol/problem/saveproblem"
     const val PROBLEM_INFO = "/patrol/problem/detailProblem"
@@ -139,6 +139,5 @@ object UrlConfig {
 
     const val SECTION_LIST = "/project/Section/listSection" //巡检部位列表
     const val LIB_LIST = "/patrol/lib/listLib"
-
 
 }

@@ -38,6 +38,7 @@
         <attr name="il_isShowSwitchText" format="boolean" />
         <attr name="il_openText" format="string" />
         <attr name="il_closeText" format="string" />
+        <attr name="il_isShowBottomLine" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="LabelInputLayout">

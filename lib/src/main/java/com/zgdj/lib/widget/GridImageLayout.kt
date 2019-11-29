@@ -2,6 +2,7 @@ package com.zgdj.lib.widget
 
 import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
@@ -24,10 +25,16 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 class GridImageLayout : LinearLayout {
 
     var recyclerView: RecyclerView
+    val mContext: Context
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        if (context is ContextWrapper) {
+            this.mContext = context.baseContext
+        } else {
+            this.mContext = context
+        }
         orientation = VERTICAL
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.GridImageLayout)
         val title = typedArray.getString(R.styleable.GridImageLayout_image_title)
@@ -51,6 +58,7 @@ class GridImageLayout : LinearLayout {
 
         //图片列表
         val recyclerView = RecyclerView(context)
+        recyclerView.preventStuck()
         recyclerView.layoutManager = GridLayoutManager(context, 3)
         recyclerView.setPadding(dip(20), dip(5), dip(20), dip(5))
         recyclerView.addItemDecoration(GridItemDecoration(3, dip(5), false))
@@ -59,174 +67,171 @@ class GridImageLayout : LinearLayout {
     }
 
     fun setEditGridImage(
-        key: Int,
-        dataList: List<FileBean>,
-        model: String,
-        use: String,
-        isDelete: Boolean,
-        authorityDelete: String? = null,
-        authorityAdd: String? = null,
-        displayBody: ((List<String>, Int) -> Unit?)? = null,
-        body: (List<FileBean>) -> Unit
+            key: Int,
+            dataList: List<FileBean>,
+            model: String,
+            use: String,
+            isDelete: Boolean,
+            authorityDelete: String? = null,
+            authorityAdd: String? = null,
+            displayBody: ((List<String>, Int) -> Unit?)? = null,
+            deleteBody: (FileBean) -> Unit = {},
+            body: (List<FileBean>) -> Unit
     ) {
-        setGridImage(key, dataList, model, use, true, isDelete, authorityDelete, authorityAdd, displayBody, body)
+        setGridImage(key, dataList, model, use, true, isDelete, authorityDelete, authorityAdd, displayBody, deleteBody, body)
     }
 
     fun setDisplayImage(
-        dataList: List<FileBean>,
-        isDelete: Boolean,
-        authorityDelete: String? = null,
-        displayBody: ((List<String>, Int) -> Unit?)? = null
+            dataList: List<FileBean>,
+            isDelete: Boolean,
+            authorityDelete: String? = null,
+            displayBody: ((List<String>, Int) -> Unit?)? = null,
+            deleteBody: (FileBean) -> Unit = {}
     ) {
         setGridImage(
-            key = 0,
-            model = "",
-            use = "",
-            dataList = dataList,
-            isDelete = isDelete,
-            authorityDelete = authorityDelete,
-            displayBody = displayBody,
-            body = {})
+                key = 0,
+                model = "",
+                use = "",
+                dataList = dataList,
+                isDelete = isDelete,
+                authorityDelete = authorityDelete,
+                displayBody = displayBody,
+                deleteBody = deleteBody,
+                body = {})
     }
 
 
     fun setGridImage(
-        dataList: List<FileBean>,
-        isAdd: Boolean = true,
-        isDelete: Boolean = true,
-        displayBody: ((List<String>, Int) -> Unit?)? = null,
-        body: (List<FileBean>) -> Unit
+            dataList: List<FileBean>,
+            isAdd: Boolean = true,
+            isDelete: Boolean = true,
+            displayBody: ((List<String>, Int) -> Unit?)? = null,
+            body: (List<FileBean>) -> Unit
     ) {
         val mList = arrayListOf<Any>()
         if (isAdd) mList.add(Camera())
         mList.addAll(dataList)
         SlimAdapter.creator()
-            .register<FileBean>(R.layout.layout_image_selector_grid) { injector, bean, position ->
-                injector.getView<ImageView>(R.id.iv_image_selector_picture).glide(bean.formatPath)
-                injector
-                    .clicked(R.id.iv_image_selector_picture) {
-                        val list = getDataList<FileBean>()
-                        val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
-
-                        if (pos != -1) {
-                            if (displayBody == null) {
-                                (context as Activity).imageDisplay(list.map { it.formatPath }, pos)
-                            } else {
-                                displayBody(list.map { it.formatPath }, pos)
-                            }
-                        }
-                    }
-                    .with<ImageView>(R.id.iv_image_selector_state) { imageView ->
-                        if (isDelete) {
-                            imageView.glide(R.mipmap.ic_work_delete)
-                            imageView.visibility = View.VISIBLE
-                            //authorityDelete?.let { authority -> it.authorityOnTouch(authority) }
-                            imageView.onClick { _ ->
+                .register<FileBean>(R.layout.layout_image_selector_grid) { injector, bean, position ->
+                    injector.getView<ImageView>(R.id.iv_image_selector_picture).glide(bean.formatPath)
+                    injector
+                            .clicked(R.id.iv_image_selector_picture) {
                                 val list = getDataList<FileBean>()
                                 val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
-                                (context as Activity).messageDialog(msg = "是否删除改照片") { alertFragment, view ->
-                                    remove(pos + 1)
-                                    recyclerView.removeViewAt(pos + 1)
-                                }
-                            }
-                        }
-                    }
-            }
-            .register<Camera>(R.layout.layout_image_selector_grid_camera) { injector, bean, positon ->
-                injector.with {
-                    it.onClick {
-                        ImageSelector.multiSelected(context as Activity) { imageList ->
-                            this@register.addDataList(imageList.map {
-                                FileBean(
-                                    filename = it.path.fileName,
-                                    src = it.path
-                                )
-                            })
-                        }
-                    }
-                }
-            }
-            .attachTo(recyclerView)
-            .setDataList(mList)
-    }
 
-
-    fun setGridImage(
-        key: Int,
-        dataList: List<FileBean>,
-        model: String,
-        use: String,
-        isAdd: Boolean = true,
-        isDelete: Boolean = true,
-        authorityDelete: String? = null,
-        authorityAdd: String? = null,
-        displayBody: ((List<String>, Int) -> Unit?)? = null,
-        body: (List<FileBean>) -> Unit
-    ) {
-        val mList = arrayListOf<Any>()
-        if (isAdd) mList.add(Camera())
-        mList.addAll(dataList)
-        SlimAdapter.creator()
-            .register<FileBean>(R.layout.layout_image_selector_grid) { injector, bean, position ->
-                injector.getView<ImageView>(R.id.iv_image_selector_picture).glide(bean.formatPath)
-                injector
-                    .clicked(R.id.iv_image_selector_picture) {
-                        val list = getDataList<FileBean>()
-                        val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
-
-                        if (pos != -1) {
-                            if (displayBody == null) {
-                                (context as Activity).imageDisplay(list.map { it.formatPath }, pos)
-                            } else {
-                                displayBody(list.map { it.formatPath }, pos)
-                            }
-                        }
-                    }
-                    .with<ImageView>(R.id.iv_image_selector_state) {
-                        if (isDelete) {
-                            it.glide(R.mipmap.ic_work_delete)
-                            it.visibility = View.VISIBLE
-                            //authorityDelete?.let { authority -> it.authorityOnTouch(authority) }
-                            it.onClick {
-                                val list = getDataList<FileBean>()
-                                val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
-                                (context as Activity).delete(
-                                    UrlConfig.MEDIA_DELETE,
-                                    "是否删除该图片？",
-                                    "key" to bean.key.toString()
-                                ) {
-                                    if (pos != -1) {
-                                        remove(pos + 1)
-                                        recyclerView.removeViewAt(pos + 1)
+                                if (pos != -1) {
+                                    if (displayBody == null) {
+                                        (mContext as Activity).imageDisplay(list.map { it.formatPath }, pos)
+                                    } else {
+                                        displayBody(list.map { it.formatPath }, pos)
                                     }
                                 }
                             }
-                        }
-                    }
-            }
-            .register<Camera>(R.layout.layout_image_selector_grid_camera) { injector, bean, positon ->
-                injector.with {
-                    //authorityAdd?.let { authority -> it.authorityOnTouch(authority) }
-                    it.onClick {
-                        ImageSelector.multiSelected(context as Activity) { imageList ->
-                            (context as Activity).uploadMedia(
-                                key.toString(),
-                                model,
-                                use,
-                                *imageList.map { localMedia -> localMedia.path }.toTypedArray()
-                            ) { isTrue, list ->
-                                if (isTrue) {
-                                    body(list)
-                                } else {
-                                    context.toast("文件上传失败")
+                            .with<ImageView>(R.id.iv_image_selector_state) { imageView ->
+                                if (isDelete) {
+                                    imageView.glide(R.mipmap.ic_work_delete)
+                                    imageView.visibility = View.VISIBLE
+                                    //authorityDelete?.let { authority -> it.authorityOnTouch(authority) }
+                                    imageView.onClick { _ ->
+                                        val list = getDataList<FileBean>()
+                                        val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
+                                        (mContext as Activity).messageDialog(msg = "是否删除改照片") { alertFragment, view ->
+                                            remove(pos + 1)
+                                            recyclerView.removeViewAt(pos + 1)
+                                        }
+                                    }
                                 }
-                                this@register.addDataList(list)
+                            }
+                }
+                .register<Camera>(R.layout.layout_image_selector_grid_camera) { injector, bean, positon ->
+                    injector.with {
+                        it.onClick {
+                            ImageSelector.multiSelected(mContext as Activity) { imageList ->
+                                this@register.addDataList(imageList.map {
+                                    FileBean(filename = it.path.fileName, src = it.path)
+                                })
                             }
                         }
                     }
                 }
-            }
-            .attachTo(recyclerView)
-            .setDataList(mList)
+                .attachTo(recyclerView)
+                .setDataList(mList)
+    }
+
+
+    fun setGridImage(
+            key: Int,
+            dataList: List<FileBean>,
+            model: String,
+            use: String,
+            isAdd: Boolean = true,
+            isDelete: Boolean = true,
+            authorityDelete: String? = null,
+            authorityAdd: String? = null,
+            displayBody: ((List<String>, Int) -> Unit?)? = null,
+            deleteBody: (FileBean) -> Unit = {},
+            body: (List<FileBean>) -> Unit
+    ) {
+        val mList = arrayListOf<Any>()
+        mList.addAll(dataList)
+        if (isAdd) mList.add(Camera())
+        SlimAdapter.creator()
+                .register<FileBean>(R.layout.layout_image_selector_grid) { injector, bean, position ->
+                    injector.getView<ImageView>(R.id.iv_image_selector_picture).glide(bean.formatPath)
+                    injector
+                            .clicked(R.id.iv_image_selector_picture) {
+                                val list = getDataList<FileBean>()
+                                val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
+
+                                if (pos != -1) {
+                                    if (displayBody == null) {
+                                        (mContext as Activity).imageDisplay(list.map { it.formatPath }, pos)
+                                    } else {
+                                        displayBody(list.map { it.formatPath }, pos)
+                                    }
+                                }
+                            }
+                            .with<ImageView>(R.id.iv_image_selector_state) {
+                                if (isDelete) {
+                                    it.glide(R.mipmap.ic_work_delete)
+                                    it.visibility = View.VISIBLE
+                                    authorityDelete?.let { authority -> it.authorityOnTouch(authority) }
+                                    it.onClick {
+                                        val list = getDataList<FileBean>()
+                                        val pos = list.map { it.formatPath }.indexOf(bean.formatPath)
+                                        (mContext as Activity).delete(UrlConfig.MEDIA_DELETE, "是否删除该图片？", "key" to bean.key.toString()) {
+                                            if (pos != -1) {
+                                                deleteBody(list[pos])
+                                                remove(pos)
+                                                recyclerView.removeViewAt(pos)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                }
+                .register<Camera>(R.layout.layout_image_selector_grid_camera) { injector, bean, positon ->
+                    injector.with {
+                        authorityAdd?.let { authority -> it.authorityOnTouch(authority) }
+                        it.onClick {
+                            ImageSelector.multiSelected(mContext as Activity) { imageList ->
+                                (mContext as Activity).uploadMedia(
+                                        model,
+                                        use,
+                                        *imageList.map { localMedia -> localMedia.path }.toTypedArray()
+                                ) { isTrue, list ->
+                                    if (isTrue) {
+                                        body(list)
+                                    } else {
+                                        context.toast("文件上传失败")
+                                    }
+                                    this@register.addDataList(0, list)
+                                }
+                            }
+                        }
+                    }
+                }
+                .attachTo(recyclerView)
+                .setDataList(mList)
     }
 }

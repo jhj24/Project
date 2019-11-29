@@ -26,19 +26,16 @@ object FileUtils {
 
     fun getSDPath(subDir: String?): String? {
 
-        if (Environment.MEDIA_MOUNTED == Environment
-                        .getExternalStorageState()
-        ) {
+        if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()) {
 
-            var path = Environment.getExternalStorageDirectory()
-                    .absolutePath
+            var path = Environment.getExternalStorageDirectory().absolutePath
 
             if (!path.endsWith("/"))
                 path += "/"
 
-            path += PROJECT_DIR + "/"
+            path += "$PROJECT_DIR/"
 
-            if (subDir != null && subDir.trim { it <= ' ' }.length > 0)
+            if (subDir != null && subDir.trim { it <= ' ' }.isNotEmpty())
                 path += "$subDir/"
 
             val f = File(path)

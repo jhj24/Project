@@ -115,10 +115,10 @@ suspend fun <T> DataResult<T>?.applyMain(
         isOnSuccessToast: Boolean = false,
         isOnFailureToast: Boolean = true,
         isOnFailureFinish: Boolean = false,
-        block: (T?) -> Unit
-) {
-    if (this == null) return
-    withContext(Dispatchers.Main) {
+        block: (T?) -> Unit={}
+): T? {
+    if (this == null) return null
+    return withContext(Dispatchers.Main) {
         if (code == 1) {
             if (isOnSuccessToast && msg.isNotBlank()) msg.let { activity.toast(it) }
             block(data)
@@ -132,7 +132,7 @@ suspend fun <T> DataResult<T>?.applyMain(
         } else if (code == -1) {
             if (msg.isNotBlank()) activity.toast(msg)
         }
-        return@withContext
+        return@withContext data
     }
 }
 
