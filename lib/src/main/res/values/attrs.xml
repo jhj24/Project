@@ -34,6 +34,7 @@
             <enum name="left" value="1" />
         </attr>
         <attr name="il_hint" format="string" />
+        <attr name="il_isContentVisibility" format="boolean" />
         <attr name="il_isOpen" format="boolean" />
         <attr name="il_isShowSwitchText" format="boolean" />
         <attr name="il_openText" format="string" />

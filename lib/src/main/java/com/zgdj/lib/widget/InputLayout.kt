@@ -39,9 +39,9 @@ class InputLayout : LinearLayout {
     var style = STYLE_SELECTOR
 
     //label
-
-    private var labelTextColor: Int = color(R.color.text_normal)
+    private val defaultLabelTextColor: Int
         get() = if (style == STYLE_TITLE) 0xff333333.toInt() else color(R.color.text_normal)
+    private var labelTextColor: Int = defaultLabelTextColor
     private var labelTextSize: Float = 14f
     private var labelTextGravity: Int = RIGHT
 
@@ -54,6 +54,7 @@ class InputLayout : LinearLayout {
     private var contentTextSize: Float = 14f
     private var contentTextGravity: Int = LEFT
     private var contentTextHint: String? = ""
+    private var isContentVisibility = true
 
     //switch
     private var isOpen = true
@@ -86,38 +87,40 @@ class InputLayout : LinearLayout {
 
         //label
         labelText = typedArray?.getString(R.styleable.InputLayout_il_labelText)
-        labelTextColor = typedArray?.getColor(R.styleable.InputLayout_il_labelTextColor, labelTextColor)
-                ?: labelTextColor
+        labelTextColor = typedArray?.getColor(R.styleable.InputLayout_il_labelTextColor, defaultLabelTextColor)
+            ?: defaultLabelTextColor
         labelTextSize = typedArray?.getFloat(R.styleable.InputLayout_il_labelTextSize, labelTextSize)
-                ?: labelTextSize
+            ?: labelTextSize
         labelTextGravity = typedArray?.getInt(R.styleable.InputLayout_il_labelTextGravity, labelTextGravity)
-                ?: labelTextGravity
+            ?: labelTextGravity
 
         //colon
         isColonVisibility = typedArray?.getBoolean(R.styleable.InputLayout_il_isColonVisibility, isColonVisibility)
-                ?: isColonVisibility
+            ?: isColonVisibility
 
         //content
         contentText = typedArray?.getString(R.styleable.InputLayout_il_contentText)
         contentTextColor = typedArray?.getColor(R.styleable.InputLayout_il_contentTextColor, contentTextColor)
-                ?: contentTextColor
+            ?: contentTextColor
         contentTextSize = typedArray?.getFloat(R.styleable.InputLayout_il_contentTextSize, contentTextSize)
-                ?: contentTextSize
+            ?: contentTextSize
         contentTextGravity = typedArray?.getInt(R.styleable.InputLayout_il_contentTextGravity, contentTextGravity)
-                ?: contentTextGravity
+            ?: contentTextGravity
         contentTextHint = typedArray?.getString(R.styleable.InputLayout_il_hint)
-                ?: (if (style == STYLE_SELECTOR) "请选择" else "请输入")
+            ?: (if (style == STYLE_SELECTOR) "请选择" else "请输入")
+        isContentVisibility = typedArray?.getBoolean(R.styleable.InputLayout_il_isContentVisibility, isContentVisibility)
+            ?: isContentVisibility
 
         //switch
         isOpen = typedArray?.getBoolean(R.styleable.InputLayout_il_isOpen, isOpen) ?: isOpen
         isShowSwitchText = typedArray?.getBoolean(R.styleable.InputLayout_il_isShowSwitchText, isShowSwitchText)
-                ?: isShowSwitchText
+            ?: isShowSwitchText
         openText = typedArray?.getString(R.styleable.InputLayout_il_openText)
         closeText = typedArray?.getString(R.styleable.InputLayout_il_closeText)
 
 
         val isShowBottomLine = typedArray?.getBoolean(R.styleable.InputLayout_il_isShowBottomLine, true)
-                ?: true
+            ?: true
 
         initContent()
         typedArray?.recycle()
@@ -181,11 +184,17 @@ class InputLayout : LinearLayout {
             it.visibility = if (isColonVisibility) View.VISIBLE else View.GONE
         }
         contentView?.let {
-            it.text = contentText
-            it.textColor = contentTextColor
-            it.textSize = contentTextSize
-            it.gravity = if (contentTextGravity == RIGHT) Gravity.RIGHT or contentGravity else Gravity.LEFT or contentGravity
-            it.hint = contentTextHint
+            if (isContentVisibility) {
+                it.visibility = View.VISIBLE
+                it.text = contentText
+                it.textColor = contentTextColor
+                it.textSize = contentTextSize
+                it.gravity = if (contentTextGravity == RIGHT) Gravity.RIGHT or contentGravity else Gravity.LEFT or contentGravity
+                it.hint = contentTextHint
+            } else {
+                it.visibility = View.INVISIBLE
+            }
+
         }
         unitView?.let {
 
