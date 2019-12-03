@@ -3,12 +3,27 @@ package com.zgdj.lib.config
 object LiveDataConfig {
 
 
-    const val CELL_KEY = "cell_key" //单元工程Key传递，用户选择检测报告
-    const val MESSAGE_APPROVAL = "message_approval" //消息审批刷新数据
+    /**
+     * 刷新，用于LiveDataBus事件信息传递参数
+     *
+     * 1、消息个数
+     */
+    const val EVENT_REFRESH = "event_refresh"
 
-    //使用：1、消息作废；2、
-    const val MESSAGE_STATUS = "message_status" //获取消息个数（）
+    /**
+     * 单元工程Key传递，用户选择检测报告
+     */
 
+    const val CELL_KEY = "cell_key" //
+    /**
+     * 刷新小红点
+     */
+    const val MESSAGE_NUM_STATISTIC = "message_num_statistic"
+
+
+    /**
+     * 个人资料头像修改
+     */
     const val AVATAR_CHANGE = "avatar_change" //头像
     const val PIT = "pit"
 

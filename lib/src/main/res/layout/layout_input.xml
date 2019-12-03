@@ -227,6 +227,7 @@
             tools:text="单元工程" />
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/layout_multi_up_down"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
