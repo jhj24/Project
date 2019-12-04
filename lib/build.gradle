@@ -86,12 +86,14 @@ dependencies {
     //dialog
     api library["prompt-dialog"]
 
-    //tbs
-    api files('libs/tbs_sdk.jar')
-
     //agent
     api library["agent-web"]
     api library["agent-download"]
     api library["agent-file"]
+
+    //tencent
+    api library["tencent-bugly"]//bugly
+    api files('libs/tbs_sdk.jar') //tbs
+
 
 }
