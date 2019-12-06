@@ -12,7 +12,7 @@ object SystemEnv {
     private const val LOGIN = "login"
 
     fun saveLogin(context: Context, user: UserBean) {
-        //JPushInterface.setAlias(context, user.key, user.username)
+
         PreferenceUtil.save(context, user, LOGIN)
     }
 
@@ -70,7 +70,7 @@ object SystemEnv {
         return holder?.list
     }
 
-    fun deleteData(context: Context) {
+    fun deleteDaba(context: Context) {
         PreferenceUtil.deleteAll(context, DABAHolder::class.java)
     }
 

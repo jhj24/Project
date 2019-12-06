@@ -61,7 +61,7 @@ abstract class BaseRefreshListFragment<T> : BaseListFragment<T>() {
         //监听软件盘的搜索按钮
         view.et_search_input.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                closeKeyboard(view.et_search_input)
+                view.et_search_input.closeKeyboard()
                 when {
                     view.et_search_input.text.isNullOrBlank() -> {
                         context?.toast("请输入要搜索的关键字")

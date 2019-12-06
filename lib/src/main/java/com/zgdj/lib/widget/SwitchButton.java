@@ -97,7 +97,7 @@ public class SwitchButton extends View {
         isShowText = a.getBoolean(R.styleable.SwitchButton_isShowText, false);
         openText = a.getString(R.styleable.SwitchButton_openText);
         closeText = a.getString(R.styleable.SwitchButton_closeText);
-        textSize = a.getDimension(R.styleable.SwitchButton_textSize, 14 * ViewExKt.getScaleDensity(this));
+        textSize = a.getDimension(R.styleable.SwitchButton_textSize, 14 * getContext().getResources().getDisplayMetrics().scaledDensity);
         state = isOpened ? STATE_SWITCH_ON : STATE_SWITCH_OFF;
         lastState = state;
         a.recycle();

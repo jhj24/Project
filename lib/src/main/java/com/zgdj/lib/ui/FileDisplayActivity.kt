@@ -11,6 +11,7 @@ import com.zgdj.lib.extention.isNetworkConnected
 import com.zgdj.lib.extention.isUrl
 import com.zgdj.lib.net.callback.DownloadDialogHttpCallback
 import com.zgdj.lib.utils.FileUtils
+import com.zgdj.lib.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_file_display.*
 import org.jetbrains.anko.toast
 import java.io.File
@@ -21,6 +22,7 @@ class FileDisplayActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_file_display)
+        StatusBarUtil.setLightMode(this)
         //initTopBar("表单", View.VISIBLE)
         val fileUrl = intent.getStringExtra(Config.PATH) //文件路径
         val fileSize = intent.getLongExtra(Config.SIZE, 0L)

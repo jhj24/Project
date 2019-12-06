@@ -74,7 +74,7 @@ abstract class BaseListFragment<T> : BaseFragment() {
     private fun initAdapter() {
 
         mParentView.recyclerView.setOnTouchListener { v, _ ->
-            closeKeyboard(v)
+            v.closeKeyboard()
             if (mParentView.et_search_input.text.isNullOrBlank()) {
                 mParentView.layout_search_mark.visibility = View.VISIBLE
             }
@@ -97,7 +97,7 @@ abstract class BaseListFragment<T> : BaseFragment() {
         var repeatStr: String? = null
         mParentView.layout_search_mark.setOnTouchListener { _, _ ->
             mParentView.layout_search_mark.visibility = View.GONE
-            openKeyboard(mParentView.et_search_input)
+            mParentView.et_search_input.openKeyboard()
             return@setOnTouchListener false
         }
 

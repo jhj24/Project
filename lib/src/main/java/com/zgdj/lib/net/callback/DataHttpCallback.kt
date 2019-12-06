@@ -13,16 +13,7 @@ abstract class DataHttpCallback<T>(activity: Activity) : BaseHttpCallback<DataRe
     override fun onResult(data: DataResult<T>?, resultType: ResultType) {
         if (data?.code == 1) {
             onSuccess(data.data, resultType)
-            if (mIsOnSuccessToast && data.msg != null) mActivity.toast(data.msg)
-        } else {
-            if (mIsOnFailureToast && data?.msg != null) mActivity.toast(data.msg)
-            if (mIsOnFailureFinish) mActivity.finish()
         }
-    }
-
-    override fun onFailure(msg: String) {
-        if (mIsOnFailureToast) mActivity.toast(msg)
-        if (mIsOnFailureFinish) mActivity.finish()
     }
 
     abstract fun onSuccess(data: T?, resultType: ResultType)

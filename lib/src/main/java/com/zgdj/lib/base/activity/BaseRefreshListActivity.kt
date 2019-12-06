@@ -65,7 +65,7 @@ abstract class BaseRefreshListActivity<T> : BaseListActivity<T>() {
         //监听软件盘的搜索按钮
         et_search_input.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                closeKeyboard(et_search_input)
+                et_search_input.closeKeyboard()
                 when {
                     et_search_input.text.isNullOrBlank() -> {
                         toast("请输入要搜索的关键字")

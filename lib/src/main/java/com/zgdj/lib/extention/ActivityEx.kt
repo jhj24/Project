@@ -45,12 +45,6 @@ import java.io.InputStreamReader
 import java.util.*
 
 
-val Context.density: Float
-    get() = this.resources.displayMetrics.density
-
-val Context.scaleDensity: Float
-    get() = this.resources.displayMetrics.scaledDensity
-
 val Context.screenHeight: Int
     get() = resources.displayMetrics.heightPixels
 
@@ -60,9 +54,6 @@ val Context.screenWidth: Int
 val Context.inflater: LayoutInflater
     get() = LayoutInflater.from(this)
 
-
-val Context.buttonTextColor: Int
-    get() = getResColor(R.color.bg_bottom_color)
 
 fun Context.selected(press: Int, normal: Int): StateListDrawable {
     return selected(getResDrawable(press), getResDrawable(normal))
@@ -94,37 +85,7 @@ fun <T> Context.assets(assetsFileName: String): T {
 }
 
 
-//===========================keyboard=============================
-fun Context.openKeyboard(view: View) {
-    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
-    imm.showSoftInput(view, InputMethodManager.RESULT_SHOWN)
-    imm.toggleSoftInput(
-            InputMethodManager.SHOW_FORCED,
-            InputMethodManager.HIDE_IMPLICIT_ONLY
-    );
-}
-
-fun Context.closeKeyboard(view: View) {
-    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
-    imm.hideSoftInputFromWindow(view.windowToken, 0)
-}
-
-
-fun Context.timePick(date: Date?, type: BooleanArray = TimePickerUtils.type2, body: (Date) -> Unit) {
-    TimePickerUtils.timePicker(this, date, type, body)
-}
-
-fun Context.timePick(startData: Date?, endData: Date?, isStartTime: Boolean, type: BooleanArray = TimePickerUtils.type2,
-        msg: String = "开始时间小于结束事件，请重新选择", body: (Date) -> Unit = {}, calculate: (startDate: Date, endDate: Date) -> Unit = { _, _ -> }) {
-    TimePickerUtils.timePicker(this, startData, endData, isStartTime, type, msg, body, calculate)
-}
-
-
 //===================================file=========================
-fun Context.fileTypeIcon(filePath: String, imageView: ImageView) {
-    FileUtils.fileTypeIcon(this, filePath, imageView)
-}
-
 fun Context.readAssets(name: String): String {
     val inputStream = resources.assets.open(name)
     val text = inputStream.use {

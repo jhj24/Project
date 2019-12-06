@@ -14,5 +14,5 @@ object GlobalConfig {
     const val CELL_MODE = 1
 
     //是否是多坝样式
-    const val IS_MULTI_DAM = true
+    const val IS_MULTI_DAM = false
 }

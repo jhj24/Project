@@ -11,11 +11,6 @@ abstract class BaseDialogHttpCallback<T>(activity: Activity, val dialogText: Str
 
     var dialog = mActivity.loadingDialog { HttpCall.cancelAll() }
 
-    override fun onFailure(msg: String) {
-        if (mIsOnFailureToast) mActivity.toast(msg)
-        if (mIsOnFailureFinish) mActivity.finish()
-    }
-
     override fun onFinish() {
         super.onFinish()
         if (dialog.isShow()) {

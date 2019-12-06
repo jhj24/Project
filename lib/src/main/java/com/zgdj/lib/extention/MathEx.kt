@@ -21,7 +21,9 @@ fun Number.removeDecimalPoint(): String {
     return str
 }
 
-
+/**
+ * 距离转换
+ */
 fun Float.formatDistance(): String {
     return if (this > 1000) {
         "${(this / 1000).decimalDigits()}km"

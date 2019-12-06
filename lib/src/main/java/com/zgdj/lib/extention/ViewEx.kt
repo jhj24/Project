@@ -1,5 +1,6 @@
 package com.zgdj.lib.extention
 
+import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorRes
@@ -11,6 +12,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -26,12 +28,6 @@ import org.jetbrains.anko.dip
 import org.jetbrains.anko.toast
 
 
-val View.density: Float
-    get() = context.density
-
-val View.scaleDensity: Float
-    get() = context.scaleDensity
-
 fun View.color(@ColorRes color: Int) = context.getResColor(color)
 
 fun View.colorRound(color: Int) {
@@ -39,10 +35,10 @@ fun View.colorRound(color: Int) {
 }
 
 fun View.drawable(@DrawableRes drawableRes: Int): Drawable =
-        ContextCompat.getDrawable(context, drawableRes) ?: resources.getDrawable(drawableRes)
+    ContextCompat.getDrawable(context, drawableRes) ?: resources.getDrawable(drawableRes)
 
 fun ImageView.colorFilter(color: Int) =
-        this.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+    this.setColorFilter(color, PorterDuff.Mode.SRC_IN)
 
 //===========ImageView===========
 fun ImageView.glide(imgPath: Any, options: RequestOptions) {
@@ -66,9 +62,25 @@ fun ImageView.glideAvatar(path: Any) {
 }
 
 fun ImageView.glideNoCache(path: Any) {
-    glide(path, RequestOptions().placeholder(R.mipmap.ic_image_selector_placeholder).diskCacheStrategy(DiskCacheStrategy.NONE))
+    glide(
+        path,
+        RequestOptions().placeholder(R.mipmap.ic_image_selector_placeholder).diskCacheStrategy(DiskCacheStrategy.NONE)
+    )
 }
 
+fun View.openKeyboard() {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
+    imm.showSoftInput(this, InputMethodManager.RESULT_SHOWN)
+    imm.toggleSoftInput(
+        InputMethodManager.SHOW_FORCED,
+        InputMethodManager.HIDE_IMPLICIT_ONLY
+    );
+}
+
+fun View.closeKeyboard() {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
+    imm.hideSoftInputFromWindow(windowToken, 0)
+}
 
 fun View.singleSelected(vararg views: View) {
     this.isSelected = true

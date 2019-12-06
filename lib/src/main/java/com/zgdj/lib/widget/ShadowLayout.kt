@@ -8,8 +8,8 @@ import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.zgdj.lib.R
-import com.zgdj.lib.extention.density
 import org.jetbrains.anko.dimen
+import org.jetbrains.anko.dip
 
 
 class ShadowLayout : FrameLayout {
@@ -22,9 +22,6 @@ class ShadowLayout : FrameLayout {
 
     private var mInvalidateShadowOnSizeChanged = true
     private var mForceInvalidateShadow = false
-
-    val defaultCornerRadius: Float
-        get() = context.density * 3
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -100,7 +97,7 @@ class ShadowLayout : FrameLayout {
                 shadowHeight - shadowRadius)
 
         if (dy > 0) {
-            shadowRect.top -= 3 * context.density
+            shadowRect.top -= dip(3)
             shadowRect.bottom -= dy
         } else if (dy < 0) {
             shadowRect.top += Math.abs(dy)
@@ -108,7 +105,7 @@ class ShadowLayout : FrameLayout {
         }
 
         if (dx > 0) {
-            shadowRect.left -= 3 * context.density
+            shadowRect.left -= dip(3)
             shadowRect.right -= dx
         } else if (dx < 0) {
             shadowRect.left += Math.abs(dx)

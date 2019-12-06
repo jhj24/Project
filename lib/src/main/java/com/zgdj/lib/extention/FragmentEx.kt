@@ -10,10 +10,3 @@ fun BaseFragment.getResDrawable(@DrawableRes id: Int): Drawable {
     return ContextCompat.getDrawable(mActivity, id) ?: resources.getDrawable(id)
 }
 
-fun BaseFragment.closeKeyboard(view: View) {
-    context?.closeKeyboard(view)
-}
-
-fun BaseFragment.openKeyboard(view: View) {
-    context?.openKeyboard(view)
-}

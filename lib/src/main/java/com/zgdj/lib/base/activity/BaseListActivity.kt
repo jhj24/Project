@@ -113,7 +113,7 @@ abstract class BaseListActivity<T> : BaseActivity() {
     private fun initAdapter() {
 
         recyclerView.setOnTouchListener { v, _ ->
-            closeKeyboard(v)
+            v.closeKeyboard()
             if (et_search_input.text.isNullOrBlank()) {
                 layout_search_mark.visibility = View.VISIBLE
             }
@@ -121,11 +121,11 @@ abstract class BaseListActivity<T> : BaseActivity() {
         }
 
         adapterLocal = SlimAdapter.creator()
-                .setGenericActualType(genericType())
-                .register<T>(itemLayoutRes) { injector, bean, position ->
-                    itemViewConvert(this, injector, bean, position)
-                }
-                .attachTo(recyclerView)
+            .setGenericActualType(genericType())
+            .register<T>(itemLayoutRes) { injector, bean, position ->
+                itemViewConvert(this, injector, bean, position)
+            }
+            .attachTo(recyclerView)
     }
 
 
@@ -165,7 +165,7 @@ abstract class BaseListActivity<T> : BaseActivity() {
         //点击筛选按钮
         layout_filter.visibility = View.VISIBLE
         layout_filter.onClick {
-            closeKeyboard(layout_filter)
+            layout_filter.closeKeyboard()
             if (!drawer_layout.isDrawerOpen(Gravity.END)) {
                 drawer_layout.openDrawer(Gravity.END)
             } else {
@@ -213,7 +213,7 @@ abstract class BaseListActivity<T> : BaseActivity() {
         var repeatStr: String? = null
         layout_search_mark.setOnTouchListener { _, _ ->
             layout_search_mark.visibility = View.GONE
-            openKeyboard(et_search_input)
+            et_search_input.openKeyboard()
             return@setOnTouchListener false
         }
 
@@ -255,7 +255,7 @@ abstract class BaseListActivity<T> : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        closeKeyboard(iv_top_bar_back)
+        iv_top_bar_back.closeKeyboard()
         super.onBackPressed()
     }
 
