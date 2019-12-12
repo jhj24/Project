@@ -55,6 +55,7 @@ public class SwitchButton extends View {
     protected int colorShadow;
     protected boolean hasShadow;
     protected boolean isOpened;
+    protected boolean isEnable = true;
     protected boolean isShowText;
     protected String openText;
     protected String closeText;
@@ -140,6 +141,11 @@ public class SwitchButton extends View {
         invalidate();
     }
 
+    public void setEnable(boolean isEnable) {
+        this.isEnable = isEnable;
+        invalidate();
+    }
+
     public boolean isOpened() {
         return isOpened;
     }
@@ -153,12 +159,13 @@ public class SwitchButton extends View {
     }
 
     public void toggleSwitch(boolean isOpened) {
+        if (!isEnable) return;
         int wishState = isOpened ? STATE_SWITCH_ON : STATE_SWITCH_OFF;
         if (wishState == state) {
             return;
         }
         if ((wishState == STATE_SWITCH_ON && (state == STATE_SWITCH_OFF || state == STATE_SWITCH_OFF2))
-                || (wishState == STATE_SWITCH_OFF && (state == STATE_SWITCH_ON || state == STATE_SWITCH_ON2))) {
+            || (wishState == STATE_SWITCH_OFF && (state == STATE_SWITCH_ON || state == STATE_SWITCH_ON2))) {
             sAnim = 1;
         }
         bAnim = 1;
@@ -185,7 +192,7 @@ public class SwitchButton extends View {
             resultWidth = widthSize;
         } else {
             resultWidth = (int) (50 * getResources().getDisplayMetrics().density + 0.5f)
-                    + getPaddingLeft() + getPaddingRight();
+                + getPaddingLeft() + getPaddingRight();
             if (widthMode == MeasureSpec.AT_MOST) {
                 resultWidth = Math.min(resultWidth, widthSize);
             }
@@ -279,7 +286,7 @@ public class SwitchButton extends View {
             int green = colorShadow >> 8 & 0xFF;
             int blue = colorShadow & 0xFF;
             shadowGradient = new RadialGradient(bCenterX, bCenterY, bRadius, Color.argb(200, red, green, blue),
-                    Color.argb(25, red, green, blue), Shader.TileMode.CLAMP);
+                Color.argb(25, red, green, blue), Shader.TileMode.CLAMP);
         }
     }
 
@@ -423,6 +430,7 @@ public class SwitchButton extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (!isEnable) return false;
         if ((state == STATE_SWITCH_ON || state == STATE_SWITCH_OFF) && (sAnim * bAnim == 0)) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:

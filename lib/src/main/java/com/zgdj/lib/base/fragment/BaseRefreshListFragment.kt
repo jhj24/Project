@@ -112,7 +112,7 @@ abstract class BaseRefreshListFragment<T> : BaseListFragment<T>() {
     }
 
 
-    private fun httpRequest(isRefresh: Boolean) {
+    protected fun httpRequest(isRefresh: Boolean) {
         if (isRefresh) {
             pageNo = startPageNum
             mParentView.smartRefreshLayout.resetNoMoreData()

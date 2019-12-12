@@ -19,6 +19,10 @@ object LiveDataConfig {
      * 刷新小红点
      */
     const val MESSAGE_NUM_STATISTIC = "message_num_statistic"
+    /**
+     *
+     */
+    const val MESSAGE_NUM = "message_num"
 
 
     /**
@@ -26,8 +30,6 @@ object LiveDataConfig {
      */
     const val AVATAR_CHANGE = "avatar_change" //头像
     const val PIT = "pit"
-
-    const val APPROVAL_REFRESH = "approval_refresh" //审批流程结束，刷新数据
 
     const val PATROL_PROBLEM_REFRESH = "patrol_problem_refresh"
 

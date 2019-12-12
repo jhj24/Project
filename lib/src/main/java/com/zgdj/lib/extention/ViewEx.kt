@@ -23,7 +23,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.jhj.slimadapter.holder.ViewInjector
 import com.zgdj.lib.R
 import com.zgdj.lib.utils.BackGroundUtils
-import com.zgdj.lib.utils.SystemEnv
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.toast
 
@@ -116,21 +115,6 @@ fun EditText.inputLimit(maxSize: Int = 200, msg: String) {
         }
     })
 }
-
-
-fun View.authorityOnLongClick(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
-    setOnLongClickListener {
-        if (context.isAuthorityForbid(string)) {
-            forbiddenBody()
-            context.toast("没有权限")
-            return@setOnLongClickListener true
-        } else {
-            allowedBody()
-            return@setOnLongClickListener false
-        }
-    }
-}
-
 
 fun View.authorityOnTouch(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
     setOnTouchListener { v, event ->

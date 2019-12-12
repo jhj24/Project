@@ -6,10 +6,11 @@ import com.zgdj.lib.BuildConfig
 object UrlConfig {
 
     //const val BASE_URL = "http://192.168.1.77:99"
-    const val BASE_URL = "http://zzbhidi.f3322.net:10092"
+    const val BASE_URL = "http://zzbhidi.f3322.net:10092" //剑科
     const val PYTHON_URL = "http://192.168.1.77:8003" //Python 服务器
     const val MAP_URL = "http://192.168.1.77:96" //地图服务器
     const val BILL_URL = "http://192.168.1.91:8100" //bill表单
+    const val SOCKET = "http://192.168.1.77:2120" //socket链接
 
 
     //======文件图片======

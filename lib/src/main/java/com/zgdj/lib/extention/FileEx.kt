@@ -29,6 +29,27 @@ val String.fileSuffix: String
         return ""
     }
 
+val File.fileSize: String
+    get() {
+        val length = this.length()
+        val df = DecimalFormat("#.00")
+        var fileSizeString = ""
+        val wrongSize = "0B"
+        if (length == 0L) {
+            return wrongSize
+        }
+        if (length < 1024) {
+            fileSizeString = df.format(length.toDouble()) + "B"
+        } else if (length < 1024 * 1024) {
+            fileSizeString = df.format(length.toDouble() / 1024) + "KB"
+        } else if (length < 1024*1024*1024) {
+            fileSizeString = df.format(length.toDouble() / (1024*1024)) + "MB"
+        } else {
+            fileSizeString = df.format(length.toDouble() / 1073741824) + "GB"
+        }
+        return fileSizeString
+    }
+
 /**
  * 格式化文件路径
  */
@@ -57,23 +78,4 @@ val String.fileTypeIcon: Int
     }
 
 
-val File.fileSize: String
-    get() {
-        val length = this.length()
-        val df = DecimalFormat("#.00")
-        var fileSizeString = ""
-        val wrongSize = "0B"
-        if (length == 0L) {
-            return wrongSize
-        }
-        if (length < 1024) {
-            fileSizeString = df.format(length.toDouble()) + "B"
-        } else if (length < 1024 * 1024) {
-            fileSizeString = df.format(length.toDouble() / 1024) + "KB"
-        } else if (length < 1024*1024*1024) {
-            fileSizeString = df.format(length.toDouble() / (1024*1024)) + "MB"
-        } else {
-            fileSizeString = df.format(length.toDouble() / 1073741824) + "GB"
-        }
-        return fileSizeString
-    }
+

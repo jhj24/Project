@@ -3,20 +3,14 @@ package com.zgdj.lib.extention
 import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
-import android.os.Looper
 import android.support.v4.app.Fragment
-import com.alibaba.android.arouter.launcher.ARouter
 import com.jhj.httplibrary.HttpCall
 import com.jhj.httplibrary.adapt.CallAdapt
 import com.jhj.httplibrary.model.HttpParams
 import com.zgdj.lib.bean.FileBean
-import com.zgdj.lib.bean.UserBean
-import com.zgdj.lib.config.ArouterConfig
-import com.zgdj.lib.config.Config
 import com.zgdj.lib.config.UrlConfig
 import com.zgdj.lib.net.DataResult
 import com.zgdj.lib.net.callback.DataDialogHttpCallback
-import com.zgdj.lib.utils.SystemEnv
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -34,17 +28,6 @@ fun Context.isNetworkConnected(): Boolean {
     }
     return false
 }
-
-val Context.loginUserInfo: UserBean?
-    get() {
-        val user: UserBean? = SystemEnv.getLogin(this)
-        if (user == null) {
-            ARouter.getInstance().build(ArouterConfig.LOGIN).withString(Config.DATA, Config.LOGIN_EXPIRED).navigation()
-            return null
-        }
-        return user
-    }
-
 
 fun Context.uploadMedia(module: String, use: String, vararg pathList: String, body: (Boolean, List<FileBean>) -> Unit) {
     GlobalScope.launch(Dispatchers.Main) {
