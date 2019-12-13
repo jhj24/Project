@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.zgdj.lib.extention.scaleDensity
 import org.jetbrains.anko.dip
+import org.jetbrains.anko.sp
 
 class UnitDataView : View {
     val paint = Paint()
@@ -41,7 +41,7 @@ class UnitDataView : View {
             paint.reset()
             paint.isAntiAlias = true
             paint.color = 0x36000000.toInt()
-            paint.textSize = 12 * scaleDensity
+            paint.textSize = sp(12).toFloat()
             return paint
         }
 
@@ -50,7 +50,7 @@ class UnitDataView : View {
             paint.reset()
             paint.isAntiAlias = true
             paint.color = 0xaf000000.toInt()
-            paint.textSize = 12 * scaleDensity
+            paint.textSize = sp(12).toFloat()
             return paint
         }
 

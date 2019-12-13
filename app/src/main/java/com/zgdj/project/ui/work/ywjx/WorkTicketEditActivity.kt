@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.zgdj.lib.base.activity.DefaultTopBarActivity
 import com.zgdj.lib.config.Config
-import com.zgdj.lib.extention.formatBooleanArray
-import com.zgdj.lib.extention.parse
-import com.zgdj.lib.extention.sdf
-import com.zgdj.lib.extention.timePick
+import com.zgdj.lib.extention.*
 import com.zgdj.lib.utils.activityresult.ActivityResult
 import com.zgdj.project.R
 import kotlinx.android.synthetic.main.activity_work_ticket_edit.*
@@ -107,9 +104,9 @@ class WorkTicketEditActivity : DefaultTopBarActivity() {
         label_licensor_time.setShowArrow(true)
         label_licensor_time.onClick {
             val pattern = "yyyy-MM-dd"
-            val data = pattern.parse(label_licensor_time.getInputText())
-            timePick(data, pattern.formatBooleanArray) {
-                label_licensor_time.setInputText(pattern.sdf(it))
+            val data = label_licensor_time.getInputText().parse(pattern)
+            timePicker(data, pattern) {
+                label_licensor_time.setInputText(it.format(pattern))
             }
         }
         layout_operate.setOnCommitListener {
@@ -128,27 +125,27 @@ class WorkTicketEditActivity : DefaultTopBarActivity() {
     fun addOrEdit() {
         label_start_time.onClick {
             val pattern = "yyyy-MM-dd HH:mm"
-            val startData = pattern.parse(label_start_time.getInputText())
-            val endData = pattern.parse(label_end_time.getInputText())
-            timePick(startData, endData, true, pattern.formatBooleanArray, body = {
-                label_start_time.setInputText(pattern.sdf(it))
-            })
+            val startData = label_start_time.getInputText().parse(pattern)
+            val endData = label_end_time.getInputText().parse(pattern)
+            timePicker(startData, endData, true, pattern) {
+                label_start_time.setInputText(it.format(pattern))
+            }
         }
 
         label_end_time.onClick {
             val pattern = "yyyy-MM-dd HH:mm"
-            val startData = pattern.parse(label_start_time.getInputText())
-            val endData = pattern.parse(label_end_time.getInputText())
-            timePick(startData, endData, false, pattern.formatBooleanArray, body = {
-                label_end_time.setInputText(pattern.sdf(it))
-            })
+            val startData = label_start_time.getInputText().parse(pattern)
+            val endData = label_end_time.getInputText().parse(pattern)
+            timePicker(startData, endData, false) {
+                label_end_time.setInputText(it.format(pattern))
+            }
         }
 
         label_signer_time.onClick {
             val pattern = "yyyy-MM-dd"
-            val data = pattern.parse(label_signer_time.getInputText())
-            timePick(data, pattern.formatBooleanArray) {
-                label_signer_time.setInputText(pattern.sdf(it))
+            val data = label_signer_time.getInputText().parse(pattern)
+            timePicker(data, pattern) {
+                label_signer_time.setInputText(it.format(pattern))
             }
         }
 

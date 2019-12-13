@@ -30,9 +30,9 @@ class InspectionEditActivity : DefaultTopBarActivity() {
         if (status == "未开始") {
             str = readAssets("data_2_1_2.json")
             label_time.onClick {
-                val date = pattern.parse(label_time.getInputText())
-                timePick(date, pattern.formatBooleanArray) {
-                    label_time.setInputText(pattern.sdf(it))
+                val date = label_time.getInputText().parse(pattern)
+                timePicker(date, pattern) {
+                    label_time.setInputText(it.format(pattern))
                 }
             }
             layout_operate.setOnCommitListener {

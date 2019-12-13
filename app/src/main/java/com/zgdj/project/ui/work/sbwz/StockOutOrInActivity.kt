@@ -40,7 +40,7 @@ class StockOutOrInActivity : DefaultTopBarActivity() {
                     .putInt(Config.NUM, label_num.getInputText().toInt())
                     .finish()
 
-            closeKeyboard(layout_operate)
+            layout_operate.closeKeyboard()
         }
     }
 }

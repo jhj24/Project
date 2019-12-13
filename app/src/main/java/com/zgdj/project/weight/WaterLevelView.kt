@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.zgdj.lib.extention.scaleDensity
 import org.jetbrains.anko.dip
+import org.jetbrains.anko.sp
 
 class WaterLevelView : View {
 
@@ -28,7 +28,7 @@ class WaterLevelView : View {
             paint.reset()
             paint.isAntiAlias = true
             paint.color = 0x26000000.toInt()
-            paint.textSize = 12 * scaleDensity
+            paint.textSize = sp(12).toFloat()
             return paint
         }
 
@@ -37,7 +37,7 @@ class WaterLevelView : View {
             paint.reset()
             paint.isAntiAlias = true
             paint.color = 0xaf000000.toInt()
-            paint.textSize = 12 * scaleDensity
+            paint.textSize = sp(12).toFloat()
             return paint
         }
 
