@@ -15,8 +15,9 @@ android {
         versionCode config.versionCode
         versionName config.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        flavorDimensions "default"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
 
         //X5兼容64位手机
@@ -72,7 +73,7 @@ dependencies {
     api library["json"]
 
     //recyclerView
-    implementation library["smart-refreshlayout"]
+    api library["smart-refreshlayout"]
     api library["adapter"]
 
     //autosize

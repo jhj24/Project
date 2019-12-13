@@ -1,6 +1,5 @@
 package com.zgdj.lib.bean
 
-import android.support.annotation.DrawableRes
 import com.zgdj.lib.extention.filePath
 import java.io.Serializable
 
@@ -18,9 +17,9 @@ data class UserBean(
 
     val cate: String = "",
     val group: String = "",
-    val phone: String = "",
-    val tele: String = "",
-    val email: String = "",
+    val phone: String? = "",
+    val tele: String? = "",
+    val email: String? = "",
     val token: String = "",
     val remark: String = "",
     val depart: String = "",
@@ -32,6 +31,7 @@ data class UserBean(
 ) : Serializable {
     val formatPath: String
         get() = filepath.filePath
+
 }
 
 /**
@@ -83,7 +83,7 @@ data class DabaBean(
 data class BottomDialogBean(
     val title: String,
     val authority: String? = null,
-    @DrawableRes val path: Int
+    val path: Int? = null
 )
 
 /**

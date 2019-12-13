@@ -34,7 +34,7 @@ fun View.colorRound(color: Int) {
 }
 
 fun View.drawable(@DrawableRes drawableRes: Int): Drawable =
-    ContextCompat.getDrawable(context, drawableRes) ?: resources.getDrawable(drawableRes)
+    context.getResDrawable(drawableRes)
 
 fun ImageView.colorFilter(color: Int) =
     this.setColorFilter(color, PorterDuff.Mode.SRC_IN)
@@ -119,7 +119,8 @@ fun EditText.inputLimit(maxSize: Int = 200, msg: String) {
 fun View.authorityOnTouch(string: String, allowedBody: () -> Unit = {}, forbiddenBody: () -> Unit = {}) {
     setOnTouchListener { v, event ->
         if (event.action == MotionEvent.ACTION_DOWN) {
-            if (context.isAuthorityForbid(string)) {
+            val authority = context?.userAuthority?.find { it.path == string }
+            if (authority?.authority == 0) {
                 forbiddenBody()
                 context.toast("没有权限")
                 return@setOnTouchListener true

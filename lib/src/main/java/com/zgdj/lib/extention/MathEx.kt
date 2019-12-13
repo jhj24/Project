@@ -31,3 +31,10 @@ fun Float.formatDistance(): String {
         "${this.decimalDigits()}m"
     }
 }
+
+/**
+ * 最大分割参数
+ */
+fun Int.maxSplitNum(split: Int = 5): Int = if (this % split == 0) this / split else this / split + 1
+
+

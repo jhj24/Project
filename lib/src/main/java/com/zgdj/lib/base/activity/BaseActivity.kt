@@ -1,6 +1,5 @@
 package com.zgdj.lib.base.activity
 
-import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -44,8 +43,8 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
         window.setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
-                        or WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN
+            WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+                    or WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN
         )
         if (isDefaultStatusBar) {
             StatusBarUtil.setTransparentForImageViewInFragment(this, null)
@@ -55,32 +54,29 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun requestPermissions(vararg permissions: String, body: () -> Unit) {
         PermissionsCheck.with(this)
-                .requestPermissions(*permissions)
-                .onPermissionsResult { deniedPermissions, allPermissions ->
-                    if (deniedPermissions.isEmpty()) {
-                        body()
-                    } else {
-                        val infoList = arrayListOf<String>()
-                        deniedPermissions.forEach {
-                            if (PermissionsUtil.permissionsMap.containsKey(it)) {
-                                if (!infoList.contains(PermissionsUtil.permissionsMap[it])) {
-                                    toast("${PermissionsUtil.permissionsMap[it]}权限请求失败")
-                                }
-                                infoList.add(PermissionsUtil.permissionsMap[it] ?: "")
-                                return@forEach
+            .requestPermissions(*permissions)
+            .onPermissionsResult { deniedPermissions, allPermissions ->
+                if (deniedPermissions.isEmpty()) {
+                    body()
+                } else {
+                    val infoList = arrayListOf<String>()
+                    deniedPermissions.forEach {
+                        if (PermissionsUtil.permissionsMap.containsKey(it)) {
+                            if (!infoList.contains(PermissionsUtil.permissionsMap[it])) {
+                                toast("${PermissionsUtil.permissionsMap[it]}权限请求失败")
                             }
+                            infoList.add(PermissionsUtil.permissionsMap[it] ?: "")
+                            return@forEach
                         }
                     }
                 }
+            }
     }
 
     fun closeActivity() {
         finish()
         overridePendingTransition(R.anim.activity_alpha_in, R.anim.activity_alpha_out)
     }
-
-
-    open fun onActivityResult(intent: Intent) {}
 
     override fun onPause() {
         super.onPause()

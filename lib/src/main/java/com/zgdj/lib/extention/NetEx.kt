@@ -77,7 +77,6 @@ fun Activity.delete(url: String, msg: String, vararg pairs: Pair<String, String>
 }
 
 
-
 /**
  * 处理同步网络请求结果
  */
@@ -90,14 +89,14 @@ suspend fun <T> DataResult<T>?.applyMain(
 ): T? {
     if (this == null) return null
     return withContext(Dispatchers.Main) {
-        if (!isLoginExpired){
-            if (code ==1){
+        if (!isLoginExpired) {
+            if (code == 1) {
                 if (isOnSuccessToast && msg.isNotBlank()) msg.let { activity.toast(it) }
                 block(data)
-            }else if (code == 0){
+            } else if (code == 0) {
                 if (isOnFailureToast && msg.isNotBlank()) activity.toast(msg)
                 if (isOnFailureFinish && msg.isNotBlank()) activity.finish()
-            }else if (code == -1){
+            } else if (code == -1) {
                 if (msg.isNotBlank()) activity.toast(msg)
             }
         }
@@ -108,7 +107,7 @@ suspend fun <T> DataResult<T>?.applyMain(
 
 @Throws(Exception::class)
 suspend fun String.fileSize(): Long {
-    return withContext(Dispatchers.Default) {
+    return withContext(Dispatchers.IO) {
         if (isUrl()) {
             val url = URL(this@fileSize)
             val urlConnection = url.openConnection() as HttpURLConnection

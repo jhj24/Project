@@ -9,7 +9,6 @@ import com.amap.api.maps.*
 import com.amap.api.maps.model.*
 import com.zgdj.lib.base.fragment.BaseBottomSheetDialogFragment
 import com.zgdj.lib.config.UrlConfig
-import com.zgdj.lib.extention.requestPermissions
 import com.zgdj.lib.utils.FileUtils
 import com.zgdj.lib.utils.permissions.PermissionsCheck
 import java.io.File
@@ -64,51 +63,44 @@ abstract class BaseAMapBottomSheetDialogFragment : BaseBottomSheetDialogFragment
      * 定位
      */
     fun location(body: (LatLng) -> Unit = {}) {
-       requestPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION) {
-            //定位蓝点样式
-            val myLocationStyle = MyLocationStyle()
-            myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE) //只定位一次
-            myLocationStyle.strokeWidth(0f)//设置定位蓝点精度圈的边框宽度的方法。
-            myLocationStyle.strokeColor(Color.TRANSPARENT)//设置定位蓝点精度圆圈的边框颜色的方法。
-            myLocationStyle.radiusFillColor(Color.TRANSPARENT)//设置定位蓝点精度圆圈的填充颜色的方法。
-            myLocationStyle.showMyLocation(true)//用于满足只想使用定位，不想使用定位小蓝点的场景
-            myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(locationIconRes))
-            //myLocationStyle.interval(2000); //设置连续定位间隔，只在连续定位模式下生效
+        //定位蓝点样式
+        val myLocationStyle = MyLocationStyle()
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE) //只定位一次
+        myLocationStyle.strokeWidth(0f)//设置定位蓝点精度圈的边框宽度的方法。
+        myLocationStyle.strokeColor(Color.TRANSPARENT)//设置定位蓝点精度圆圈的边框颜色的方法。
+        myLocationStyle.radiusFillColor(Color.TRANSPARENT)//设置定位蓝点精度圆圈的填充颜色的方法。
+        myLocationStyle.showMyLocation(true)//用于满足只想使用定位，不想使用定位小蓝点的场景
+        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(locationIconRes))
+        //myLocationStyle.interval(2000); //设置连续定位间隔，只在连续定位模式下生效
 
-            //设置定位蓝点的Style
-            aMap?.myLocationStyle = myLocationStyle
-            aMap?.isMyLocationEnabled = true// 是否启用定位蓝点，默认是false，不定位不显示蓝点。
+        //设置定位蓝点的Style
+        aMap?.myLocationStyle = myLocationStyle
+        aMap?.isMyLocationEnabled = true// 是否启用定位蓝点，默认是false，不定位不显示蓝点。
 
-            //定位按钮是否显示，默认不显示
-            aMap?.uiSettings?.isMyLocationButtonEnabled = isLocation
+        //定位按钮是否显示，默认不显示
+        aMap?.uiSettings?.isMyLocationButtonEnabled = isLocation
 
-            //经过定位，获取经纬度信息：
-            aMap?.setOnMyLocationChangeListener { location ->
-                val bundle = location.extras
-                when (bundle.getInt("errorCode")) {
-                    0 -> {
-                        aMap?.moveCamera(
-                                CameraUpdateFactory.newLatLngZoom(
-                                        LatLng(
-                                                location.latitude,
-                                                location.longitude
-                                        ), scaleSize
-                                )
+        //经过定位，获取经纬度信息：
+        aMap?.setOnMyLocationChangeListener { location ->
+            val bundle = location.extras
+            when (bundle.getInt("errorCode")) {
+                0 -> {
+                    aMap?.moveCamera(
+                        CameraUpdateFactory.newLatLngZoom(
+                            LatLng(
+                                location.latitude,
+                                location.longitude
+                            ), scaleSize
                         )
-                        body(LatLng(location.latitude, location.longitude))
-                    }
-                    12 -> {
-                        requestPermissions(
-                                Manifest.permission.ACCESS_FINE_LOCATION,
-                                Manifest.permission.ACCESS_COARSE_LOCATION
-                        ) {
-                            location()
-                        }
-                    }
-                    else -> {
-                        aMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(39.908823, 116.397470), scaleSize))
-                        body(LatLng(39.908823, 116.397470))
-                    }
+                    )
+                    body(LatLng(location.latitude, location.longitude))
+                }
+                12 -> {
+                    location()
+                }
+                else -> {
+                    aMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(39.908823, 116.397470), scaleSize))
+                    body(LatLng(39.908823, 116.397470))
                 }
             }
         }
@@ -154,16 +146,16 @@ abstract class BaseAMapBottomSheetDialogFragment : BaseBottomSheetDialogFragment
 
     //画marker
     fun drawMarker(
-            latLng: LatLng, isDraggable: Boolean = false, title: String? = "", anchorX: Float = 0.5f, anchorY: Float = 1.0f,
-            marker: Int = R.mipmap.ic_amap_marker_default
+        latLng: LatLng, isDraggable: Boolean = false, title: String? = "", anchorX: Float = 0.5f, anchorY: Float = 1.0f,
+        marker: Int = R.mipmap.ic_amap_marker_default
     ): Marker? {
 
         val markerOption = MarkerOptions()
-                .position(latLng)
-                .draggable(isDraggable)//设置Marker可拖动
-                .anchor(anchorX, anchorY)
-                .icon(BitmapDescriptorFactory.fromResource(marker))
-                .zIndex(100f)
+            .position(latLng)
+            .draggable(isDraggable)//设置Marker可拖动
+            .anchor(anchorX, anchorY)
+            .icon(BitmapDescriptorFactory.fromResource(marker))
+            .zIndex(100f)
         if (title != null) {
             markerOption.title(title)
         }
@@ -172,35 +164,35 @@ abstract class BaseAMapBottomSheetDialogFragment : BaseBottomSheetDialogFragment
 
     //画线
     fun drawLine(
-            latLng: List<LatLng>,
-            width: Float = 10f,
-            color: Int = Color.argb(255, 1, 1, 1), @DrawableRes texture: Int? = null,
-            zIndex: Float = 100f
+        latLng: List<LatLng>,
+        width: Float = 10f,
+        color: Int = Color.argb(255, 1, 1, 1), @DrawableRes texture: Int? = null,
+        zIndex: Float = 100f
     ): Polyline? {
         val polyLine = PolylineOptions()
         if (texture != null) {
             polyLine.customTexture = BitmapDescriptorFactory.fromResource(R.mipmap.ic_amap_custtexure)
         }
         polyLine
-                .addAll(latLng)
-                .width(width)
-                .color(color)
-                .zIndex(zIndex)
+            .addAll(latLng)
+            .width(width)
+            .color(color)
+            .zIndex(zIndex)
         return aMap?.addPolyline(polyLine)
     }
 
 
     //画多边形
     fun drawPolygon(
-            latLng: List<LatLng>, strokeWidth: Float = 5f, strokeColor: Int = Color.argb(180, 63, 145, 252),
-            fillColor: Int = Color.argb(163, 118, 212, 243)
+        latLng: List<LatLng>, strokeWidth: Float = 5f, strokeColor: Int = Color.argb(180, 63, 145, 252),
+        fillColor: Int = Color.argb(163, 118, 212, 243)
     ): Polygon? {
         val polygonOption = PolygonOptions()
-                .addAll(latLng)
-                .strokeColor(strokeColor)
-                .fillColor(fillColor)
-                .strokeWidth(strokeWidth)
-                .zIndex(100f)
+            .addAll(latLng)
+            .strokeColor(strokeColor)
+            .fillColor(fillColor)
+            .strokeWidth(strokeWidth)
+            .zIndex(100f)
         return aMap?.addPolygon(polygonOption)
     }
 
@@ -208,9 +200,9 @@ abstract class BaseAMapBottomSheetDialogFragment : BaseBottomSheetDialogFragment
     fun drawText(latLng: LatLng, customId: String): Text? {
         val textOptions = TextOptions()
         textOptions
-                .text(customId)
-                .position(latLng)
-                .zIndex(100f)
+            .text(customId)
+            .position(latLng)
+            .zIndex(100f)
         return aMap?.addText(textOptions)
     }
 
@@ -226,40 +218,40 @@ abstract class BaseAMapBottomSheetDialogFragment : BaseBottomSheetDialogFragment
      */
     private fun tilesOverlay(url: String, cachePath: String, zIndex: Float) {
         val titleOverlayOptions = TileOverlayOptions()
-                .tileProvider(object : UrlTileProvider(256, 256) {
-                    override fun getTileUrl(x: Int, y: Int, zoom: Int): URL? {
-                        try {
-                            val fileName = "x${x}_y${y}_zoom${zoom + 1}"
-                            val filePath = FileUtils.getSDPath("amap/$cachePath/L${zoom + 1}") + fileName
-                            var urlPath = ""
-                            PermissionsCheck.with(mActivity)
-                                    .requestPermissions(
-                                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                            Manifest.permission.READ_EXTERNAL_STORAGE
-                                    )
-                                    .onPermissionsResult { deniedPermissions, allPermissions ->
-                                        if (deniedPermissions.isEmpty()) {
-                                            if (File(filePath).exists()) {
-                                                urlPath = "file://$filePath"
-                                            } else {
-                                                urlPath = String.format(url, zoom, x, y)
-                                                val bitmap = FileUtils.getUrlToBitmap(urlPath)
-                                                FileUtils.saveFile(bitmap, filePath)
-                                            }
-                                        } else {
-                                            urlPath = String.format(url, zoom, x, y)
-                                        }
+            .tileProvider(object : UrlTileProvider(256, 256) {
+                override fun getTileUrl(x: Int, y: Int, zoom: Int): URL? {
+                    try {
+                        val fileName = "x${x}_y${y}_zoom${zoom + 1}"
+                        val filePath = FileUtils.getSDPath("amap/$cachePath/L${zoom + 1}") + fileName
+                        var urlPath = ""
+                        PermissionsCheck.with(mActivity)
+                            .requestPermissions(
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.READ_EXTERNAL_STORAGE
+                            )
+                            .onPermissionsResult { deniedPermissions, allPermissions ->
+                                if (deniedPermissions.isEmpty()) {
+                                    if (File(filePath).exists()) {
+                                        urlPath = "file://$filePath"
+                                    } else {
+                                        urlPath = String.format(url, zoom, x, y)
+                                        val bitmap = FileUtils.getUrlToBitmap(urlPath)
+                                        FileUtils.saveFile(bitmap, filePath)
                                     }
-                            return URL(urlPath)
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                        return null
+                                } else {
+                                    urlPath = String.format(url, zoom, x, y)
+                                }
+                            }
+                        return URL(urlPath)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
-                })
-                .diskCacheEnabled(false)
-                .memoryCacheEnabled(false)
-                .zIndex(zIndex)
+                    return null
+                }
+            })
+            .diskCacheEnabled(false)
+            .memoryCacheEnabled(false)
+            .zIndex(zIndex)
         aMap?.addTileOverlay(titleOverlayOptions)
     }
 
